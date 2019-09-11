@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card mb-3">
+    <%= image_tag ("#{@car.image_url}"),class:"card-img-left" %>
+    <div class="card-body">
+      <h5 class="card-title"><%=@car.mark.name%> <%=@car.model.name%></h5>
+          <p class="card-text"><b>Prix :</b>  <%=@car.price%> Ar</p>
+          <p class="card-text"><b>Année :</b> <%=@car.year%></p>
+          <p class="card-text"><b>Kilométrage :</b> <%=@car.mileage%> Km</p>
+          <p class="card-text"><b>Nombre de place :</b> <%=@car.number_place%></p>
+          <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
+          <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>
+    </div>
+  </div>
+</div>
