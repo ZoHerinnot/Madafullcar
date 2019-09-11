@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tout les voitures</title>
+	<title>Madafullcar</title>
 </head>
-<body>
+<body> 
 
+
+     <div class="card table-car" style="width: 16rem;">
+	    <%= @car.each do |car|%>
+		 <%= image_tag ("#{car.image_url}"),class:"card-img-top" %> 
+  <div class="card-body">
+    <h5 class="card-title"><%=car.mark.name%></h5>
+    <p class="card-text">
+		prix: <%=car.price%> Ar<br>
+		année:<%=car.year%><br>
+		kilométrage:<%=car.mileage%><br>
+		nombre de place: <%=car.number_place%><br>	
+		climatisation:<%=car.climatisation%><br>
+		transmission: <%=car.transmission%><br>
+	 </p>
+    <a href="#" class="btn btn-primary">Go </a>
+  </div>
+</div>
+	<%end%>
 </body>
 </html>
- 
