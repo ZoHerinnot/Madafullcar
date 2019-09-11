@@ -18,3 +18,4 @@ class CarController < ApplicationController
   def updatedestroy
   end
 end
+
