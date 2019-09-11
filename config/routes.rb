@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'car/index'
-  get 'car/show'
-  get 'car/new'
-  get 'car/create'
-  get 'car/edit'
-  get 'car/updatedestroy'
+  resources :cars
+
+  devise_for :users
+  resources :users, only: [:show]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'static_pages#home'
 end
