@@ -13,6 +13,7 @@ Mark.destroy_all
 Model.destroy_all
 Type.destroy_all
 Car.destroy_all
+
 city = []
 mark = []
 model = []
@@ -46,9 +47,9 @@ end
 clim = ["oui","non"]
 etat = ["Bon Etat","Très bonne etat"]
 
-50.times do
+30.times do
 	car = Car.create(
-		price:10000000,
+		price:rand(10000..45000),
 		description:Faker::Vehicle.standard_specs,
 		etat:etat[rand(2)],
 		year:rand(1900..2019),
