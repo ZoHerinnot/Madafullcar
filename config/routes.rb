@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :cars
+  resources :car
 
   devise_for :users
   resources :users, only: [:show]
