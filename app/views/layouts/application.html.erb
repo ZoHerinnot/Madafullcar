@@ -30,7 +30,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body id="page-top">
+
+ <body id="page-top">
+ 
      <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Madafullcar</a>
@@ -59,6 +61,28 @@
       </div>
     </div>
   </nav>
+   <!-- 
+    <div class="DIV DIVISE">
+      <!-- Alert pour les erreur de devise (ex: mot de passe trop cours, email invalide )-->
+      <div class="alert pour devise est dans ses 2 paragraph">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+      <div>
+        <% if user_signed_in? %>
+          <a href="<%=user_path(current_user.id)%>">Mon compte</a> <!-- Page show d'un utilisateur -->
+
+          <br><br><br>
+          <a href="<%= destroy_user_session_path %>" data-method="delete">Se deconnecter</a>
+        <% else %>
+          <a href="<%= new_user_registration_path %>">S'inscrire</a>
+          <br><br><br>
+          <a href="<%= new_user_session_path %>">Se connecter</a>
+          <br><br><br>
+        <% end %>
+      </div>
+    </div>
+-->
 
     <%= yield %>
 
