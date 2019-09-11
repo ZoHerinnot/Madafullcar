@@ -33,61 +33,59 @@
 
  <body id="page-top">
  
-     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+   <nav class="navbar navbar-b navbar-trans navbar-expand-md bg-dark sticky-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Madafullcar</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
+      <a class="navbar-brand js-scroll" href="/">Madafullcar</a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
+      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            <a class="nav-link js-scroll active" href="#home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            <a class="nav-link js-scroll" href="#premium">premium</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll" href="#gold">gold</a>
           </li>
+      
+          <% if user_signed_in? %>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-          </li>
+          <a  class="nav-link js-scroll" href="<%=user_path(current_user.id)%>">Mon compte</a> 
+        </li>
+
+         <li class="nav-item">
+          <a  class="nav-link js-scroll" href="<%= destroy_user_session_path %>" data-method="delete">Se deconnecter</a>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <a  class="nav-link js-scroll" href="<%= new_user_registration_path %>">S'inscrire</a>
+        </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
+          <a  class="nav-link js-scroll" href="<%= new_user_session_path %>">Se connecter</a>
+        </li>
+        <% end %>
         </ul>
       </div>
     </div>
   </nav>
-   <!-- 
-    <div class="DIV DIVISE">
-      <!-- Alert pour les erreur de devise (ex: mot de passe trop cours, email invalide )-->
-      <div class="alert pour devise est dans ses 2 paragraph">
+
+  
+    <%= yield %>
+
+     <div class="alert pour devise est dans ses 2 paragraph">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
       </div>
-      <div>
-        <% if user_signed_in? %>
-          <a href="<%=user_path(current_user.id)%>">Mon compte</a> <!-- Page show d'un utilisateur -->
 
-          <br><br><br>
-          <a href="<%= destroy_user_session_path %>" data-method="delete">Se deconnecter</a>
-        <% else %>
-          <a href="<%= new_user_registration_path %>">S'inscrire</a>
-          <br><br><br>
-          <a href="<%= new_user_session_path %>">Se connecter</a>
-          <br><br><br>
-        <% end %>
-      </div>
-    </div>
--->
-
-    <%= yield %>
 
      <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer bg-dark">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4">

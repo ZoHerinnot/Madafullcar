@@ -22,5 +22,19 @@
 //= require jqBootstrapValidation.js
 //= require jquery3
 //= require jquery_ujs
-//= require_tree .
 
+
+//= require jquery/jquery.min.js
+//= require jquery/jquery-migrate.min.js
+//= require popper/popper.min.js
+//= require bootstrap/js/bootstrap.min.js
+//= require easing/easing.min.js
+//= require counterup/jquery.waypoints.min.js
+//= require counterup/jquery.counterup.js
+//= require owlcarousel/owl.carousel.min.js
+//= require lightbox/js/lightbox.min.js
+//= require typed/typed.min.js
+//= require contactform.js
+//= require main.js
+
+//= require_tree .
