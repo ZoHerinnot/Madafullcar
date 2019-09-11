@@ -6,6 +6,7 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 City.destroy_all
 Energy.destroy_all
 Mark.destroy_all
@@ -16,6 +17,7 @@ city = []
 mark = []
 model = []
 type = []
+image = ["car1.jpg","car2.jpg", "car2.jpg","car3.jpg","car4.jpg","car5.jpg","car6.jpg"]
 10.times do 
 	city << City.create(name:Faker::Address.city)
 	puts "mande ny city"
@@ -45,6 +47,20 @@ clim = ["oui","non"]
 etat = ["Bon Etat","Très bonne etat"]
 
 50.times do
-	car = Car.create(price:10000000,description:Faker::Vehicle.standard_specs,etat:etat[rand(2)],year:rand(1900..2019),mileage:Faker::Vehicle.mileage,number_place:rand(2..32),climatisation:clim[rand(2)],transmission: Faker::Vehicle.transmission,telephone:0345504476,mark_id:mark[rand(9)].id,model_id:model[rand(9)].id,type_id:type[rand(9)].id,energy_id:tab[rand(2)],city_id:city[rand(9)].id)
+	car = Car.create(
+		price:10000000,
+		description:Faker::Vehicle.standard_specs,
+		etat:etat[rand(2)],
+		year:rand(1900..2019),
+		mileage:Faker::Vehicle.mileage,
+		number_place:rand(2..32),
+		climatisation:clim[rand(2)],
+		transmission: Faker::Vehicle.transmission,
+		telephone:0345504476,mark_id:mark[rand(9)].id,
+		model_id:model[rand(9)].id,
+		type_id:type[rand(9)].id,
+		energy_id:tab[rand(2)],
+		city_id:city[rand(9)].id,
+		image_url: image[rand(5)])
 	puts "mande ny car"
 end
