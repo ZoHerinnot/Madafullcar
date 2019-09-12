@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<h1>
+    	Madafullcar : Trouver vite ce dont vous avez besoin!
+    </h1>
+  	<h2>
+  		Bienvenue <%= @user.first_name %> <%= @user.last_name %>!
+  	</h2>
+    <p>
+    	Bonne nouvelle, votre inscription à notre site madafullcar vien d'être validée.<br>
+    	Toute l'équipe Madafullcar est heureuse de vous compter parmi ses abonnés.
+    </p>
+    <p>
+      Tu t'es inscrit sur le site d'annonce Madafullcar en utilisant l'e-mail suivant : <%= @user.email %>.
+    </p>
+    <p>
+      D'ici là nous vous invitons à découvrir les dernières nouveautés de notre produits <%= @url %>.
+    </p>
+    <p>
+    	À bientôt,<br>
+    	L'équipe de madafullcar &hellip;
+    <p>
+
+  </body>
+</html>
