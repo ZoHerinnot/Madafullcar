@@ -25,11 +25,14 @@ ActiveRecord::Schema.define(version: 2019_09_11_101600) do
     t.string "climatisation"
     t.string "transmission"
     t.integer "telephone"
+    t.string "option"
+    t.string "status"
     t.bigint "mark_id"
     t.bigint "model_id"
     t.bigint "type_id"
     t.bigint "energy_id"
     t.bigint "city_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
@@ -38,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_101600) do
     t.index ["mark_id"], name: "index_cars_on_mark_id"
     t.index ["model_id"], name: "index_cars_on_model_id"
     t.index ["type_id"], name: "index_cars_on_type_id"
+    t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
