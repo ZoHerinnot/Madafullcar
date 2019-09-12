@@ -12,4 +12,5 @@ class Car < ApplicationRecord
   validates :climatisation, presence: true, length: {maximum: 3}
   validates :transmission, presence: true, length: {maximum: 30}
   validates :telephone, presence: true, numericality: {minimum: 10, maximum: 15}
-end
+  has_many :likes, dependent: :destroy
+  end

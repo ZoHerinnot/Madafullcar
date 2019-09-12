@@ -9,6 +9,18 @@
           <p class="card-text"><b>Nombre de place :</b> <%=@car.number_place%></p>
           <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
           <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>
+            <% if user_signed_in?%>
+              <div class="lk">
+                <% if @pre_like %>
+                <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, class:"dislike"%></p>
+                <% else %>
+                <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👍', car_likes_path(@car), method: :post,class:" like" %></p>
+                <% end %>
+              </div> 
+            <% else %>
+
+            <% end %>
     </div>
   </div>
-</div>
+<div>
+ 

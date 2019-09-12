@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :car
+  resources :car do
+  resources :likes
+end
 
   devise_for :users
   resources :users, only: [:show]
