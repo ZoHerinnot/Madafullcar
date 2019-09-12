@@ -5,6 +5,7 @@ class Car < ApplicationRecord
   belongs_to :energy
   belongs_to :city
   belongs_to :user
+  has_many_attached :pictures
 	validates :price, presence: true, numericality: {greater_than: 0}
 	validates :description, presence: true, length: {maximum: 500}
 	validates :etat, presence: true,length: {maximum: 40}
