@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  resources :car
 
+  get 'messages/index'
+  get 'messages/new'
+  get 'messages/create'
+  get 'conversations/index'
+  get 'conversations/create'
+  root 'static_pages#home'
   devise_for :users
   resources :users, only: [:show]
+  resources :car
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #link for messages
+  resources :conversations do #contact list
+    resources :messages #message content
+  end
 
-    root 'static_pages#home'
 end
