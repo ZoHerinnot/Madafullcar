@@ -10,11 +10,14 @@ class CreateCars < ActiveRecord::Migration[5.2]
       t.string :climatisation
       t.string :transmission
       t.integer :telephone
+      t.string :option
+      t.string :status
     	t.belongs_to :mark,index: true
       t.belongs_to :model, index: true
       t.belongs_to :type, index: true
       t.belongs_to :energy, index: true
       t.belongs_to :city, index: true
+      t.belongs_to :user, index: true
 
       t.timestamps
     end
