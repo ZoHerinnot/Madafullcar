@@ -13,6 +13,8 @@ Mark.destroy_all
 Model.destroy_all
 Type.destroy_all
 Car.destroy_all
+Comment.destroy_all
+Answer.destroy_all
 
 city = []
 mark = []
