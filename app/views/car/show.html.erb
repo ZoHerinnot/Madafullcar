@@ -1,50 +1,39 @@
-<div class="container">
-  <div class="card mb-3">
-    <%if @car.pictures.attached? %>
-      <%= image_tag (@car.pictures[0]) ,class:"card-img-left",alt: 'avatar' %>
-    <%else%>
-      <%= image_tag (@car.image_url), class:"card-img-left",alt: 'avatar' %>
-    <%end%>
-    <div class="card-body">
-      <h5 class="card-title"><%=@car.mark.name%> <%=@car.model.name%></h5>
-      <p class="card-text"><b>Prix :</b>  <%=@car.price%> Ar</p>
-      <p class="card-text"><b>Année :</b> <%=@car.year%></p>
-      <p class="card-text"><b>Kilométrage :</b> <%=@car.mileage%> Km</p>
-      <p class="card-text"><b>Nombre de place :</b> <%=@car.number_place%></p>
-      <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
-      <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>
-       <p class="card-text">Ajouter des Photos: <br>
-          <%= form_tag car_pictures_path(@car),controller: 'pictures', action: "create" , method:'post',multipart: true do %> <br>       
-          <%= file_field_tag :pictures %> <br>
-          <%= submit_tag "mettre à jour" %> 
-          <% end %>
-        </p>
-      <% if user_signed_in?%>
-        <div class="lk">
-        <% if @pre_like %>
-          <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, class:"dislike"%></p>
-        <% else %>
-          <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👍', car_likes_path(@car), method: :post,class:" like" %></p>
-        <% end %>
-        </div>
-      <% end %>
+  <section>
+    <div class="container">
+            <div class="card mb-3">
+                    <%if @car.pictures.attached? %>
+                      <%= image_tag (@car.pictures[0]) ,class:"card-img",alt: 'avatar' %>
+                    <%else%>
+                      <%= image_tag (@car.image_url), class:"card-img",alt: 'avatar' %>
+                    <%end%>
+              <div class="card-body">
+                  <h5 class="card-title"><%=@car.mark.name%> <%=@car.model.name%></h5>
+                  <p class="card-text"><b>Prix :</b>  <%=@car.price%> Ar</p>
+                  <p class="card-text"><b>Année :</b> <%=@car.year%></p>
+                  <p class="card-text"><b>Kilométrage :</b> <%=@car.mileage%> Km</p>
+                  <p class="card-text"><b>Nombre de place :</b> <%=@car.number_place%></p>
+                  <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
+                  <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>    
+                          <% if user_signed_in?%>
+                    <div class="lk">
+                              <% if @pre_like %>
+                      <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, class:"dislike"%></p>
+                              <% else %>
+                      <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👍', car_likes_path(@car), method: :post,class:" like" %></p>
+                              <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
     </div>
-  </div>
-  <div>
-    <p class="card-text">Ajouter des Photos: <br>
-      <%= form_tag car_pictures_path(@car),controller: 'pictures', action: "create" , method:'post',multipart: true do %> <br>
-        <%= file_field_tag :pictures %> <br>
-        <%= submit_tag "mettre à jour" %>
-      <% end %>
-    </p>
-  </div>
-</div>
-<div>
-  <%= render "/comments/comment.html.erb"%>
-</div>
+    </section>  
+<section>
+  
+      <%= render "/comments/comment.html.erb"%>
+   
+</section>
 
 
 
 
-f
 
