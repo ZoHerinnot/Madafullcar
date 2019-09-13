@@ -5,7 +5,12 @@ class Car < ApplicationRecord
   belongs_to :energy
   belongs_to :city
 
+
   has_many :comments
+
+
+  belongs_to :user
+  has_many_attached :pictures
 
 	validates :price, presence: true, numericality: {greater_than: 0}
 	validates :description, presence: true, length: {maximum: 500}
@@ -15,4 +20,5 @@ class Car < ApplicationRecord
   validates :climatisation, presence: true, length: {maximum: 3}
   validates :transmission, presence: true, length: {maximum: 30}
   validates :telephone, presence: true, numericality: {minimum: 10, maximum: 15}
+  validates :option, presence: true
 end
