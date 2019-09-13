@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
 
-  get 'messages/index'
-  get 'messages/new'
-  get 'messages/create'
-  get 'conversations/index'
-  get 'conversations/create'
-  root 'static_pages#home'
+
+
+
+  resources :car  do 
+    resources :pictures , only: [:create]
+    resources :likes
+  end
+ 
   devise_for :users
-  resources :users, only: [:show]
-  resources :car
+
+  resources :comments
+  resources :answers
+
+
+  resources :users, only: [:show] do 
+    resources :avatars , only: [:create]
+  end
+
+
 
   #link for messages
   resources :conversations do #contact list
