@@ -3,4 +3,40 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
- 
+ #services {
+ 	padding: 25px 10px 50px 10px;
+}
+
+#top{
+	background: url(inscription.jpg);
+	background-size: 100% 100%;
+}
+
+
+#work , #team{
+	padding: 10px;
+}
+
+.header{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	height: 410px;
+	overflow: auto;
+}
+
+.header-fond{
+	background: rgba(10, 10, 10, 0.89);
+}
+
+#abonnement{
+	padding:50px 50px 0 50px;
+}
+
+#nous{
+	padding-top: 10px;
+	padding-bottom: 11px;
+}
+
+.section-position{
+	position: relative;
+}

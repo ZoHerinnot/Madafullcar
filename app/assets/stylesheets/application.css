@@ -103,23 +103,6 @@ body{
 	color: #FFFFFF;
 }
 
-.gold{
-	width: 49%;
-	padding: 50px 25px;
-	height: 400px;
-	background: rgba(10, 10, 10, 0.09);
-}
-
-.gold-header{
-	height: 400px;
-	color: #000;
-	border: solid 0;
-	border-radius: 10px;
-	background: url(suv.jpg);
-	background-repeat: no-repeat;
-	background-position: right;
-}
-
 .col-h{
 	height: 300px;
 }
@@ -127,6 +110,24 @@ body{
 nav{
 	height: 20px;
 }
+
+
+html, body {
+    height: 100%;
+    margin: 0; padding: 0;
+}
+body {
+    display : table;
+    width: 100%;
+}
+#footer {
+    display : table-row;
+    height: 100px; /* à titre d'exemple */
+    line-height: 100px;
+}
+
+
+
 /*===============================================================================================================
 				Like  and dislike
 ===============================================================================================================*/
