@@ -1,11 +1,17 @@
 class Car < ApplicationRecord
+  #car relation create
   belongs_to :mark
   belongs_to :model
   belongs_to :type
   belongs_to :energy
   belongs_to :city
   belongs_to :user
+  #car relation for comments
+  has_many :comments
+  has_many :likes, dependent: :destroy
+  #other relation
   has_many_attached :pictures
+  #Validation
 	validates :price, presence: true, numericality: {greater_than: 0}
 	validates :description, presence: true, length: {maximum: 500}
 	validates :etat, presence: true,length: {maximum: 40}

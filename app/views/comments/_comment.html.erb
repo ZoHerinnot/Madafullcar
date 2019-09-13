@@ -1,0 +1,68 @@
+<!-- Contenedor Principal -->
+<div class="comments-container">
+	<h1><%= @comments.count %> Commentaires</h1>
+	<div>
+		<%= form_tag url_for(action: 'create', controller: 'comments', id: @car.id), method: "post" do %>
+			<%= label_tag 'Comment' %><br/>
+			<%= text_area_tag 'content' %><br/>
+		<%= submit_tag "Submit" %>
+	<% end %>
+	</div>
+
+	<ul id="comments-list" class="comments-list">
+		<li>
+			<%@comments.each do |comment|%>
+				<div class="comment-main-level">
+				<!-- Avatar -->
+				<div class="comment-avatar">
+					<img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt="image_cool">
+				</div>
+				<!-- Contenedor del Comentario -->
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog"><%= comment.user.first_name%> <%= comment.user.last_name%></a></h6>
+							<i class="fa fa-reply"></i>
+							<i class="fa fa-heart"></i>
+							<%= comment.answers.count %> réponses
+						</div>
+						<div class="comment-content">
+							<%=comment.content%>
+						</div>
+					</div>
+				</div>
+		<!-- Respuestas de los comentarios -->
+
+			<ul class="comments-list reply-list">
+				<%comment.answers.each do |answer|%>
+					<li>
+					<!-- Avatar -->
+						<div class="comment-avatar">
+							<img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt="">
+						</div>
+					<!-- Contenedor del Comentario -->
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name"><a href="http://creaticode.com/blog"><%= answer.user.first_name%> <%= answer.user.last_name%></a></h6>
+							<i class="fa fa-reply"></i>
+							<i class="fa fa-heart"></i>
+						</div>
+						<div class="comment-content">
+							<%=answer.content%>
+						</div>
+					</div>
+					</li>
+				<% end %>
+				<li>
+					<div>
+						<%= form_tag url_for(action: 'create', controller: 'answers', id: comment.id), method: "post" do %>
+							<%= label_tag 'answer' %> <br/>
+							<%= text_area_tag 'content' %><br/>
+						<%= submit_tag "Submit" %>
+					<% end %>
+					</div>
+				</li>
+			</ul>
+		<% end %>
+		</li>
+	</ul>
+</div>
