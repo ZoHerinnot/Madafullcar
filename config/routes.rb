@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 #=================== HOME PAGE =========================#
   root "static_pages#home"
 #=== UserLogin / sing_up /show_profil with avatars =====#
