@@ -1,17 +1,6 @@
-<%= @car.each do |car|%>
-<div class="card table-car" style="width: 16rem;">
-	<%= image_tag ("#{car.image_url}"),class:"card-img-top" %>
-	<div class="card-body">
-		<h5 class="card-title"><%=car.mark.name%></h5>
-		<p class="card-text">
-			prix: <%=car.price%> Ar<br>
-			année:<%=car.year%><br>
-			kilométrage:<%=car.mileage%><br>
-			nombre de place: <%=car.number_place%><br>
-			climatisation:<%=car.climatisation%><br>
-			transmission: <%=car.transmission%><br>
-		</p>
-		<a href="/car/<%=car.id%>" class="btn btn-primary">Go </a>
-	</div>
-</div>
-<%end%>
+<% if @car.first.option == 'Vente' %>
+	<%= render "buy_car.html.erb"%>
+<% else %>
+	<%= render "shell_car.html.erb"%>
+<% end %>
+
