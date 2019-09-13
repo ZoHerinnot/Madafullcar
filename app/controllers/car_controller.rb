@@ -2,7 +2,15 @@ class CarController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create,:edit]
 
   def index
-    @car = Car.all
+    if params[:annonce] != 'vente' && params[:annonce] != 'location'
+      redirect_to '/'
+    else
+      if params[:annonce] == 'vente'
+        @car = Car.where(option:'Vente')
+      else
+        @car = Car.where(option:'Location')
+      end
+    end
   end
 
   def show
@@ -29,7 +37,7 @@ class CarController < ApplicationController
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     @car.save
-    redirect_to(car_path(Car.last.id))
+    redirect_to(root_path)
   end
 
   def edit

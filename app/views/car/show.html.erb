@@ -13,9 +13,13 @@
         <div class="card-body text-dark">
           <p class="card-title">liste des voitures </p>
           <p class="card-text">
-            <% @cars.each do |mark|%>
-            <%=mark.mark.name%>
-           <a href="/car/<%=mark.id%>"> <%=image_tag (mark.image_url), class:"d-block w-100 rounded-circle"%> </a>
+            <% @cars.each do |car|%>
+            <%=car.mark.name%>
+              <%if car.pictures.attached? %>
+            <a href="/car/<%=car.id%>"> <%=image_tag (car.pictures[0]), class:"d-block w-100 rounded-circle"%> </a>
+              <%else%>
+           <a href="/car/<%=car.id%>"> <%=image_tag (car.image_url), class:"d-block w-100 rounded-circle"%> </a>
+              <%end%>
             <%end%>
           </p>
         </div>
@@ -48,28 +52,16 @@
             </div> 
                 <% else %>
                 <% end %>
-
           </div>
         </div>
       <div>
     </div>
-  </div>
-
-
-<div>
-          <p class="card-text">Ajouter des Photos: <br>
-          <%= form_tag car_pictures_path(@car),controller: 'pictures', action: "create" , method:'post',multipart: true do %> <br>       
-          <%= file_field_tag :pictures %> <br>
-          <%= submit_tag "mettre à jour" %> 
-          <% end %>
-          </p>
-
-</div>
-    </div>
- 
-
-<div class="container">
+    <div class="container">
   <%= render "/comments/comment.html.erb"%>
 </div>
+  </div>
+
+</div>
+
 
 </section>

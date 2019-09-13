@@ -11,9 +11,9 @@
     <div class="intro-text">
       <div class="intro-lead-in">Welcome To Madafullcars!</div>
       <div class="intro-heading text-uppercase">Trouver vite ce que vous chercher</div>
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Cree une nouvelle annonces</a>
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Nos annonces de vente</a>
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Nos annonces de location</a>
+      <a href="<%=car_index_path(annonce:'location')%>", class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render">Nos annonce de location</a>
+      <a href="<%=car_index_path(annonce:'vente')%>" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Nos annonces de vente</a>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="/car/new">Cree une nouvelle annonces</a>
     </div>
   </div>
 </header>
@@ -69,57 +69,56 @@
 </header>
 
 <!--/ Section Client premium Star /-->
-<section id="work" class="portfolio-mf sect-pt4 route">
-  <div class="container" id="premium">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="title-box text-center">
-          <h3 class="title-a">Categories</h3>
-          <p class="subtitle-a">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-          <div class="line-mf"></div>
+ <section id="work" class="portfolio-mf sect-pt4 route">
+    <div class="container" id="gold">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+              Client gold
+            </h3>
+            <p class="subtitle-a">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="line-mf"></div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="row">
+      <div class="row">
       <%@car.each do |car| %>
         <div class="col-md-4">
           <div class="work-box">
-              <div class="work-img col-h">
-             
+              <div class="work-img">
                 <%if car.pictures.attached?%>
-                   <%= image_tag (car.pictures[0]), class:"img-fluid image-card"%>
-                  <%else%>
-                   <%= image_tag (car.image_url), class:"img-fluid image-card" %>
+                <%= image_tag (car.pictures[0]), class:"img-fluid"%>
+              <%else%>
+                <%= image_tag (car.image_url), class:"img-fluid" %>
                 <%end%>
-          
               </div>
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
-                    <h2 class="w-title"><%= car.mark.name%></h2>
+                    <h2 class="w-title"><%=car.mark.name%></h2>
                     <div class="w-more">
                       <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <a href="car/<%=car.id%>" class="ion-ios-plus-outline"></a>
+                  <div class="col-sm-4">
+                    <div class="w-like">
+                      <a href="car/<%=car.id%>" class="ion-ios-plus-outline"></a>
+                    </div>
                   </div>
                 </div>
               </div>
               <p>(<%= car.likes.count %>) <%= (car.likes.count) > 1 ? '👍 Likes' : '👍 Like'%></p>
-            </div>
+
           </div>
+
         </div>
-      <%end%>
-    </div>
-  </div>
-</section>
-
-
-
+         <%end%>
+        </div>
+      </div>
+    </section>
 
 
 
@@ -290,7 +289,6 @@
 
         </div>
          <%end%>
-         <a type="button" class="btn-primary" href="/car/new">POSTER UNE ANNONCE</a>
         </div>
       </div>
     </section>
