@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-
+  root 'static_pages#home'
 
   resources :car  do 
     resources :pictures , only: [:create]
