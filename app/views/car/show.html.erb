@@ -1,37 +1,64 @@
-<div class="container">
-  <div class="card mb-3">
-  <%if @car.pictures.attached? %>
-   <%= image_tag (@car.pictures[0]) ,class:"card-img-left",alt: 'avatar' %>
-  <%else%>
-    <%= image_tag (@car.image_url), class:"card-img-left",alt: 'avatar' %> 
-  <%end%>
 
-    <div class="card-body">
-      <h5 class="card-title"><%=@car.mark.name%> <%=@car.model.name%></h5>
-          <p class="card-text"><b>Prix :</b>  <%=@car.price%> Ar</p>
-          <p class="card-text"><b>Année :</b> <%=@car.year%></p>
-          <p class="card-text"><b>Kilométrage :</b> <%=@car.mileage%> Km</p>
-          <p class="card-text"><b>Nombre de place :</b> <%=@car.number_place%></p>
-          <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
-          <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>
 
-            <% if user_signed_in?%>
-              <div class="lk">
-                <% if @pre_like %>
-                <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, class:"dislike"%></p>
+<section>
+<div class="row">
+  <div class="col-md-4">
+    <div class="container">
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header bg-success">
+        Voiture similaire
+      </div>
+      <div class="card-header bg-info">
+        <%=@car.mark.name%>
+      </div>
+        <div class="card-body text-dark">
+          <p class="card-title">liste des voitures </p>
+          <p class="card-text">
+            <% @cars.each do |mark|%>
+            <%=mark.mark.name%>
+           <a href="/car/<%=mark.id%>"> <%=image_tag (mark.image_url), class:"d-block w-100 rounded-circle"%> </a>
+            <%end%>
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-8">
+      <div class="container">
+        <div class="card mb-3">
+          <%if @car.pictures.attached? %>
+            <%= image_tag (@car.pictures[0]) ,class:"card-img-left",alt: 'avatar' %>
+          <%else%>
+            <%= image_tag (@car.image_url), class:"card-img-left",alt: 'avatar' %> 
+          <%end%>
+          <div class="card-body">
+            <h5 class="card-title"><%=@car.mark.name%> <%=@car.model.name%></h5>
+              <p class="card-text"><b>Prix :</b>  <%=@car.price%> Ar</p>
+              <p class="card-text"><b>Année :</b> <%=@car.year%></p>
+              <p class="card-text"><b>Kilométrage :</b> <%=@car.mileage%> Km</p>
+              <p class="card-text"><b>Nombre de place :</b> <%=@car.number_place%></p>
+              <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
+              <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>
+                <% if user_signed_in?%>
+            <div>
+                  <% if @pre_like %>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : 'like'%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete%></p>
+                  <% else %>
+                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : 'like'%><%= link_to '👍', car_likes_path(@car), method: :post%></p>
+                  <% end %>
+            </div> 
                 <% else %>
-                <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : '⭐'%><%= link_to '👍', car_likes_path(@car), method: :post,class:" like" %></p>
                 <% end %>
-              </div> 
-            <% else %>
 
-            <% end %>
+          </div>
+        </div>
+      <div>
     </div>
   </div>
+
+
+
 <div>
- 
-
-
           <p class="card-text">Ajouter des Photos: <br>
           <%= form_tag car_pictures_path(@car),controller: 'pictures', action: "create" , method:'post',multipart: true do %> <br>       
           <%= file_field_tag :pictures %> <br>
@@ -39,12 +66,14 @@
           <% end %>
           </p>
 
-
-    </div>
-  </div>
 </div>
+    </div>
+ 
 
-<div>
+
+<div class="container">
   <%= render "/comments/comment.html.erb"%>
 </div>
 
+
+</section>

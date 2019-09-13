@@ -56,7 +56,7 @@
 					<li>
 						<div>
 			   			<%= form_tag url_for(action: 'create', controller: 'answers', id: comment.id), method: "post" do %>
-			         <%= label_tag 'answer' %> </br>
+			         <%= label_tag 'répondre' %> </br>
 			          <%= text_area_tag 'content' %></br>
 			          <%= submit_tag "Submit" %>
 			        <% end %>
