@@ -98,8 +98,14 @@
       <%@car.each do |car| %>  
         <div class="col-md-4">
           <div class="work-box">
+
               <div class="work-img col-h">
-                <%= image_tag ("#{car.image_url}"), class:"img-fluid image-card" %>
+              <%if car.pictures.attached?%>
+                <%= image_tag (car.pictures[0]), class:"img-fluid image-card"%>
+              <%else%>
+                <%= image_tag ("#{car.image_url}"), class:"img-fluid image-card"%>
+                <%end%>
+
               </div>
               <div class="work-content">
                 <div class="row">
@@ -118,11 +124,17 @@
                 </div> 
               </div>
             </div>
-          <%end%>
-        </div> 
-      </div>
-    </div>
+            <%end%>
+          </div>
+           
+        </div>
+       
+        </div>
   </section> 
+        
+        
+
+ 
         
 
   <!-- Team -->
@@ -264,8 +276,12 @@
       <%@car.each do |car| %> 
         <div class="col-md-4">
           <div class="work-box">
-              <div class="work-img">
+              <div class="work-img">              
+                <%if car.pictures.attached?%>
+                <%= image_tag (car.pictures[0]), class:"img-fluid"%>
+              <%else%>
                 <%= image_tag ("#{car.image_url}"), class:"img-fluid" %>
+                <%end%>
               </div>
               <div class="work-content">
                 <div class="row">

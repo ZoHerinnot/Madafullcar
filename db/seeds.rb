@@ -13,12 +13,23 @@ Mark.destroy_all
 Model.destroy_all
 Type.destroy_all
 Car.destroy_all
+Comment.destroy_all
+Answer.destroy_all
+
+User.destroy_all
+
 
 city = []
 mark = []
 model = []
 type = []
 image = ["car1.jpg","car2.jpg", "car2.jpg","car3.jpg","car4.jpg","car5.jpg","car6.jpg"]
+user = []
+
+10.times do
+	user << User.create(last_name:Faker::Artist.name,first_name:Faker::Name.first_name,email:Faker::Internet.email,password:Faker::Internet.password)
+end
+
 10.times do 
 	city << City.create(name:Faker::Address.city)
 	puts "mande ny city"
@@ -47,9 +58,9 @@ end
 clim = ["oui","non"]
 etat = ["Bon Etat","Très bonne etat"]
 
-30.times do
+15.times do |i|
 	car = Car.create(
-		price:rand(10000..45000),
+		price:rand(1000000..45000000),
 		description:Faker::Vehicle.standard_specs,
 		etat:etat[rand(2)],
 		year:rand(1900..2019),
@@ -57,11 +68,41 @@ etat = ["Bon Etat","Très bonne etat"]
 		number_place:rand(2..32),
 		climatisation:clim[rand(2)],
 		transmission: Faker::Vehicle.transmission,
-		telephone:0345504476,mark_id:mark[rand(9)].id,
+		telephone:"0345504476",
+		mark_id:mark[rand(9)].id,
 		model_id:model[rand(9)].id,
 		type_id:type[rand(9)].id,
 		energy_id:tab[rand(2)],
 		city_id:city[rand(9)].id,
-		image_url: image[rand(5)])
-	puts "mande ny car"
+		image_url: image[rand(5)],
+		option: "Vente",
+		user_id:user[rand(9)].id)
+	puts "HACKING GOOGLE #{i*8} %"
 end
+puts "GOOGLE SUCCEFULLY HACKED"
+status = ["disponible","reservé"]
+15.times do |i|
+	car = Car.create(
+		price:rand(1000000..45000000),
+		description:Faker::Vehicle.standard_specs,
+		etat:etat[rand(2)],
+		year:rand(1900..2019),
+		mileage:Faker::Vehicle.mileage,
+		number_place:rand(2..32),
+		climatisation:clim[rand(2)],
+		transmission: Faker::Vehicle.transmission,
+		telephone:"0345504476",
+		mark_id:mark[rand(9)].id,
+		model_id:model[rand(9)].id,
+		type_id:type[rand(9)].id,
+		energy_id:tab[rand(2)],
+		city_id:city[rand(9)].id,
+		image_url: image[rand(5)],
+		option: "Location",
+		status: status[rand(2)],
+		user_id:user[rand(9)].id)
+	puts "HACKING NASA #{i*8} %"
+end
+
+puts "NASA SUCCEFULLY HACKED"
+

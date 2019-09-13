@@ -5,6 +5,7 @@ class CarController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
+    @comments = @car.comments
   end
 
   def new
