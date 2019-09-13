@@ -12,20 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2019_09_12_102657) do
 
-
-
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "answers", force: :cascade do |t|
-    t.text "content"
-    t.bigint "user_id"
-    t.bigint "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_answers_on_comment_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,7 +34,16 @@ ActiveRecord::Schema.define(version: 2019_09_12_102657) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_answers_on_comment_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -84,15 +81,6 @@ ActiveRecord::Schema.define(version: 2019_09_12_102657) do
     t.datetime "updated_at", null: false
   end
 
-
-  create_table "conversations", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "recipient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
-    t.index ["sender_id"], name: "index_conversations_on_sender_id"
-
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "car_id"
@@ -101,7 +89,15 @@ ActiveRecord::Schema.define(version: 2019_09_12_102657) do
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_comments_on_car_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "energies", force: :cascade do |t|
@@ -164,9 +160,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_102657) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "likes", "cars"
   add_foreign_key "likes", "users"
-
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-
 end
