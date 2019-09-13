@@ -1,11 +1,10 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
-
+  
   def index #liste de tous les contactes
     @users = User.all
     @conversations = Conversation.all
   end
-
 
   def create #crée un nouvelle discution
     if current_user.sent_conversations.empty? && current_user.received_conversations.empty?
