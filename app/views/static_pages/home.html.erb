@@ -33,11 +33,13 @@
             <div class="col-md-4">
           <div class="work-box">
               <div class="work-img">
-              <%if car.pictures.attached?%>
+             
+                <%if car.pictures.attached?%>
                 <%= image_tag (car.pictures[0]), class:"img-fluid"%>
               <%else%>
-                <%= image_tag ("#{car.image_url}"), class:"img-fluid" %>
+                <%= image_tag (car.image_url), class:"img-fluid" %>
                 <%end%>
+          
               </div>
               <div class="work-content">
                 <div class="row">
@@ -249,7 +251,7 @@
                 <%if car.pictures.attached?%>
                 <%= image_tag (car.pictures[0]), class:"img-fluid"%>
               <%else%>
-                <%= image_tag ("#{car.image_url}"), class:"img-fluid" %>
+                <%= image_tag (car.image_url), class:"img-fluid" %>
                 <%end%>
               </div>
               <div class="work-content">
@@ -272,6 +274,7 @@
          
         </div>
          <%end%>
+         <a type="button" class="btn-primary" href="/car/new">POSTER UNE ANNONCE</a>
         </div>
       </div>  
     </section>

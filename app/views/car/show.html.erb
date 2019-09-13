@@ -15,8 +15,8 @@
           <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
           <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>
           <p class="card-text">Ajouter des Photos: <br>
-          <%= form_tag car_pictures_path(@car),controller: 'pictures', action: "create" , method:'post',multipart: true do %> <br>       
-          <%= file_field_tag :pictures %> <br>
+          <%= form_tag car_pictures_path(@car),controller: 'front_pictures', action: "create" , method:'post',multipart: true do %> <br>       
+          <%= file_field_tag :front_pictures %> <br>
           <%= submit_tag "mettre à jour" %> 
           <% end %>
           </p>
@@ -24,3 +24,9 @@
     </div>
   </div>
 </div>
+
+
+
+
+f
+
