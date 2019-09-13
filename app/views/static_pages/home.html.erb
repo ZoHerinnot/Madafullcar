@@ -85,19 +85,22 @@
       <%@car.each do |car| %>
         <div class="col-md-4">
           <div class="work-box">
-            <div class="work-img col-h">
-              <%if car.pictures.attached?%>
-                <%= image_tag (car.pictures[0]), class:"img-fluid image-card"%>
-              <%else%>
-                <%= image_tag ("#{car.image_url}"), class:"img-fluid image-card"%>
-              <%end%>
-            </div>
-            <div class="work-content">
-              <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title"><%= car.mark.name%></h2>
-                  <div class="w-more">
-                    <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
+              <div class="work-img col-h">
+             
+                <%if car.pictures.attached?%>
+                   <%= image_tag (car.pictures[0]), class:"img-fluid image-card"%>
+                  <%else%>
+                   <%= image_tag (car.image_url), class:"img-fluid image-card" %>
+                <%end%>
+          
+              </div>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <h2 class="w-title"><%= car.mark.name%></h2>
+                    <div class="w-more">
+                      <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-sm-4">
@@ -263,7 +266,7 @@
                 <%if car.pictures.attached?%>
                 <%= image_tag (car.pictures[0]), class:"img-fluid"%>
               <%else%>
-                <%= image_tag ("#{car.image_url}"), class:"img-fluid" %>
+                <%= image_tag (car.image_url), class:"img-fluid" %>
                 <%end%>
               </div>
               <div class="work-content">
@@ -287,6 +290,7 @@
 
         </div>
          <%end%>
+         <a type="button" class="btn-primary" href="/car/new">POSTER UNE ANNONCE</a>
         </div>
       </div>
     </section>
