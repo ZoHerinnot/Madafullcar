@@ -1,8 +1,6 @@
-
 <div class="container">
   <div class="password">
-    <h2>Change your password</h2>
-
+    <h2>Changer votre mot de passe</h2>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <div class="password-errors">
          <%= render "devise/shared/error_messages", resource: resource %>
@@ -10,18 +8,18 @@
       <%= f.hidden_field :reset_password_token %>
       <div class="form-group col-md-12">
         <div class="field">
-          <%= f.label :password, "New password" %>
+          <%= f.label :password, "Nouveau mot de passe" %>
           <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: '(6 characters minimum)', class:"form-control" %>
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation, "Confirm new password" %><br />
+          <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: 'Confirm password' %>
         </div>
       </div>
 
       <div class="actions btn-center">
-        <%= f.submit "Change my password", class:"btn btn-info" %>
+        <%= f.submit "Changer mon mot de passe", class:"btn btn-info" %>
       </div>
     <% end %>
 

@@ -13,7 +13,11 @@ Mark.destroy_all
 Model.destroy_all
 Type.destroy_all
 Car.destroy_all
+Comment.destroy_all
+Answer.destroy_all
+
 User.destroy_all
+
 
 city = []
 mark = []
@@ -22,12 +26,20 @@ type = []
 image = ["car1.jpg","car2.jpg", "car2.jpg","car3.jpg","car4.jpg","car5.jpg","car6.jpg"]
 user = []
 
+
+
+ville = ["Diana","Sava","Itasy","Analamanga","Vakinankaratra","Bongolava","Sofia","Boeny","Betsiboka","Melaky","Alaotra-Mangoro","Atsinanana","Analanjirofo","Amoron'i Mania","Haute Matsiatra","Vatovavy-Fitovinany","Atsimo-Atsinanana","Ihorombe","Menabe","Atsimo-Andrefana","Androy","Anôsy"]
+
+
 10.times do
-	user << User.create(last_name:Faker::Artist.name,first_name:Faker::Name.first_name,email:Faker::Internet.email,password:Faker::Internet.password)
+	user << User.create(last_name:Faker::Artist.name,
+		first_name:Faker::Name.first_name,
+		email:Faker::Internet.email,
+		password:Faker::Internet.password)
 end
 
-10.times do 
-	city << City.create(name:Faker::Address.city)
+22.times do 
+	city << City.create(name:ville[rand(21)])
 	puts "mande ny city"
 end
 

@@ -1,7 +1,60 @@
-<h1>Page profil de l'utilusateur</h1>
-<p>  Prenom :   <%= @user.first_name %></p>
-<p>  Nom :   <%= @user.last_name %></p>
-<p>  Email :  <%= @user.email %></p>
-<p>
-  <a href="<%= edit_user_registration_path %>">Modifier les profil d'enregistrement</a>
-</p>
+
+
+  <%# code show car %>
+ <section>
+  <div class="row">
+       <div class="col-md-8">
+
+       <div class="card" style="width: 18rem;">
+   <%if @user.avatar.attached?%>
+        <%= image_tag @user.avatar,class:"card-img", alt: 'avatar' %>
+        <%else%>
+        <p> **Ajouter votre photo de profil*** </p>
+        <%end%>
+  <div class="card-body">
+  <p class="card-text"> Voici le liste de vos annonce:
+              <p>             
+              <ul> 
+              <% for i in 0..(@user.cars.length-1)%>
+                <li> Voiture de marque : <%= @user.cars[i].mark.name%></li>
+                <%end%>
+              </ul>  
+               <p> Changer de photo de profil
+            <%= form_tag user_avatars_path(@user), multipart: true do %>
+            <%= file_field_tag :avatar %> <br>
+            <%= submit_tag "mettre à jour" %><br>
+            <% end %>
+            </p>  
+  </div>
+</div>
+       
+       
+       </div>
+
+
+
+       <div class="col-md-4">
+       
+       <% for i in 0..(@user.cars.length-1)%>
+<div class="row"">
+  <div class="card">
+    <%if @user.cars[i].pictures.attached?%>
+        <%= image_tag @user.cars[i].pictures[0], class:"card-img-top", alt: 'picture' %>
+        <%else%>
+        <%= image_tag @user.cars[i].image_url, class:"card-img-top", alt: 'picture' %>
+        <%end%>
+       
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.cars[i].mark.name%></h5>
+      <p class="card-text"><%= @user.cars[i].description%></p>
+    <div class="card-footer">
+      <small class="text-muted">Année :<%= @user.cars[i].year%></small>
+    </div>
+  </div>
+<%end%>
+</div>
+       
+       
+       </div>
+     </div>
+    </section>
