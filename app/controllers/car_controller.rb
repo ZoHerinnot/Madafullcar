@@ -4,8 +4,11 @@ class CarController < ApplicationController
   end
 
   def show
+     @car = Car.find(params[:id])
 
-      @car = Car.find(params[:id])
+     @mark = Mark.find_by(name: "#{@car.mark.name}")
+     @cars = @mark.cars
+ 
     if user_signed_in?
       @pre_like = @car.likes.find { |like| like.user_id == current_user.id}
     end
