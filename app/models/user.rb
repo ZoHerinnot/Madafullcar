@@ -6,7 +6,13 @@ class User < ApplicationRecord
   has_many :answers
 
   has_many :cars
+
+
+  has_many :sent_conversations, foreign_key: 'sender_id', class_name: "Conversation"
+  has_many :received_conversations, foreign_key: 'recipient_id', class_name: "Conversation"
+
   has_one_attached :avatar
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_062031) do
+ActiveRecord::Schema.define(version: 2019_09_12_102657) do
+
 
 
 
@@ -83,6 +84,15 @@ ActiveRecord::Schema.define(version: 2019_09_12_062031) do
     t.datetime "updated_at", null: false
   end
 
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "car_id"
@@ -91,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_062031) do
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_comments_on_car_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+
   end
 
   create_table "energies", force: :cascade do |t|
@@ -112,6 +123,17 @@ ActiveRecord::Schema.define(version: 2019_09_12_062031) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.boolean "read", default: false
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "models", force: :cascade do |t|
