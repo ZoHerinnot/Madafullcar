@@ -1,87 +1,60 @@
 
 
-<div class="container">
+  <%# code show car %>
+ <section>
   <div class="row">
-    <div class="az">
+       <div class="col-md-8">
 
-     <%# show profil %>
-    <div class="row">
-      <div class="example-1 card">
-        <div class="wrapper">
-        <%if @user.avatar.attached?%>
-        <%= image_tag @user.avatar,class:"card-img-top", alt: 'avatar' %>
+       <div class="card" style="width: 18rem;">
+   <%if @user.avatar.attached?%>
+        <%= image_tag @user.avatar,class:"card-img", alt: 'avatar' %>
         <%else%>
         <p> **Ajouter votre photo de profil*** </p>
         <%end%>
-        <p>
-          <div class="date">
-            <span class="day"><%=@user.first_name%></span>
-            <span class="month"><%=@user.last_name%></span>
-          
-          </div>
-          <div class="data">
-            <div class="content">
-              <span class="author">Jane Doe</span>
-              <h1 class="title"><a href="#">Boxing ple more fights</a></h1>     
-              <p class="text"> Voici le liste de vos annonce:
+  <div class="card-body">
+  <p class="card-text"> Voici le liste de vos annonce:
               <p>             
               <ul> 
               <% for i in 0..(@user.cars.length-1)%>
-                <li> Voiture de marque:<%= @user.cars[i].mark.name%></li>
+                <li> Voiture de marque : <%= @user.cars[i].mark.name%></li>
                 <%end%>
-              </ul>
-            
-              <label for="show-menu" class="menu-button"><span></span></label>
-            </div>
-            <input type="checkbox" id="show-menu" />
-            <ul class="menu-content">
-              <li>
-                <a href="#" class="fa fa-bookmark-o"></a>
-              </li>
-              <li><a href="#" class="fa fa-heart-o"><span>47</span></a></li>
-              <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
-            </ul>
-            <p>
+              </ul>  
+               <p> Changer de photo de profil
             <%= form_tag user_avatars_path(@user), multipart: true do %>
             <%= file_field_tag :avatar %> <br>
             <%= submit_tag "mettre à jour" %><br>
             <% end %>
-            </p>
-          </div>
-          </div>
-          </div>     
-        </div>
-        <%# show profil %>
-           <div class="az">
-
-     <%# code show car %>
-      <% for i in 0..(@user.cars.length-1)%>
-    <div class="card mb-1" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-10">
-        <%= image_tag @user.cars[i].image_url, class:"card-img", alt: 'avatar' %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text"><%=@user.cars[i].description %></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%end%>
-    <%# code show car %>
-       </div>
+            </p>  
   </div>
-
-
-
-
-
-
-
-
-
 </div>
+       
+       
+       </div>
+
+
+
+       <div class="col-md-4">
+       
+       <% for i in 0..(@user.cars.length-1)%>
+<div class="row"">
+  <div class="card">
+    <%if @user.cars[i].pictures.attached?%>
+        <%= image_tag @user.cars[i].pictures[0], class:"card-img-top", alt: 'picture' %>
+        <%else%>
+        <%= image_tag @user.cars[i].image_url, class:"card-img-top", alt: 'picture' %>
+        <%end%>
+       
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.cars[i].mark.name%></h5>
+      <p class="card-text"><%= @user.cars[i].description%></p>
+    <div class="card-footer">
+      <small class="text-muted">Année :<%= @user.cars[i].year%></small>
+    </div>
+  </div>
+<%end%>
 </div>
+       
+       
+       </div>
+     </div>
+    </section>

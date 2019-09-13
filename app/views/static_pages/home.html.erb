@@ -11,7 +11,7 @@
     <div class="intro-text">
       <div class="intro-lead-in">Welcome To Madafullcars!</div>
       <div class="intro-heading text-uppercase">Trouver vite ce que vous chercher</div>
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Cree une nouvelle annonces</a>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="/car/new">Cree une nouvelle annonces</a>
       <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Nos annonces de vente</a>
       <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Nos annonces de location</a>
     </div>
@@ -85,12 +85,12 @@
       <%@car.each do |car| %>
         <div class="col-md-4">
           <div class="work-box">
-              <div class="work-img col-h">
-             
+              <div class="work-img ">
+            
                 <%if car.pictures.attached?%>
-                   <%= image_tag (car.pictures[0]), class:"img-fluid image-card"%>
+                  <%= image_tag (car.pictures[0]), class:"img-fluid "%>
                   <%else%>
-                   <%= image_tag (car.image_url), class:"img-fluid image-card" %>
+                  <%= image_tag (car.image_url), class:"img-fluid " %>
                 <%end%>
           
               </div>
@@ -116,6 +116,7 @@
       <%end%>
     </div>
   </div>
+</div>
 </section>
 
 

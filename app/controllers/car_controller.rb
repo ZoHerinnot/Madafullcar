@@ -25,7 +25,25 @@ class CarController < ApplicationController
   end
 
   def create
-    car_params = params.require(:car).permit(:price,:description,:etat,:year,:mileage,:number_place,:climatisation,:transmission,:telephone,:option,:status,:mark_id,:model_id,:type_id,:energy_id,:city_id,pictures: [])
+    car_params = params.require(:car).permit(
+      :price,
+      :description,
+      :etat,
+      :year,
+      :mileage,
+      :number_place,
+      :climatisation,
+      :transmission,
+      :telephone,
+      :option,
+      :status,
+      :mark_id,
+      :model_id,
+      :type_id,
+      :energy_id,
+      :city_id,
+      pictures: [])
+      
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     @car.save

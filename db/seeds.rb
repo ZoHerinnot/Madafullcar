@@ -32,7 +32,10 @@ ville = ["Diana","Sava","Itasy","Analamanga","Vakinankaratra","Bongolava","Sofia
 
 
 10.times do
-	user << User.create(last_name:Faker::Artist.name,first_name:Faker::Name.first_name,email:Faker::Internet.email,password:Faker::Internet.password)
+	user << User.create(last_name:Faker::Artist.name,
+		first_name:Faker::Name.first_name,
+		email:Faker::Internet.email,
+		password:Faker::Internet.password)
 end
 
 22.times do 
