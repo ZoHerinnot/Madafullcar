@@ -7,7 +7,7 @@ class Car < ApplicationRecord
 
 
   has_many :comments
-
+  has_many :likes, dependent: :destroy
 
   belongs_to :user
   has_many_attached :pictures
@@ -22,3 +22,4 @@ class Car < ApplicationRecord
   validates :telephone, presence: true, numericality: {minimum: 10, maximum: 15}
   validates :option, presence: true
 end
+

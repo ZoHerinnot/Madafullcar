@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+
   resources :car  do 
     resources :pictures , only: [:create]
+    resources :likes
   end
  
   devise_for :users
