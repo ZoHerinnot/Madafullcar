@@ -1,3 +1,4 @@
+
 <div class="edit">
   <div class="container">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -16,8 +17,12 @@
             <%= f.label :last_name %>
             <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:"form-control", placeholder:"Votre Prénom" %>
           </div>
+
+
+
         </div>
       </div>
+
 
       <div class="field">
         <%= f.label :email %><br />
@@ -41,6 +46,7 @@
         </div>
       </div>
 
+
       <div class="field">
         <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
         <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control",placeholder:"Mot de passe actuel" %>
@@ -57,3 +63,4 @@
   </div>
 </div>
     
+
