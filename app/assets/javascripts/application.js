@@ -13,28 +13,29 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require bootstrap/js/bootstrap.bundle.min.js
-//= require jquery/jquery.min.js
-//= require jquery-easing/jquery.easing.min.js
-//= require agency.js
-//= require agency.min.js
-//= require contact_me.js
-//= require jqBootstrapValidation.js
+
 //= require jquery3
 //= require jquery_ujs
 
+//= require jquery/jquery.min
+//= require bootstrap/js/bootstrap.bundle.min
+//= require jquery-easing/jquery.easing.min
+//= require assets/js/jqBootstrapValidation
+//= require assets/js/contact_me
 
-//= require jquery/jquery.min.js
-//= require jquery/jquery-migrate.min.js
-//= require popper/popper.min.js
-//= require bootstrap/js/bootstrap.min.js
-//= require easing/easing.min.js
-//= require counterup/jquery.waypoints.min.js
-//= require counterup/jquery.counterup.js
-//= require owlcarousel/owl.carousel.min.js
-//= require lightbox/js/lightbox.min.js
-//= require typed/typed.min.js
-//= require contactform.js
-//= require main.js
 
+//= require jquery/jquery.min
+//= require jquery/jquery-migrate.min
+//= require popper/popper.min
+//= require bootstrap/js/bootstrap.min
+//= require easing/easing.min
+//= require counterup/jquery.waypoints.min
+//= require counterup/jquery.counterup
+//= require owlcarousel/owl.carousel.min
+//= require lightbox/js/lightbox.min
+//= require typed/typed.min
+//= require assets/js/contactform.js
+//= require assets/js/main.js
+
+//= require assets/js/agency.min
 //= require_tree .
