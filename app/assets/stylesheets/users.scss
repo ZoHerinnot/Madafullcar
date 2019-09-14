@@ -1,0 +1,109 @@
+/*========================================================================================================
+													DEVISE
+========================================================================================================*/
+body{
+	width: 100%;
+	min-width: 50%;
+}
+#container{
+	padding-top: 100px;
+}
+.form{
+		padding: 150px 50px;
+}
+
+.form-display{
+	margin-left: 55%;
+	width: 40%;
+	padding: 10px;
+	box-shadow: 1px 2px 2px 2px;
+}
+
+#login{
+	text-align: center;
+	color: #A3834D;
+}
+
+.form-login{
+	background: image-url("car9.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.form-sign-up{
+	background: image-url("sign-up.jpg");
+	background-size: 100% 100%;
+}
+
+.btn-render{
+	margin-top: 10px;
+}
+.error_messages{
+	background: rgba(0, 0, 0,0.1);
+	padding-left: 50px;
+}
+.errors{
+	margin: 0px;
+}
+
+.password-errors{
+	margin-bottom: 20px;  
+}
+
+.btn-center{
+	text-align: center;
+}
+
+.btn-width{
+	width: 200px;
+}
+
+.password{
+	width: 40%;
+	margin: 20px auto;
+	padding: 10px;
+	border: solid 0px;
+	border-radius: 5px;
+	box-shadow: 1px 2px 2px 2px; 
+}
+
+
+.search{
+	margin-top: 50px; 
+	background: #343a40;
+	padding: 10px;
+	color: #FFFFFF;
+}
+
+.col-h{
+	height: 300px;
+}
+
+nav{
+	height: 20px;
+}
+
+
+
+html, body {
+    height: 100%;
+    margin: 0; padding: 0;
+}
+body {
+    display : table;
+    width: 100%;
+}
+#footer {
+    display : table-row;
+    height: 100px; /* à titre d'exemple */
+    line-height: 100px;
+}
+
+
+
+
+.edit{
+background: image-url("edit.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+}
