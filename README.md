@@ -1,7 +1,11 @@
 # Madafullcar
-projet final du groupe 4
 
-Membres de l'équipe les moussaillons:
+
+Nom du groupe:
+
+- groupe 4
+
+Membres de l'équipe:
 
 - RAMAHAFALY Edmond @RFaly (Back-end & Front)
 
@@ -14,3 +18,11 @@ Membres de l'équipe les moussaillons:
 - RANDRIANAMBININTSOA Zo Herinnot @ZoHerinnot (Back-end & Front)
 
 - Toky Razananiriana @tokynomenaja (Back-end & Front)
+
+Lien Trello:
+
+- https://trello.com/b/59tEl8ww/madafullcar
+
+Lien Heroku:
+
+-https://madafullcar.herokuapp.com/
