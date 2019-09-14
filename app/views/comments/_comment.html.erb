@@ -10,7 +10,7 @@
 					<!-- Avatar -->
 					<div class="comment-avatar">
 						<%if comment.user.avatar.attached?%>
-                <%= image_tag (comment.user.avatar.attached), class:"img-fluid"%>
+                <%= image_tag (comment.user.avatar), class:"img-fluid"%>
               <%else%>
                 <img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt="">
                 <%end%>
@@ -21,7 +21,7 @@
 						<div class="comment-head">
 							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog"><%= comment.user.first_name%> <%= comment.user.last_name%></a></h6>
 							<span></span>
-							<i class="fa fa-reply"></i>
+							<i class="fa fa-reply" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"></i>
 							<i class="fa fa-heart"></i>
 							<%= comment.answers.count %> réponses
 						</div>
@@ -30,16 +30,18 @@
 						</div>
 					</div>
 				</div>
+
 				<!-- Respuestas de los comentarios -->
 
 				<ul class="comments-list reply-list">
+					<div class="collapse" id="collapseExample">
 					<%comment.answers.each do |answer|%>
 					<li>
 						<!-- Avatar -->
 						<div class="comment-avatar">
 
-							<%if comment.user.avatar.attached?%>
-                <%= image_tag (comment.user.avatar.attached), class:"img-fluid"%>
+							<%if answer.user.avatar.attached?%>
+                <%= image_tag (answer.user.avatar), class:"img-fluid"%>
               <%else%>
                 <img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt="">
                 <%end%>
@@ -69,6 +71,7 @@
 			        <% end %>
 						</div>
 					</li>
+				</div>
 				</ul>
 				<% end %>
 			</li>
