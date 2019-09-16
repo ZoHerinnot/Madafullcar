@@ -15,7 +15,9 @@ class User < ApplicationRecord
   #relation for messages
   has_many :sent_conversations, foreign_key: 'sender_id', class_name: "Conversation", dependent: :destroy
   has_many :received_conversations, foreign_key: 'recipient_id', class_name: "Conversation", dependent: :destroy
-
+  #relation of abonnement
+  has_one :premium
+  has_one :gold
   def welcome_send #message de bienvenu a chaque nouvelle utilisateur inscrit
     UserMailer.welcome_email(self).deliver_now
   end
