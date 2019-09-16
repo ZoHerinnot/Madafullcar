@@ -73,6 +73,9 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 
-
+# gem admin
+gem 'trestle'
+gem 'trestle-auth'
+gem 'trestle-search'
 
 
