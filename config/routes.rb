@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   resources :conversations do #contact list
     resources :messages #message content
   end
+#=================  Abonnement  ========================#
+resources :abonnement, only:[:index]
+resources :premiums, only: [:create,:destroy]
+resources :golds, only: [:create,:destroy]
 #=======================================================#
 end

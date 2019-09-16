@@ -13,13 +13,10 @@
  *= require_tree .
  *= require_self
  *= require bootstrap/css/bootstrap.min
- *= require fontawesome-free/css/all.min
  *= require assets/css/agency.min
 
  *= require bootstrap/css/bootstrap.min
- *= require font-awesome/css/font-awesome.min
  *= require animate/animate.min
- *= require ionicons/css/ionicons.min
  *= require owlcarousel/assets/owl.carousel.min
  *= require lightbox/css/lightbox.min
  *= require assets/css/style.css
