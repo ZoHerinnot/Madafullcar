@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
+  include MessagesHelper
 
   def index
     @messages = @conversation.messages
@@ -24,6 +25,12 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     end
+  end
+
+  def destroy
+    @messages = Message.where(conversation_id:params[:conversation_id])
+    @messages.destroy_all
+    redirect_back fallback_location: '/', allow_other_host: false
   end
 
 end

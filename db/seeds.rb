@@ -30,6 +30,14 @@ user = []
 
 ville = ["Diana","Sava","Itasy","Analamanga","Vakinankaratra","Bongolava","Sofia","Boeny","Betsiboka","Melaky","Alaotra-Mangoro","Atsinanana","Analanjirofo","Amoron'i Mania","Haute Matsiatra","Vatovavy-Fitovinany","Atsimo-Atsinanana","Ihorombe","Menabe","Atsimo-Andrefana","Androy","Anôsy"]
 
+User.create(last_name:"google",
+	first_name:"map",
+	email:"google@map.com",
+	password:"google@map.com")
+User.create(last_name:"yahoo",
+		first_name:"yes",
+		email:"yahoo@yes.com",
+		password:"yahoo@yes.com")
 
 10.times do
 	user << User.create(last_name:Faker::Artist.name,
@@ -38,7 +46,7 @@ ville = ["Diana","Sava","Itasy","Analamanga","Vakinankaratra","Bongolava","Sofia
 		password:Faker::Internet.password)
 end
 
-22.times do 
+22.times do
 	city << City.create(name:ville[rand(21)])
 	puts "mande ny city"
 end
@@ -53,7 +61,7 @@ tab = [energie1,energie2]
 	puts "mande ny mark"
 end
 
-10.times do 
+10.times do
 	model << Model.create(name: Faker::Vehicle.model,mark_id:mark[rand(9)].id)
 	puts "mande ny model"
 end
@@ -113,4 +121,3 @@ status = ["disponible","reservé"]
 end
 
 puts "NASA SUCCEFULLY HACKED"
-
