@@ -1,4 +1,4 @@
-
+/*
 $(document).ready(function() {
 // Mets ici ton code
 //alert("efa lasa")
@@ -10,3 +10,5 @@ searchCollapse.on('click', function(){
 })
 
 });
+
+*/

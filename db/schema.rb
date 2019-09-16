@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_09_16_124001) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -117,6 +118,14 @@ ActiveRecord::Schema.define(version: 2019_09_16_124001) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "golds", force: :cascade do |t|
+    t.boolean "gold"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_golds_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "car_id"
@@ -149,6 +158,14 @@ ActiveRecord::Schema.define(version: 2019_09_16_124001) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mark_id"], name: "index_models_on_mark_id"
+  end
+
+  create_table "premia", force: :cascade do |t|
+    t.boolean "premium"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_premia_on_user_id"
   end
 
   create_table "types", force: :cascade do |t|

@@ -22,7 +22,7 @@
   </head>
 
 <body id="page-top">
-<nav class="navbar navbar-b navbar-trans navbar-expand-md bg-dark sticky-top" id="mainNav">
+<nav class="navbar navbar-b navbar-trans navbar-expand-md bg-dark fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand js-scroll" href="/">Madafullcar</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
@@ -40,6 +40,33 @@
           <li class="nav-item">
             <a class="nav-link js-scroll" href="<%=user_path(current_user.id)%>">Mon compte</a>
           </li>
+          <% if User.find(current_user.id).gold != nil %>
+            <% if current_user.id == User.find(current_user.id).gold.user_id%>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Gold)</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+              </li>
+            <% end %>
+          <% else %>
+          <% if User.find(current_user.id).premium != nil%>
+            <% if current_user.id == User.find(current_user.id).premium.user_id%>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Premium)</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+              </li>
+            <% end %>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+            </li>
+          <% end %>
+          <% end %>
           <li class="nav-item">
             <a  class="nav-link js-scroll" href="<%= destroy_user_session_path %>" data-method="delete">Se deconnecter</a>
           </li>
@@ -58,8 +85,22 @@
       </ul>
     </div>
   </div>
-</nav>
 
+      <div id="search" class="collapse search fixed-top">
+      <div>
+        <form>
+          <label>Rechercher une voiture</label>
+          <input type="" name="">
+        </form>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+</nav>
 
        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   
