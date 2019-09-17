@@ -1,59 +1,61 @@
-<br><br><br><br><br><br>
-<!-- Liste des utilisateur déja en contacte -->
-<h1><%@conversations[0]%></h1>
-<a href="<%=conversations_path%>" data-method="create">Contacter</a>
-<div class="ui segment">
-  <h3>Mailbox</h3>
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% recipient = recipient_user(conversation) %> <br>
-          <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
-          <%= link_to "Supprimer le contact", conversation_path(conversation.id), method: :delete %><br>
-        <% end %>
-      <% end %>
+
+<section>
+<div class="container">
+  <div class="row">
+    <div class="col">
+       <h3>Boite de réception (<%=@conversations.count%>)</h3>
+   </div>
+
+    <div class="col">
+      <h3>Tous les utilisateurs</h3>
     </div>
-  </div>
-</div>
 
-<!-- Liste de tous les utilisateur dans la base de donné -->
-<div class="ui segment">
-  <h3>All Users</h3>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-      <div class="item">
-        <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+    <div class="w-100"> </div>
+
+
+    <div class="col">
+        <h1><%@conversations[0]%></h1>
+<!-- <a href="<%=conversations_path%>" data-method="create">Contacter</a>
+ -->
+      <div class="ui segment"> 
+        <div class="ui list">
+          <div class="item">
+            <% @conversations.each do |conversation| %>
+              <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+						<% recipient = recipient_user(conversation) %>
+								<%=recipient.first_name%> <%=recipient.last_name%>
+                <%= link_to "", conversation_messages_path(conversation), class:"far fa-comment-dots"%>
+                <%= link_to "", conversation_path(conversation.id), method: :delete, class:"far fa-trash-alt" %><br>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+    </div>
+        
 
 
-<!-- Les liens pour ce trucs
-  IRETO ROA IRETO IHANY NO TENA MIASA
-===========================================================================================================
-conversation_messages GET    /conversations/:conversation_id/messages(.:format)       messages#index
-conversations GET    /conversations(.:format)                                         conversations#index
-===========================================================================================================
+      <div class="col">
+        <div class="ui segment">
+            <div class="ui list">
+              <ol>
+              <% @users.each do |user| %>
+                <% if user.id != current_user.id %>
+                <div class="item">
 
-  conversation_messages GET    /conversations/:conversation_id/messages(.:format)                                       messages#index
-                      POST   /conversations/:conversation_id/messages(.:format)                                       messages#create
-new_conversation_message GET    /conversations/:conversation_id/messages/new(.:format)                                   messages#new
-edit_conversation_message GET    /conversations/:conversation_id/messages/:id/edit(.:format)                              messages#edit
- conversation_message GET    /conversations/:conversation_id/messages/:id(.:format)                                   messages#show
-                      PATCH  /conversations/:conversation_id/messages/:id(.:format)                                   messages#update
-                      PUT    /conversations/:conversation_id/messages/:id(.:format)                                   messages#update
-                      DELETE /conversations/:conversation_id/messages/:id(.:format)                                   messages#destroy
-        conversations GET    /conversations(.:format)                                                                 conversations#index
-                      POST   /conversations(.:format)                                                                 conversations#create
-     new_conversation GET    /conversations/new(.:format)                                                             conversations#new
-    edit_conversation GET    /conversations/:id/edit(.:format)                                                        conversations#edit
-         conversation GET    /conversations/:id(.:format)                                                             conversations#show
-                      PATCH  /conversations/:id(.:format)                                                             conversations#update
-                      PUT    /conversations/:id(.:format)                                                             conversations#update
-                      DELETE /conversations/:id(.:format)                                                             conversations#destroy
 
--->
+                 <li> <%= user.first_name %> <%= user.last_name %> 
+                <%= link_to "", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class:"far fa-comment-dots"%>
+                  </li>
+                </div>
+                <% end %>
+              <% end %>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+

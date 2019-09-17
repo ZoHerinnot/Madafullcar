@@ -49,9 +49,17 @@
       <p><strong>Ville : </strong><%=@car.city.name%></p>
       <p><strong>Description : </strong><%=@car.description%></p>
       <p><strong>Contact rapide : </strong><%=@car.telephone%></p>
+						<div>
+                  <% if @pre_like %>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete%></p>
+                  <% else %>
+                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post%></p>
+                  <% end %>
+            </div>
       
   </div>
 </div>
+		
 
 </div>
   <div class="content-car" id="rigth">
