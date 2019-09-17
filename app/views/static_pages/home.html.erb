@@ -93,11 +93,11 @@
       <%@car.each do |car| %>
         <div class="col-md-4">
           <div class="work-box">
-              <div class="work-img">
+              <div class="work-img img-w">
                 <%if car.pictures.attached?%>
-                <%= image_tag (car.pictures[0]), class:"img-fluid"%>
+                <%= image_tag (car.pictures[0]), class:"img-fluid img-h"%>
               <%else%>
-                <%= image_tag (car.image_url), class:"img-fluid" %>
+                <%= image_tag (car.image_url), class:"img-fluid img-h" %>
                 <%end%>
               </div>
               <div class="work-content">
@@ -117,7 +117,6 @@
                 </div>
               </div>
               <p>(<%= car.likes.count %>) <%= (car.likes.count) > 1 ? '👍 Likes' : '👍 Like'%></p>
-
           </div>
 
         </div>
