@@ -92,6 +92,10 @@ body{
 	height: 300px;
 }
 
+.global-container{
+	margin-top: 100px;
+}
+
 
 html, body {
     height: 100%;
