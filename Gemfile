@@ -74,6 +74,9 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'stripe'
 
-
+# gem admin
+gem 'trestle'
+gem 'trestle-auth'
+gem 'trestle-search'
 
 

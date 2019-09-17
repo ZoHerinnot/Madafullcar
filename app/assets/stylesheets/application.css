@@ -47,16 +47,6 @@ body{
 	color: #A3834D;
 }
 
-.form-login{
-	background: url("car9.jpg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-}
-
-.form-sign-up{
-	background: url("sign-up.jpg");
-	background-size: 100% 100%;
-}
 
 .btn-render{
 	margin-top: 10px;
@@ -117,11 +107,6 @@ body {
     line-height: 100px;
 }
 
-.edit{
-background: image-url("edit.jpg");
-background-repeat: no-repeat;
-background-size: 100%;
-}
 
 /*===============================================================================================================
 				Like  and dislike
