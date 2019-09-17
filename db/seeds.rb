@@ -25,10 +25,7 @@ model = []
 type = []
 image = ["car1.jpg","car2.jpg", "car2.jpg","car3.jpg","car4.jpg","car5.jpg","car6.jpg"]
 user = []
-
-
-
-ville = ["Diana","Sava","Itasy","Analamanga","Vakinankaratra","Bongolava","Sofia","Boeny","Betsiboka","Melaky","Alaotra-Mangoro","Atsinanana","Analanjirofo","Amoron'i Mania","Haute Matsiatra","Vatovavy-Fitovinany","Atsimo-Atsinanana","Ihorombe","Menabe","Atsimo-Andrefana","Androy","Anôsy"]
+ville = ["Diana","Sava","Itasy","Analamanga","Vakinakaratra","Bongolava","Sofia","Boeny","Betsiboka","Melaky","Alaotra-Mangoro","Atsinanana","Analanjirofo","Amoron'i Mania","Haute Matsiatra","Vatovavy-Fitovinany","Atsimo-Atsinanana","Ihorombe","Menabe","Atsimo-Andrefana","Androy","Anôsy"]
 
 User.create(last_name:"google",
 	first_name:"map",
@@ -55,11 +52,14 @@ energie1 = Energy.create(name:"Essence").id
 energie2 = Energy.create(name: "Gasoil").id
 
 tab = [energie1,energie2]
+array_of_mark = []
 
 10.times do
 	mark << Mark.create(name: Faker::Vehicle.make)
 	puts "mande ny mark"
 end
+
+
 
 10.times do
 	model << Model.create(name: Faker::Vehicle.model,mark_id:mark[rand(9)].id)

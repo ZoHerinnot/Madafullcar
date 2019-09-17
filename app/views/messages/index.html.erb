@@ -1,4 +1,5 @@
 <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
+<br><br><br><br><br><br>
 <div>
   <% @messages.each do |message| %>
     <% if message.content %>
@@ -21,8 +22,7 @@
     <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
   </div>
 <% end %>
-<% if !@messages.empty? %>
-  <div>
-    <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete %><br>
-  </div>
-<% end %>
+
+<div>
+  <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete %>
+</div>
