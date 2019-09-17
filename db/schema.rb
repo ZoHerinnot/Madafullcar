@@ -153,10 +153,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_124001) do
 
   create_table "models", force: :cascade do |t|
     t.string "name"
-    t.bigint "mark_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mark_id"], name: "index_models_on_mark_id"
   end
 
   create_table "premia", force: :cascade do |t|
