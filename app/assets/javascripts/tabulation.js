@@ -8,5 +8,4 @@ var search = $('div.search')
 searchCollapse.on('click', function(){
 	search.toggle()
 })
-
 });
