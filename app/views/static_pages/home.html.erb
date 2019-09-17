@@ -101,9 +101,9 @@
           <div class="work-box">
               <div class="work-img img-w">
                 <%if car.pictures.attached?%>
-                <%= image_tag (car.pictures[0]), class:"img-fluid img-h"%>
+                <%= image_tag (car.pictures[0]), class:"img-fluid"%>
               <%else%>
-                <%= image_tag (car.image_url), class:"img-fluid img-h" %>
+                <%= image_tag (car.image_url), class:"img-fluid" %>
                 <%end%>
               </div>
               <div class="work-content">
@@ -122,7 +122,7 @@
                   </div>
                 </div>
               </div>
-              <p>(<%= car.likes.count %>) <%= (car.likes.count) > 1 ? '👍 Likes' : '👍 Like'%></p>
+              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? 'Likes' : 'Like'%></p>
           </div>
 
         </div>
