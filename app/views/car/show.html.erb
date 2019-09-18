@@ -1,67 +1,106 @@
 
 
-<section>
-	<div class="row">
-  <div class="col-md-4">
-    <div class="container">
-    <div class="card border-dark mb-3" style="max-width: 18rem;">
-      <div class="card-header bg-success">
-        Voiture similaire
-      </div>
-      <div class="card-header bg-info">
-        <%=@car.mark.name%>
-      </div>
-        <div class="card-body text-dark">
-          <p class="card-title">liste des voitures </p>
-          <p class="card-text">
-            <% @cars.each do |car|%>
-            <li><%=car.mark.name%></li> 
-            <li><%=car.option%></li>
-            <li><%=car.price%></li>
-              <%if car.pictures.attached? %>
-            <a href="/car/<%=car.id%>"> <%=image_tag (car.pictures[0]), class:"d-block w-100 rounded-circle"%> </a>
-              <%else%>
-           <a href="/car/<%=car.id%>"> <%=image_tag (car.image_url), class:"d-block w-100 rounded-circle"%> </a>
-              <%end%>
+<div class="conteneur">
+  <div class="content-car" id="left">
+
+      <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
+        <div class="carousel-inner carousel-display">
+          <div class="carousel-item active">
+            <%if @car.pictures.attached?%>
+                  <%= image_tag (@car.pictures[0]), class:"img-display",alt: 'image car' %>
+                <%else%>
+                  <%= image_tag (@car.image_url),class:"img-display",alt: 'image car' %> 
             <%end%>
-          </p>
-        </div>
+          </div>
+       <% for i in 1..(@car.pictures.length-1)%>
+          <div class="carousel-item">
+            <%if @car.pictures.attached?%>
+              <%= image_tag (@car.pictures[i]), class:"img-display",alt: 'image car' %>
+            <%else%>
+              <%= image_tag (@car.image_url),class:"img-display",alt: 'image car' %> 
+            <%end%>
+          </div>
+      <%end%> 
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-    </div>
-    </div>
-	<div class="col-md-8">
-      <div class="container">
-        <div class="card mb-3">
-          <%if @car.pictures.attached? %>
-            <%= image_tag (@car.pictures[0]) ,class:"card-img-left",alt: 'avatar' %>
-          <%else%>
-            <%= image_tag (@car.image_url), class:"card-img-left",alt: 'avatar' %> 
-          <%end%>
-          <div class="card-body">
-            <h5 class="card-title"><%=@car.mark.name%> <%=@car.model.name%></h5>
-              <p class="card-text"><b>Prix :</b>  <%=@car.price%> Ar</p>
-              <p class="card-text"><b>Année :</b> <%=@car.year%></p>
-              <p class="card-text"><b>Kilométrage :</b> <%=@car.mileage%> Km</p>
-              <p class="card-text"><b>Nombre de place :</b> <%=@car.number_place%></p>
-              <p class="card-text"><b>Climatisation :</b> <%=@car.climatisation%></p>
-              <p class="card-text"><b>Transmission :</b> <%=@car.transmission%></p>
-              <p class="card-text"><b>option :</b> <%=@car.option%></p>
-                <% if user_signed_in?%>
-            <div>
+
+  <div class="card-body back-color">
+      <h5>A propos de la voiture:</h5>
+      <p><strong>Marque : </strong><%=@car.mark.name%></p>
+      <p><strong>Model: </strong><%=@car.model.name%></p>   
+      <p><strong>Année: </strong><%=@car.year%> </p>
+      <p><strong>Voiture en: </strong><%=@car.option%></p>
+      <p><strong>Climatisation: </strong><%=@car.climatisation%></p>
+      <p><strong>Nombre de place: </strong><%=@car.number_place%></p>
+      <p><strong>Etat de la voiture: </strong><%=@car.etat%></p>
+      <p><strong>Status de la voiture en location : </strong><%=@car.status%></p>
+      <p><strong>Prix: </strong><%=@car.price%></p>
+      <p><strong>Kilometrage: </strong><%=@car.mileage%></p>
+      <p><strong>Transmission: </strong><%=@car.transmission%></p>
+      <p><strong>Type: </strong><%=@car.type.name%></p>
+      <p><strong>Energie: </strong><%=@car.energy.name%></p>
+      <p><strong>Ville : </strong><%=@car.city.name%></p>
+      <p><strong>Description : </strong><%=@car.description%></p>
+      <p><strong>Contact rapide : </strong><%=@car.telephone%></p>
+						<div>
                   <% if @pre_like %>
-                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : 'like'%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete%></p>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete%></p>
                   <% else %>
-                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : 'like'%><%= link_to '👍', car_likes_path(@car), method: :post%></p>
+                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post%></p>
                   <% end %>
-            </div> 
-                <% else %>
-                <% end %>
+            </div>
+      
+  </div>
+</div>
+		
+
+</div>
+  <div class="content-car" id="rigth">
+      <div class="similaire sticky-top bg-dark">
+          <h4 style="color: #fec503;"> Voiture similaire </h4>
+      </div>
+    <%@cars.each do |car|%>
+      <div class="card mb-3 card-w">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+              <%if car.pictures.attached?%>
+                <%= image_tag (car.pictures[0]), class:"card-img"%>
+              <%else%>
+                <%= image_tag (car.image_url), class:"card-img" %>
+            <%end%>
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+            <a href="/car/<%=car.id%>">
+              <strong ><%=car.mark.name%></strong><br>
+              <strong >Ar <%=car.price%></strong> </a><br>
+              <span class="w-ctegory">En <%=car.option%></span> / <span class="w-date"> Ajouté le: <%=car.created_at%></span>
+            </div>
           </div>
         </div>
-    <div class="container">
-  <%= render "/comments/comment.html.erb"%>
+      </div>
+    <%end%>
+
+  </div>
 </div>
- </div>
-		</div>
-	</div>
+
+
+
+<section id="comment-section">
+  <div class="container">
+    <%= render "/comments/comment.html.erb"%>
+  </div>
 </section>
+
+
+
+
+
+

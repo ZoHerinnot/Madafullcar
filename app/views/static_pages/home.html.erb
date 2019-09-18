@@ -1,25 +1,10 @@
 
 
-      <div id="search" class="collapse search fixed-top">
-      <div>
-        <form>
-          <label>Rechercher une voiture</label>
-          <input type="" name="">
-        </form>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </div>
-
   <header class="masthead bg-dark" id="top">
     <div class="container">
       <div class="intro-text head-pos">
-       <div class="intro-lead-in">Welcome To Madafullcars!</div>
-      <div class="intro-heading text-uppercase">Trouver vite ce que vous chercher</div>
+       <div class="intro-lead-in">Bienvenue chez Madafullcars!</div>
+      <div class="intro-heading text-uppercase">Vente et Location en un mot</div>
       <a href="<%=car_index_path(annonce:'location')%>", class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render">Nos annonce de location</a>
       <a href="<%=car_index_path(annonce:'vente')%>" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Nos annonces de vente</a>
       <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="/car/new">Cree une nouvelle annonces</a>
@@ -33,7 +18,7 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading text-uppercase">Services</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h3 class="section-subheading text-muted">Notre service s'adaptera à vos besoins</h3>
         </div>
       </div>
       <div class="row text-center">
@@ -42,21 +27,21 @@
             <i class="far fa-calendar-check" class="fa-stack-1x fa-inverse img"></i>
           </span>
           <h4 class="service-heading">Vente</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <p class="text-muted">Les véhicules sont  proposés par les particuliers et professionnelles. Ils sont fournis avec les informations indispensables pour vous aider à votre choix.</p>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="far fa-calendar-check" class="fa-stack-1x fa-inverse img"></i>
           </span>
           <h4 class="service-heading">Location</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <p class="text-muted">Les véhicules sont disponibles par des reservations en ligne ou par contact avec les propriétaires. Chaque voitures en location peut être appréciées par les ancients locataires à travers des commentaires.</p>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="far fa-calendar-check" class="fa-stack-1x fa-inverse img"></i>
           </span>
-          <h4 class="service-heading">Securité</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <h4 class="service-heading">Messages</h4>
+          <p class="text-muted">Nous offrons la possibilité de contacter par message les propriétaires directement dans le site.</p>
         </div>
       </div>
     </div>
@@ -70,12 +55,18 @@
           <div class="card-body">
             <div id="abonnement">
               <div class="intro-lead-in bg-warning"><h3>Abonnements</h3></div>
-              <div class="intro-heading text-uppercase card-text">It's Nice To Meet You</div>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
+              <div class="intro-heading text-uppercase card-text">Bénéficier de nos offres d'Abonnements</div> <br>
+                <div class="text-abot">
+                    <p>Nos offres d'abonnements sont divisés en ds.eux catégeories bien précis: Premium et Gold.<br>
+                    <strong class="text-s">Premium</strong>: Destiné à des particuliers qui souhaitent avoir plus de visibilité pour leurs annonces. 
+                    Cette offre comporte un affichage en page d'accueil est un meilleur placement dans 
+                    les résultats des recherches. Poster des annoncés de façon illimitée,et en  plus la possibilité de s'afficher dans la 
+                    page Facebook de Madafullcar<br>
+                    <strong class="text-s">Gold</strong>: Pour les professionnelles qui veulent se faire connaitre et se rapprocher de leurs vraies clientèles.
+                    Dans cette offre on propose un domaine dédier dans la page d'acceuil, des visibilités améliorées dans les résultats 
+                    des recherches.Accès à notre page Facebook pour plus de visibilité pour les  communautés en ligne.
+                    </p>
+                </div>
             </div>
           </div>
         </div>
@@ -107,32 +98,37 @@
       <div class="row">
       <%@car.each do |car| %>
         <div class="col-md-4">
-          <div class="work-box">
-              <div class="work-img">
-                <%if car.pictures.attached?%>
+          <div class="work-box">         
+              <div class="work-img img-w">             
+                <%if car.pictures.attached?%>               
                 <%= image_tag (car.pictures[0]), class:"img-fluid"%>
+                
               <%else%>
                 <%= image_tag (car.image_url), class:"img-fluid" %>
-                <%end%>
+                <%end%>               
               </div>
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
+                  <%if car.pictures.attached?%>   
+                  <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span> 
+                   <%else%>  
+                   <span ><i class="fas fa-camera"> 1</i></span> 
+                   <%end%>
                     <h2 class="w-title"><%=car.mark.name%></h2>
                     <h2 class="w-title"><%=car.price%> Ar</h2>
                     <div class="w-more">
-                      <span class="w-ctegory"><%=car.option%></span> / <span class="w-date"><%=car.created_at%></span>
+                      <span class="w-ctegory"><%=car.option%></span> / <span class="w-date"><%=car.created_at%></span>                     
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="w-like">
-                      <a href="car/<%=car.id%>" class="ion-ios-plus-outline"></a>
+                      <a href="car/<%=car.id%>" class="fas fa-info-circle"></a>
                     </div>
                   </div>
                 </div>
               </div>
-              <p>(<%= car.likes.count %>) <%= (car.likes.count) > 1 ? '👍 Likes' : '👍 Like'%></p>
-
+              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? 'Likes' : 'Like'%></p>
           </div>
 
         </div>
@@ -149,12 +145,15 @@
           <div class="card-body">
             <div id="nous">
               <div class="intro-lead-in bg-warning"><h3>À propos de nous</h3></div>
-              <p class="card-text">Madafullcar est une site internet spécialisé dans la vente et location de voiture à Madagascar. Le site diffuse des annonces postées directement par des vendeurs particuliers et professionnels. Madafull vous permet de retrouver facilement les voitures en fonction de vos critères et exigences.</p>
+              <p class="card-text">Madafullcar est une site internet spécialisé dans la vente et location de voiture situé à Madagascar. 
+              Le site diffuse des annonces postées directement par des vendeurs particuliers et professionnels. 
+              Madafull vous permet de retrouver facilement les voitures en fonction de vos critères et exigences.</p>
             </div><br>
              <div>
               <div class="intro-lead-in bg-warning"><h3>Postez vos annonces </h3></div>
-              <p class="card-text">Créez facilement vos annonces sur Madafullcar en cliquant sur « poster ». La diffusion des annonces est à partir de 0 Ariary et sans engagement. Vous bénéficiez également d’un espace vendeur qui vous permet d’avoir une page qui regroupe toutes vos véhicules</p>
-              <p><a href="" class= "btn btn-primary text-body">Poster</a></p>
+              <p class="card-text">Créez facilement vos annonces sur Madafullcar en cliquant sur « poster ». La diffusion des annonces est à partir de 0 Ariary et sans engagement. 
+              Vous bénéficiez également d’un espace admin qui vous permet de suivre vos annonces et les appréciations de la communautés </p>
+              <p><a href="/car/new" class= "btn btn-primary text-body">Poster</a></p>
             </div>
           </div>
         </div>

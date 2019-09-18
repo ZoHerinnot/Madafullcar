@@ -1,22 +1,50 @@
-<div class="ui segment">
-  <% @messages.each do |message| %>
+<nav class="navbar navbar-light bg-info">
+  <a class="navbar-brand" href="<%=conversations_path%>", >
+    <i class="fas fa-arrow-circle-left"></i>
+  </a>
+	<% if !@messages.empty? %>
+  <div>
+    <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete %><br>
+  </div>
+<% end %>
+</nav>
+
+<section>
+  <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
+ <div>
+<% @messages.each do |message| %>
     <% if message.content %>
-      <% user = User.find(message.user_id) %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= user.first_name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.content %>
-            </div>
-          </div>
+      <% user = user_message(message) %>
+
+      <% if user.id == current_user.id %>
+          <div class="container msg bg-info">
+            <div>
+         <p class="text-right"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
+           <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
+         </p>
+         </div>
+          
+          <p class="text-right"><%= message.content %></p>
+          <span class="time-right"><%= message.message_time %></span>
         </div>
-      </div>
+
+      <% else %>
+        <div class="container darker msg">
+          <div>
+         <p class="text-left"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
+           <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
+         </p>
+         </div>          
+         
+          <p class="text-left"><%= message.content %></p>
+          <span class="time-left"><%= message.message_time %></span>
+        </div>
+
+      <% end %>
     <% end %>
   <% end %>
 </div>
-
+  <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
   <div class="field">
     <%= f.text_area :content, class: "form-control" %>
@@ -25,5 +53,5 @@
   <div>
     <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
   </div>
-
 <% end %>
+</section>

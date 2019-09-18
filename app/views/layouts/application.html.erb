@@ -22,7 +22,7 @@
   </head>
 
 <body id="page-top">
-<nav class="navbar navbar-b navbar-trans navbar-expand-md bg-dark sticky-top" id="mainNav">
+<nav class="navbar navbar-b navbar-trans navbar-expand-md bg-dark fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand js-scroll" href="/">Madafullcar</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
@@ -40,9 +40,39 @@
           <li class="nav-item">
             <a class="nav-link js-scroll" href="<%=user_path(current_user.id)%>">Mon compte</a>
           </li>
+          <% if User.find(current_user.id).gold != nil %>
+            <% if current_user.id == User.find(current_user.id).gold.user_id%>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Gold)</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+              </li>
+            <% end %>
+          <% else %>
+          <% if User.find(current_user.id).premium != nil%>
+            <% if current_user.id == User.find(current_user.id).premium.user_id%>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Premium)</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+              </li>
+            <% end %>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+            </li>
+          <% end %>
+          <% end %>
           <li class="nav-item">
             <a  class="nav-link js-scroll" href="<%= destroy_user_session_path %>" data-method="delete">Se deconnecter</a>
           </li>
+				 <li class="nav-item">
+              <a class="nav-link js-scroll far fa-comments " href="<%=conversations_path%>"><i class="far fa-comments"></i></a>
+            </li>
         <% else %>
           <li class="nav-item">
             <a  class="nav-link js-scroll" href="<%= new_user_registration_path %>">S'inscrire</a>
@@ -51,27 +81,17 @@
             <a  class="nav-link js-scroll" href="<%= new_user_session_path %>">Se connecter</a>
           </li>
         <% end %>
-
-        <li class="nav-item search-collapse">
-          <a class="nav-link js-scroll" id="search-collapse" data-toggle="collapse" href="#search" aria-expanded="false" aria-controls="search">Recherche <i class="fad fa-search"></i></a>
-        </li>
       </ul>
     </div>
   </div>
 </nav>
-
-
-       <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   
+       <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <div id="conteneur">
+    <div class="global-container">
       <%= yield %>
     </div>
-    
-
-    
-
-
+      
      <!-- Footer -->
   <footer class="footer bg-dark" id="footer">
     <div class="container">
@@ -87,7 +107,7 @@
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
+              <a href="https://www.facebook.com/madafullcar" target="_blanks">
                 <i class="fab fa-facebook-f"></i>
               </a>
             </li>
@@ -110,8 +130,9 @@
 
         </div>
       </div>
+		</div>
     </footer>
-  </body>
+		</body>
    <!--  <div id="container">
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p> -->

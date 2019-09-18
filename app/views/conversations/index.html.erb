@@ -1,33 +1,61 @@
-<h1><%=@conversations[0]%></h1>
-<a href="<%=conversations_path%>" data-method="create">Contacter</a>
-<div class="ui segment">
-  <h3>Mailbox</h3>
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
-        <% end %>
-      <% end %>
+
+<section>
+<div class="container">
+  <div class="row">
+    <div class="col">
+       <h3>Boite de réception (<%=@conversations.count%>)</h3>
+   </div>
+
+    <div class="col">
+      <h3>Tous les utilisateurs</h3>
     </div>
-  </div>
-</div>
-<!--
-<div class="ui segment">
-  <h3>All Users</h3>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-      <div class="item">
-        <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+
+    <div class="w-100"> </div>
+
+
+    <div class="col">
+        <h1><%@conversations[0]%></h1>
+<!-- <a href="<%=conversations_path%>" data-method="create">Contacter</a>
+ -->
+      <div class="ui segment"> 
+        <div class="ui list">
+          <div class="item">
+            <% @conversations.each do |conversation| %>
+              <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+						<% recipient = recipient_user(conversation) %>
+								<%=recipient.first_name%> <%=recipient.last_name%>
+                <%= link_to "", conversation_messages_path(conversation), class:"far fa-comment-dots"%>
+                <%= link_to "", conversation_path(conversation.id), method: :delete, class:"far fa-trash-alt" %><br>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
--->
+    </div>
+        
+
+
+      <div class="col">
+        <div class="ui segment">
+            <div class="ui list">
+              <ol>
+              <% @users.each do |user| %>
+                <% if user.id != current_user.id %>
+                <div class="item">
+
+
+                 <li> <%= user.first_name %> <%= user.last_name %> 
+                <%= link_to "", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class:"far fa-comment-dots"%>
+                  </li>
+                </div>
+                <% end %>
+              <% end %>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+

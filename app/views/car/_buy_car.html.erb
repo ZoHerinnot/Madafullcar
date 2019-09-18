@@ -18,7 +18,7 @@
       <%@car.each do |car| %>
         <div class="col-md-4">
           <div class="work-box">
-              <div class="work-img">
+              <div class="work-img img-w">
                 <%if car.pictures.attached?%>
                 <%= image_tag (car.pictures[0]), class:"img-fluid"%>
               <%else%>
@@ -28,17 +28,22 @@
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
+                  <%if car.pictures.attached?%>
+                  <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span> 
+                   <%else%>  
+                   <span ><i class="fas fa-camera"> 1</i></span> 
+                   <%end%>
                     <h2 class="w-title"><%=car.mark.name%></h2>
                     <h2 class="w-title"><%=car.option%></h2>
                   </div>
                   <div class="col-sm-4">
                     <div class="w-like">
-                      <a href="car/<%=car.id%>" class="ion-ios-plus-outline"></a>
+                      <a href="car/<%=car.id%>" class="fas fa-info-circle"></a>
                     </div>
                   </div>
                 </div>
               </div>
-              <p>(<%= car.likes.count %>) <%= (car.likes.count) > 1 ? '👍 Likes' : '👍 Like'%></p>
+              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? 'Likes' : 'Like'%></p>
 
           </div>
 
