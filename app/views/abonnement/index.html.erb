@@ -1,7 +1,7 @@
 <div class="form abonner">
   <% if @gold != nil %>
-    <div class="col-sm-6">
-            <div class="card width1">
+    <div class="col-sm-4 space">
+            <div class="card">
               <!-- <img src="images/car6.jpg" class="card-img-top" alt="..."> -->
               <%=image_tag("car11.jpg",class:"card-img-top", alt: "Example Image")%>
                 <div class="card-body color">
@@ -15,8 +15,8 @@
   <% else %>
     <div class="container">
       <div class="row">
-        <div class="col-sm-6">
-          <div class="card width">
+        <div class="col-sm-4 space">
+          <div class="card">
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <%=image_tag("car12.jpg",class:"card-img-top", alt: "Voiture")%>
               <div class="card-body color">
@@ -44,8 +44,8 @@
         </div>
 
         <% if @premium != nil %>
-          <div class="col-sm-6">
-            <div class="card width">
+          <div class="col-sm-4 space">
+            <div class="card">
               <!-- <img src="images/car6.jpg" class="card-img-top" alt="..."> -->
               <%=image_tag("car15.jpg",class:"card-img-top", alt: "Example Image")%>
                 <div class="card-body color">
@@ -56,8 +56,8 @@
             </div>
           </div>
         <% else %>
-          <div class="col-sm-6">
-            <div class="card width">
+          <div class="col-sm-4 space">
+            <div class="card">
               <!-- <img src="images/car6.jpg" class="card-img-top" alt="..."> -->
               <%=image_tag("car14.jpg",class:"card-img-top", alt: "Voiture")%>
                 <div class="card-body color">
