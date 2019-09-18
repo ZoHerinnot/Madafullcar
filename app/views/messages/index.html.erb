@@ -11,41 +11,11 @@
 
 <section>
   <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
- <div>
-<% @messages.each do |message| %>
-    <% if message.content %>
-      <% user = user_message(message) %>
-
-      <% if user.id == current_user.id %>
-          <div class="container msg bg-info">
-            <div>
-         <p class="text-right"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
-         </p>
-         </div>
-          
-          <p class="text-right"><%= message.content %></p>
-          <span class="time-right"><%= message.message_time %></span>
-        </div>
-
-      <% else %>
-        <div class="container darker msg">
-          <div>
-         <p class="text-left"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
-         </p>
-         </div>          
-         
-          <p class="text-left"><%= message.content %></p>
-          <span class="time-left"><%= message.message_time %></span>
-        </div>
-
-      <% end %>
-    <% end %>
-  <% end %>
+ <div id="messages">
+  <%= render partial: "messages/message", message: @message%>
 </div>
   <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+<%= form_for [@conversation, @message], html: {class: "ui reply form"},remote: true do |f| %>
   <div class="field">
     <%= f.text_area :content, class: "form-control" %>
   </div>
