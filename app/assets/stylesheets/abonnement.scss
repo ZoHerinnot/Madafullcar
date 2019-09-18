@@ -3,17 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .abonner{
 	background: image-url("car10.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
-.color{
-	background:  #e0ebeb
-;
-}
-.width{
-	width: 18rem;
-}
-.width1{
-	width: 25rem;
-	left:25rem;
+
+
+.space{
+	margin: 10px 0;
 }
