@@ -21,8 +21,10 @@
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <%=image_tag("car12.jpg",class:"card-img-top", alt: "Voiture")%>
               <div class="card-body color">
+
                 <h4 class="text-center" >Pack Gold</h4>
                 <p class="card-text">Notre meilheur offre destiné aux entreprises et professionnelles.</p>
+
                     <%= form_tag golds_path do %>
                       <article>
                         <% if flash[:error].present? %>

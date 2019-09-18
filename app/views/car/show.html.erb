@@ -74,6 +74,7 @@
           <h4 style="color: #fec503;"> Voiture similaire </h4>
       </div>
     <%@cars.each do |car|%>
+    <% if @car.id != car.id %>
       <div class="card mb-3 card-w">
         <div class="row no-gutters">
           <div class="col-md-5">
@@ -98,6 +99,7 @@
         </div>
       </div>
     <%end%>
+  <%end%>
 
   </div>
 </div>
