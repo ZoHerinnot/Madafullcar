@@ -1,3 +1,4 @@
+ <h2 class="text-abonnement">Espace abonnement</h2>
 <div class="form abonner">
   <% if @gold != nil %>
     <div class="col-sm-4 space">
@@ -5,9 +6,9 @@
               <!-- <img src="images/car6.jpg" class="card-img-top" alt="..."> -->
               <%=image_tag("car11.jpg",class:"card-img-top", alt: "Example Image")%>
                 <div class="card-body color">
-                    <h4 class="card-title">Gold</h4>
-                    <p class="card-text">Votre êtes abonnés sur Madafullcar.</p>
-          			<a href="/golds/<%=@gold.id%>" data-method="delete" class="btn btn-danger">désabonée</a>
+                    <h4 class="text-center">Pack Gold</h4>
+                    <p class="card-text">Vous beneficiez de notre abonnement Gold. Si vous souhaitez se désabonner cliqué sur :</p>
+          			<a href="/golds/<%=@gold.id%>" data-method="delete" class="btn btn-danger">Se désaboner</a>
                </div>
               </div>
           </div>
@@ -20,8 +21,10 @@
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <%=image_tag("car12.jpg",class:"card-img-top", alt: "Voiture")%>
               <div class="card-body color">
-                <h4> Gold</h4>
-                <p class="card-text">Abonnez-vous pour profiter des annonces illimité </p>
+
+                <h4 class="text-center" >Pack Gold</h4>
+                <p class="card-text">Notre meilheur offre destiné aux entreprises et professionnelles.</p>
+
                     <%= form_tag golds_path do %>
                       <article>
                         <% if flash[:error].present? %>
@@ -42,16 +45,16 @@
               </div>
           </div>
         </div>
-
+                       
         <% if @premium != nil %>
           <div class="col-sm-4 space">
             <div class="card">
               <!-- <img src="images/car6.jpg" class="card-img-top" alt="..."> -->
               <%=image_tag("car15.jpg",class:"card-img-top", alt: "Example Image")%>
                 <div class="card-body color">
-                    <h4 class="card-title" class="text-center">Premium</h4>
-                    <p class="card-text">Votre êtes abonnés sur Madafullcar.</p><br><br>
-          			<a href="/premiums/<%=@premium.id%>" data-method="delete" class="btn btn-danger">désabonée</a>
+                    <h4 class="text-center">Pack Premium</h4>
+                    <p class="card-text">Vous utilisez notre abonnement Premium.Pour se retirer de cette offre veuillez cliquer sur :</p><br><br>
+          			<a href="/premiums/<%=@premium.id%>" data-method="delete" class="btn btn-danger">Se désaboner</a>
                </div>
             </div>
           </div>
@@ -61,8 +64,8 @@
               <!-- <img src="images/car6.jpg" class="card-img-top" alt="..."> -->
               <%=image_tag("car14.jpg",class:"card-img-top", alt: "Voiture")%>
                 <div class="card-body color">
-                    <h4 class="card-title" class="text-center"> Prémium</h4>
-                    <p class="card-text">Abonnez-vous pour profiter des annonces illimité.</p>
+                    <h4 class="text-center">Pack Prémium</h4>
+                    <p class="card-text">Notre offre à destination des particuliers, pour beneficier de plus de visibliter. </p>
                     <%= form_tag premiums_path do %>
                       <article>
                         <% if flash[:error].present? %>
