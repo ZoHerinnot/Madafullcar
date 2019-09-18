@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 #=================== HOME PAGE =========================#
   root "static_pages#home"
 #=== UserLogin / sing_up /show_profil with avatars =====#
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
   resources :users, only: [:show] do
     resources :avatars , only: [:create]
   end
