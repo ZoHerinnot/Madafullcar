@@ -78,5 +78,8 @@ gem 'stripe'
 gem 'trestle'
 gem 'trestle-auth'
 gem 'trestle-search'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 

@@ -69,6 +69,7 @@
           <h4 style="color: #fec503;"> Voiture similaire </h4>
       </div>
     <%@cars.each do |car|%>
+    <% if @car.id != car.id %>
       <div class="card mb-3 card-w">
         <div class="row no-gutters">
           <div class="col-md-5">
@@ -82,13 +83,18 @@
             <div class="card-body">
             <a href="/car/<%=car.id%>">
               <strong ><%=car.mark.name%></strong><br>
+							<%if @car.option == "Vente"%>
               <strong >Ar <%=car.price%></strong> </a><br>
+							<%else%>
+							<strong >Ar <%=car.price%>/jour</strong> </a><br>
+							<%end%>
               <span class="w-ctegory">En <%=car.option%></span> / <span class="w-date"> Ajouté le: <%=car.created_at%></span>
             </div>
           </div>
         </div>
       </div>
     <%end%>
+  <%end%>
 
   </div>
 </div>
