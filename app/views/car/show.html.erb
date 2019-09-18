@@ -41,7 +41,14 @@
       <p><strong>Nombre de place: </strong><%=@car.number_place%></p>
       <p><strong>Etat de la voiture: </strong><%=@car.etat%></p>
       <p><strong>Status de la voiture en location : </strong><%=@car.status%></p>
-      <p><strong>Prix: </strong><%=@car.price%></p>
+		
+			
+			<%if @car.option == "Vente"%>
+      <p><strong>Prix: </strong><%=@car.price%> Ar</p>
+			<%else%>
+			<p><strong>Prix: </strong><%=@car.price%> Ar/jour</p>
+			<%end%>
+		
       <p><strong>Kilometrage: </strong><%=@car.mileage%></p>
       <p><strong>Transmission: </strong><%=@car.transmission%></p>
       <p><strong>Type: </strong><%=@car.type.name%></p>
@@ -80,7 +87,11 @@
             <div class="card-body">
             <a href="/car/<%=car.id%>">
               <strong ><%=car.mark.name%></strong><br>
+							<%if @car.option == "Vente"%>
               <strong >Ar <%=car.price%></strong> </a><br>
+							<%else%>
+							<strong >Ar <%=car.price%>/jour</strong> </a><br>
+							<%end%>
               <span class="w-ctegory">En <%=car.option%></span> / <span class="w-date"> Ajouté le: <%=car.created_at%></span>
             </div>
           </div>
