@@ -90,7 +90,7 @@ system("sleep 2")
 25.times do |i|
 	car = Car.create(
 		price: prices[rand(7)],
-		description:"Conduire cette voiture est le plus beau rêve que vous puissiez faire dans votre vie. Vous pouver l'acheter directement",
+		description:"Conduire cette voiture est le plus beau rêve que vous puissiez realiser dans votre vie. Vous pouver l'acheter directement",
 		etat:etats[rand(6)],
 		year:rand(1900..2019),
 		mileage:kms[rand(7)],
@@ -116,7 +116,7 @@ system("sleep 2")
 17.times do |i|
 	car = Car.create(
 		price: pricesLocation[rand(7)],
-		description: "Conduire cette voiture est le plus beau rêve que vous puissiez faire dans votre vie. Vous pouver l'alouer directement",
+		description: "Conduire cette voiture est le plus beau rêve que vous puissiez realiser dans votre vie. Vous pouver l'alouer directement",
 		etat:etats[rand(6)],
 		year:rand(1900..2019),
 		mileage:kms[rand(7)],
