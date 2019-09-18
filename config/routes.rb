@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 #=================== HOME PAGE =========================#
   root "static_pages#home"
+  #form search
+  get '/search' => 'static_pages#search' , :as => 'search_car'
 #=== UserLogin / sing_up /show_profil with avatars =====#
   devise_for :users
   resources :users, only: [:show] do
