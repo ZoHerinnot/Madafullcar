@@ -86,17 +86,17 @@
         <div class="col-sm-12">
           <div class="title-box text-center">
             <h3 class="title-a">
-              Annonces
+              Vente
             </h3>
             <p class="subtitle-a">
-              Achetez ou louez ici votre voiture de rêve
+              Liste des voitures à vendre
             </p>
             <div class="line-mf"></div>
           </div>
         </div>
       </div>
       <div class="row">
-      <%@car.each do |car| %>
+      <%@vente.each do |car| %>
         <div class="col-md-4">
           <div class="work-box">         
               <div class="work-img img-w">             
@@ -128,7 +128,7 @@
                   </div>
                 </div>
               </div>
-              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? 'Likes' : 'Like'%></p>
+              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? '' : ''%></p>
           </div>
 
         </div>
@@ -165,95 +165,62 @@
   </header>
         
   <!-- Team -->
-  <section class="bg-light page-section section-position" id="team">
-    <div class="container">
+   <section id="work" class="portfolio-mf sect-pt4 route">
+    <div class="container" id="gold">
       <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="team-member">
-            <img class="mx-auto rounded-circle" src="" alt="">
-            <h4>Kay Garland</h4>
-            <p class="text-muted">Lead Designer</p>
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="team-member">
-            <img class="mx-auto rounded-circle" src="" alt="">
-            <h4>Larry Parker</h4>
-            <p class="text-muted">Lead Marketer</p>
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="team-member">
-            <img class="mx-auto rounded-circle" src="" alt="">
-            <h4>Diana Pertersen</h4>
-            <p class="text-muted">Lead Developer</p>
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+              Locations
+            </h3>
+            <p class="subtitle-a">
+              Liste des voitures à louer
+            </p>
+            <div class="line-mf"></div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
-          <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+      <%@location.each do |car| %>
+        <div class="col-md-4">
+          <div class="work-box">         
+              <div class="work-img img-w">             
+                <%if car.pictures.attached?%>               
+                <%= image_tag (car.pictures[0]), class:"img-fluid"%>
+                
+              <%else%>
+                <%= image_tag (car.image_url), class:"img-fluid" %>
+                <%end%>               
+              </div>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-8">
+                  <%if car.pictures.attached?%>   
+                  <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span> 
+                   <%else%>  
+                   <span ><i class="fas fa-camera"> 1</i></span> 
+                   <%end%>
+                    <h2 class="w-title"><%=car.mark.name%></h2>
+                    <h2 class="w-title"><%=car.price%> Ar/jour</h2>
+                    <div class="w-more">
+                      <span class="w-ctegory"><%=car.option%></span> / <span class="w-date"><%=car.created_at%></span>                     
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="w-like">
+                      <a href="car/<%=car.id%>" class="fas fa-info-circle"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? '' : ''%></p>
+          </div>
+
+        </div>
+         <%end%>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- Clients -->
   <section class="py-5">
