@@ -12,25 +12,29 @@
 
     <!-- Profil -->
 
-    <div class="tab-content py-4">
+    <div class="tab-content py-4 all-users">
         <div class="tab-pane active" id="reception">
           <div class="col-md-12">
             <div class="item">
-              <% @conversations.each do |conversation| %>
-                <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-              <% recipient = recipient_user(conversation) %>
-                 <strong> <%=recipient.first_name%> <%=recipient.last_name%></strong>
-                  <%= link_to "", conversation_messages_path(conversation), class:"far fa-comment-dots"%>
-                  <%= link_to "", conversation_path(conversation.id), method: :delete, class:"far fa-trash-alt" %><br>
-                <% end %>
-              <% end %>
+              <ol>
+                <% @conversations.each do |conversation| %>
+                  <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                <% recipient = recipient_user(conversation) %>
+                <li class="user-list">
+                     <strong> <%=recipient.first_name%> <%=recipient.last_name%></strong>
+                      <%= link_to "", conversation_messages_path(conversation), class:"far fa-comment-dots"%>
+                      <%= link_to "", conversation_path(conversation.id), method: :delete, class:"far fa-trash-alt" %>
+                </li>
+                    <% end %>
+                  <% end %>
+              </ol>
             </div>
           </div>
         </div>
 
         <!-- message -->
-        <div class="tab-pane" id="users">
-            <div class="all-users">
+        <div class="tab-pane all-users" id="users">
+            <div>
               <div class="ui list">
                 <ol>
                   <% @users.each do |user| %>
