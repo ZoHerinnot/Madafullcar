@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
 #=== UserLogin / sing_up /show_profil with avatars =====#
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
-  resources :users, only: [:show] do
+  resources :users, only: [:index,:show] do
     resources :avatars , only: [:create]
   end
 #===============  Add_new_car/Remove  ==================#
