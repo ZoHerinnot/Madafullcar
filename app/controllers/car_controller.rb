@@ -51,7 +51,7 @@ class CarController < ApplicationController
       :energy_id,
       :city_id,
       pictures: [])
-      
+
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     @car.save

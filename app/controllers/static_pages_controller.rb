@@ -14,12 +14,15 @@ class StaticPagesController < ApplicationController
   end
 
   def search
+    puts "8******"*30
+    puts params.inspect
+    puts "8"*30
     if params[:search_model].blank?
       if params[:car] == nil
         redirect_back fallback_location: '/', allow_other_host: false
       else
         @car = params[:car]
-        if (@car[:mark_id] != "")  || (@car[:model_id] != "") || (@car[:energy_id] != "") || (@car[:type_id] != "") || (@car[:city_id] != "") || (@car[:year] != "") || (@car[:transmission] != "") || (@car[:climatisation] != "") || (@car[:option] != "") || (@car[:price] != "0")
+        if (@car[:mark_id] != "")  || (@car[:model_id] != "") || (@car[:energy_id] != "") || (@car[:type_id] != "") || (@car[:city_id] != "") || (@car[:year] != "") || (@car[:transmission] != "") || (@car[:climatisation] != "") || (@car[:option] != "") || (@car[:price] != "0" && @car[:price] != "")
           @results = Car.all
 
           if @car[:model_id] != ""
@@ -73,13 +76,13 @@ class StaticPagesController < ApplicationController
           end
 
           if @car[:option] != ""
-            @results = @results.where(climatisation:@car[:climatisation])
+            @results = @results.where(option:@car[:option])
             if @results.length == 0
               return
             end
           end
 
-          if @car[:price] != "0"
+          if @car[:price] != "0" && @car[:price] != ""
             @new_result = []
             @results.each do |car|
               if car.price <= @car[:price].to_i
@@ -91,7 +94,7 @@ class StaticPagesController < ApplicationController
               return
             end
           end
-          
+
         else
           redirect_back fallback_location: '/', allow_other_host: false
         end
