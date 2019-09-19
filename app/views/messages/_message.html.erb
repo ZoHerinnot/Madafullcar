@@ -3,29 +3,33 @@
       <% user = user_message(message) %>
 
       <% if user.id == current_user.id %>
-          <div class="container msg bg-info">
-            <div>
-         <p class="text-right"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
-         </p>
-         </div>
-          
-          <p class="text-right"><%= message.content %></p>
-          <span class="time-right"><%= message.message_time %></span>
-        </div>
+      <div>
+          <div class="msg my-msg row no-gutters">
+            <div class="my-msg-content col-md-11">
+              <div class="text-content"><p class="text-right msg-font"><%= message.content %></p></div>
+              <i class="time-right date"><%= message.message_time %></i>
+            </div>
+            <div class="col-md-1">
+               <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
+            </div>
+          </div> 
+      </div>
 
       <% else %>
-        <div class="container darker msg">
-          <div>
-         <p class="text-left"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
-         </p>
-         </div>          
-         
-          <p class="text-left"><%= message.content %></p>
-          <span class="time-left"><%= message.message_time %></span>
-        </div>
-
-      <% end %>
+      <div>
+        <div class="msg your-msg row no-gutters">
+            <div class="col-md-1">
+              <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
+            </div>
+            <div class="your-msg-content col-md-11">          
+              <div class="text-content">
+                <p class="text-left msg-font">
+                <%= message.content %></p>
+              </div>
+              <i class="time-left date"><%= message.message_time %></i>
+            </div>
+          </div>
+      </div>
     <% end %>
   <% end %>
+<% end %>

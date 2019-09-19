@@ -31,7 +31,7 @@
         </a>
       </div>
 
-  <div class="card-body back-color">
+  <div class="card-body back-color card-height">
       <h5>A propos de la voiture:</h5>
       <ul class="about-car">
           <li><strong><i class="fas fa-car"></i> Marque : </strong><%=@car.mark.name%></li>
@@ -53,9 +53,9 @@
       </ul>
 						<div id="likers">
                   <% if @pre_like %>
-                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, remote: true%></p>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_like_path(@car, @pre_like), method: :delete, class:'far fa-thumbs-up', remote: true%></p>
                   <% else %>
-                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post, remote: true%></p>
+                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_likes_path(@car), method: :post, class:'far fa-thumbs-up', remote: true%></p>
                   <% end %>
             </div>
       
@@ -66,7 +66,7 @@
 </div>
   <div class="content-car" id="rigth">
       <div class="similaire sticky-top bg-dark">
-          <h4 style="color: #fec503;"> Voiture similaire </h4>
+          <h4> Voiture similaire </h4>
       </div>
     <%@cars.each do |car|%>
     <% if @car.id != car.id %>
@@ -97,13 +97,12 @@
   <%end%>
 
   </div>
+
 </div>
-<section id="comment-section">
-  <div class="container">
+
+  <div class="comment-container">
     <%= render "/comments/comment.html.erb"%>
   </div>
-</section>
-
 
 
 

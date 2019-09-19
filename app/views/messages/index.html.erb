@@ -1,27 +1,45 @@
-<nav class="navbar navbar-light bg-info">
-  <a class="navbar-brand" href="<%=conversations_path%>", >
-    <i class="fas fa-arrow-circle-left"></i>
-  </a>
-	<% if !@messages.empty? %>
-  <div>
-    <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete %><br>
-  </div>
-<% end %>
-</nav>
 
-<section>
-  <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
- <div id="messages">
-  <%= render partial: "messages/message", message: @message%>
+<div id="message-content">
+    <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
+    <div>
+      <ul class="bg-dark">
+        <li>
+          <% @messages.each do |message| %>
+            <% if message.content %>
+              <% user = user_message(message) %>
+              <% if user.id != current_user.id %>
+                <h4 class="msg-menu"><%= user.first_name %>  <%= user.last_name %></h4>
+                <% break %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div>
+    <%= render partial: "messages/message", message: @message%>
+    </div>
+    <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
+    <%= form_for [@conversation, @message], html: {class: "form-group"},remote: true do |f| %>
+    <div class="field">
+      <%= f.text_area :content, class: "form-control", placeholder: 'votre message !' %>
+    </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <div>
+      <%= f.submit "Envoyer", class: "btn btn-primary envoie" %>
+    </div>
+    <% end %>
 </div>
-  <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
-<%= form_for [@conversation, @message], html: {class: "ui reply form"},remote: true do |f| %>
-  <div class="field">
-    <%= f.text_area :content, class: "form-control" %>
+
+<div class="foot-container">
+  <div class="msg-foot">
+     <a href="<%=conversations_path%>", >
+     <i class="fas fa-arrow-circle-left"> retour</i>
+  </a>
   </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-  </div>
-<% end %>
-</section>
+  <% if !@messages.empty? %>
+    <div class="msg-foot">
+      <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete, class: 'btn btn-danger' %><br>
+    </div>
+  <% end %>
+</div>
