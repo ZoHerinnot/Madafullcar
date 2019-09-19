@@ -1,0 +1,53 @@
+<%= form_for(@car, url: search_car_path, method: :get ) do |f| %>
+  <div class="form-row">
+    <div class="col">
+      <%= f.label :mark_id, "Marque" %>
+      <%= f.select :mark_id, options_for_select(@mark.collect{ |u| [u.name, u.id] }), {include_blank: true}, prompt: 'Choisissez une', class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= f.label :model_id, "Modèle" %>
+      <%= f.select :model_id, options_for_select(@model.collect{ |u| [u.name, u.id] }), {include_blank: true}, prompt: 'Choisissez une', class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= f.label :energy_id, "Energie" %>
+      <%= f.select :energy_id, options_for_select(@energy.collect{ |u| [u.name, u.id] }), {include_blank: true}, prompt: 'Choisissez une', class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= f.label :type_id, "Type" %>
+      <%= f.select :type_id, options_for_select(@type.collect{ |u| [u.name, u.id] }), {include_blank: true}, prompt: 'Choisissez une', class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <%= f.label :city_id, "Ville" %>
+      <%= f.select :city_id, options_for_select(@city.collect{ |u| [u.name, u.id] }), { include_blank: true } , prompt: 'Choisissez une ville', class: "form-control" %>
+    </div>
+    <div class="col">
+       <%= f.label :year, "Anneé" %>
+       <%= f.select :year, (Time.zone.now.year - 119)..(Time.zone.now.year), { include_blank: true }, class:"form-control"%>
+    </div>
+    <div class="col">
+      <%= f.label :transmission, "Transmission" %>
+      <%= f.select :transmission,  options_for_select(["Automatique","Manuelle","Semi-automatique"]), {include_blank: true}, prompt: 'Choisissez une', class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= f.label :climatisation, "Climatisation"%>
+      <%= f.select :climatisation,  options_for_select(["Oui","Non"]), {include_blank: true}, prompt: 'Choisissez une', class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <%= f.label :option, "Option"%>
+      <%= f.select :option,  options_for_select(["Vente","Location"]), {include_blank: true}, prompt: 'Choisissez une', class: "form-control" %>
+    </div>
+    <div class="col">
+       <%= f.label :price, "Prix maximum" %>
+       <%= f.number_field :price,value:0,min:0, class: "form-control"%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <%= f.submit 'Recherche', class:"btn btn-warning btn-block"%>
+    </div>
+  </div>
+<% end %>

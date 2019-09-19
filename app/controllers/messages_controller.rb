@@ -15,7 +15,6 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new
   end
   def create
-    @conversations = Conversation.where(conversation_id:params[:conversation_id])
     params_value = params.require(:message).permit(:content, :user_id)
     @message = @conversation.messages.new(params_value)
         respond_to do |format|

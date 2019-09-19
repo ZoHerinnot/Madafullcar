@@ -348,8 +348,9 @@ body {
 }
 
 .img-display{
+	display:block;
 	width: 100%;
-	height: 500px;
+	height: 100%;
 }
 
 .card-w{
@@ -400,8 +401,10 @@ ul.about-car li{
 	width: 100%;
 }
 
-.comment-container{
-	
+.comment-section{
+	padding-top: 0px;
+	margin-top: 20px;
+	margin-left: 50px;
 }
 
 /*==========================*/
@@ -414,3 +417,9 @@ ul.about-car li{
 .text-new-car{
 	padding: 15px 15px;
 }
+.message-text{
+	text-align: center;
+	text-shadow: #fec503 0 0 10px;
+}
+
+

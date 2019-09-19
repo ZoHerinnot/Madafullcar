@@ -60,7 +60,7 @@ body{
 }
 
 .password-errors{
-	margin-bottom: 20px;  
+	margin-bottom: 20px;
 }
 
 .btn-center{
@@ -77,12 +77,12 @@ body{
 	padding: 10px;
 	border: solid 0px;
 	border-radius: 5px;
-	box-shadow: 1px 2px 2px 2px; 
+	box-shadow: 1px 2px 2px 2px;
 }
 
 
 .search{
-	margin-top: 55px; 
+	margin-top: 55px;
 	background: #343a40;
 	padding: 10px;
 	color: #FFFFFF;
@@ -107,10 +107,9 @@ body {
 }
 #footer {
     display : table-row;
-    height: 100px; 
+    height: 100px;
     line-height: 100px;
 }
-
 
 /*===============================================================================================================
 				Like  and dislike
@@ -139,9 +138,7 @@ body {
 	border-radius: 20%;
 	background-color: #FFE3FF;
 }*/
-/*===============================================================================================================
-/*                         AVATAR IMAGE   				
-===============================================================================================================*/
+
 
 .avatar-logo{
 	border: 2px solid #fec503;
@@ -149,3 +146,4 @@ body {
 	height: 40px;
 	width: 40px;
 }
+

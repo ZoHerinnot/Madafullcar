@@ -21,7 +21,7 @@ image = ["car1.jpg","car2.jpg", "car2.jpg","car3.jpg","car4.jpg","car5.jpg","car
 villes = ["Antananarivo","Antsiranana","Fianarantsoa","Mahajanga","Toamasina","Toliary"]
 energies = ["Diesel","Essence","Ethanol","Eléctrique","Hybrid","LPG Autogas"]
 clims = ["Oui","Non"]
-etats = ["Impéccable","Très bon état","Bon état","Etat moyen","Mauvaise état","Besoin de réparation"]
+etats = ["Impéccable","Bon état","Etat moyen","Mauvaise état"]
 status = ["Disponible","Reservé"]
 prices = [10000000,15000000, 60000000, 150000000, 350000000, 153500000, 600000000]
 pricesLocation = [10000,15000, 60000, 150000, 350000, 153500, 600000]
@@ -37,8 +37,8 @@ User.create(last_name:"yahoo",
 		email:"yahoo@yes.com",
 		password:"yahoo@yes.com")
 10.times do |i|
-	User.create(last_name:Faker::Artist.name,
-		first_name:Faker::Name.first_name,
+	User.create(last_name:(Faker::Artist.name).downcase,
+		first_name:(Faker::Name.first_name).downcase,
 		email:Faker::Internet.email,
 		password:Faker::Internet.password)
 	system("clear")
@@ -48,7 +48,7 @@ puts "\n\n\n ALL USERS IS SUCCEFULLY CREATED 100 % \n\n\n"
 system("sleep 2")
 #===========================CITY================================
 villes.length.times do |i|
-	City.create(name:villes[i])
+	City.create(name:villes[i].downcase)
 	system("clear")
 	puts "City creating / #{(((i.to_f+1)*100)/villes.length).to_s[0..4]}%"
 end
@@ -56,7 +56,7 @@ puts "\n\n\n ALL CITIES IS SUCCEFULLY CREATED 100 % \n\n\n"
 system("sleep 2")
 #===========================ENERGIE=============================
 energies.length.times do |i|
-	Energy.create(name:energies[i])
+	Energy.create(name:energies[i].downcase)
 	system("clear")
 	puts "Energy creating / #{(((i.to_f+1)*100)/energies.length).to_s[0..4]}%"
 end
@@ -64,7 +64,7 @@ puts "\n\n\n ALL ENERGIES IS SUCCEFULLY CREATED 100 % \n\n\n"
 system("sleep 2")
 #=============================MARK==============================
 marks.length.times do |i|
-	Mark.create(name: marks[i])
+	Mark.create(name: marks[i].downcase)
 	system("clear")
 	puts "Mark creating / #{(((i.to_f+1)*100)/marks.length).to_s[0..4]}%"
 end
@@ -72,7 +72,7 @@ puts "\n\n\n ALL MARKS IS SUCCEFULLY CREATED 100 % \n\n\n"
 system("sleep 2")
 #=============================MODEL=============================
 models.length.times do |i|
-	Model.create(name: models[i])
+	Model.create(name: models[i].downcase)
 	system("clear")
 	puts "Model creating / #{(((i.to_f+1)*100)/models.length).to_s[0..4]}%"
 end
@@ -80,7 +80,7 @@ puts "\n\n\n ALL MODELS IS SUCCEFULLY CREATED 100 % \n\n\n"
 system("sleep 2")
 #=============================TYPES=============================
 types.length.times do |i|
-	Type.create(name: types[i])
+	Type.create(name: types[i].downcase)
 	system("clear")
 	puts "Type creating / #{(((i.to_f+1)*100)/types.length).to_s[0..4]}%"
 end
@@ -123,7 +123,7 @@ system("sleep 2")
 		number_place:rand(2..32),
 		climatisation:clims[rand(2)],
 		transmission:transmissions[rand(3)],
-		telephone:"0345504476",
+		telephone:"03#{rand(2..4)}#{rand(0000000..9999999)}",
 		image_url:image[rand(5)],
 		option:"Location",
 		status: status[rand(2)],

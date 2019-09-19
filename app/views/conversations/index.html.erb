@@ -21,7 +21,7 @@
                   <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
                 <% recipient = recipient_user(conversation) %>
                 <li class="user-list">
-                     <strong> <%=recipient.first_name%> <%=recipient.last_name%></strong>
+                     <strong> <%=(recipient.first_name).titleize%> <%=(recipient.last_name).titleize%></strong>
                       <%= link_to "", conversation_messages_path(conversation), class:"far fa-comment-dots"%>
                       <%= link_to "", conversation_path(conversation.id), method: :delete, class:"far fa-trash-alt" %>
                 </li>
@@ -42,12 +42,24 @@
                     <div class="item">
                       <li class="user-list">
                         <strong>
-                          <%= link_to "#{user.first_name} #{user.last_name} ", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>  <i class="far fa-comment-dots"></i>
+                          <%= link_to "#{(user.first_name).titleize} #{(user.last_name).titleize} ", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>  <i class="far fa-comment-dots"></i>
                         </strong>
                       </li>
                     </div>
                     <% end %>
                   <% end %>
+                  <span class="dkfjskd">
+                    
+                      <%=form_tag "/users", :method => 'get'  do%>
+                        <div class="form-group">
+                          <%=text_field_tag :last_name, params[:last_name],placeholder: "Entrez un nom ou prenom", class: "form-control"%>
+                        </div>
+                        <div class="form-group">  
+                          <%=submit_tag ("Rechercher un destinataire"), class: "btn btn-warning btn-block"%>
+                        </div>
+                      <%end%>
+                    </div>
+                  </span>
                 </ol>
               </div>
             </div>  
