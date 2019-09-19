@@ -2,7 +2,7 @@
 
 <div class="conteneur">
   <div class="content-car" id="left">
-                      <%# Affichage en carousel des photos de la voiture %>
+   <%# Affichage en carousel des photos de la voiture %>
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
           <div class="carousel-inner carousel-display">
             <div class="carousel-item active">
@@ -34,7 +34,7 @@
                 <%# Description de la voiture  %>
     <div class="card-body back-color">
         <h5>A propos de la voiture:</h5>
-        <ul class="about-car">
+        <ul class="about-car">>>>>>>> development
             <li><strong><i class="fas fa-car"></i> Marque : </strong><%=@car.mark.name%></li>
             <li><strong><i class="fab fa-medium-m"></i> Model: </strong><%=@car.model.name%></li>   
             <li><strong><i class="far fa-calendar-check"></i>  Année: </strong><%=@car.year%> </li>
@@ -54,12 +54,12 @@
         </ul>
           <div id="likers">
                 <% if @pre_like %>
-                  <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, remote: true%></p>
-                <% else %>
-                  <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post, remote: true%></p>
-                <% end %>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete%></p>
+                  <% else %>
+                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post%></p>
+                  <% end %>
           </div>    
-    </div>
+    </div>>>>>>>> development
   </div>
 </div>
 
