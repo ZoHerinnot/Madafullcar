@@ -37,7 +37,7 @@ Trestle.resource(:cars) do
   # end
 	search do |query|
     if query
-      Car.where("mark ILIKE ?", "%#{query}%")
+      Car.where(mark_id:Mark.find_by(name:"#{query}"))
     else
       Car.all
     end
