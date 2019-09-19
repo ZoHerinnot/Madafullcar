@@ -5,9 +5,13 @@
       <% if user.id == current_user.id %>
           <div class="container msg bg-info">
             <div>
-         <p class="text-right"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
-         </p>
+              <%if message.user.avatar.attached?%>
+                <p class="text-right"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
+                <%= image_tag (message.user.avatar), class:"right"%></p>
+              <%else%>
+                <p class="text-right"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
+                <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
+              <%end%></p>
          </div>
           
           <p class="text-right"><%= message.content %></p>
@@ -17,8 +21,13 @@
       <% else %>
         <div class="container darker msg">
           <div>
-         <p class="text-left"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
+            <%if message.user.avatar.attached?%>
+              <p class="text-left"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
+              <%= image_tag (message.user.avatar), class:"left"%>      
+            <%else%>
+              <p class="text-left"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
+              <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
+            <%end%>
          </p>
          </div>          
          
@@ -29,3 +38,6 @@
       <% end %>
     <% end %>
   <% end %>
+
+
+                

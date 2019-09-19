@@ -34,7 +34,7 @@
                 <%# Description de la voiture  %>
     <div class="card-body back-color">
         <h5>A propos de la voiture:</h5>
-        <ul class="about-car">>>>>>>> development
+        <ul class="about-car">
             <li><strong><i class="fas fa-car"></i> Marque : </strong><%=@car.mark.name%></li>
             <li><strong><i class="fab fa-medium-m"></i> Model: </strong><%=@car.model.name%></li>   
             <li><strong><i class="far fa-calendar-check"></i>  Année: </strong><%=@car.year%> </li>
@@ -42,7 +42,6 @@
             <li><strong><i class="fas fa-snowflake"></i> Climatisation: </strong><%=@car.climatisation%></li>
             <li><strong><i class="fas fa-users"></i> Nombre de place: </strong><%=@car.number_place%></li>
             <li><strong><i class="fas fa-thermometer-quarter"></i> Etat: </strong><%=@car.etat%></li>
-            <li><strong><i class="fas fa-signal"></i> Status : </strong><%=@car.status%></li>
             <li><strong><i class="fas fa-euro-sign"></i></i> Prix: </strong><%=@car.price%> Ar</li>
             <li><strong><i class="fas fa-road"></i> Kilometrage: </strong><%=@car.mileage%> Km</li>
             <li><strong><i class="fas fa-sliders-h"></i> Transmission: </strong><%=@car.transmission%></li>
@@ -59,7 +58,7 @@
                     <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post%></p>
                   <% end %>
           </div>    
-    </div>>>>>>>> development
+    </div>
   </div>
 </div>
 

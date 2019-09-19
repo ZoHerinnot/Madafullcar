@@ -42,14 +42,18 @@
                     <div class="item">
                       <li class="user-list">
                         <strong>
+                          <%if user.avatar.attached?%>
+                            <%= image_tag (user.avatar), class:"left"%>
+                          <%else%>
+                            <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="left">
+                          <%end%>
                           <%= link_to "#{(user.first_name).titleize} #{(user.last_name).titleize} ", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>  <i class="far fa-comment-dots"></i>
                         </strong>
                       </li>
                     </div>
                     <% end %>
                   <% end %>
-                  <span class="dkfjskd">
-                    
+                  <span>
                       <%=form_tag "/users", :method => 'get'  do%>
                         <div class="form-group">
                           <%=text_field_tag :last_name, params[:last_name],placeholder: "Entrez un nom ou prenom", class: "form-control"%>
