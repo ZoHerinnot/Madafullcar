@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  include StaticPagesHelper
+
   def home
     @car = Car.all
     @car = @car[0..5]
@@ -12,62 +14,92 @@ class StaticPagesController < ApplicationController
   end
 
   def search
-=begin
-"car"=>{"mark_id"=>"", "model_id"=>"", "energy_id"=>"", "type_id"=>"",
-"city_id"=>"", "year"=>"1990", "transmission"=>"", "climatisation"=>"",
-"option"=>"", "price"=>"0"}, "commit"=>"Recherche",
-"controller"=>"static_pages", "action"=>"search"}
-=end
     if params[:search_model].blank?
       if params[:car] == nil
         redirect_back fallback_location: '/', allow_other_host: false
       else
         @car = params[:car]
         if (@car[:mark_id] != "")  || (@car[:model_id] != "") || (@car[:energy_id] != "") || (@car[:type_id] != "") || (@car[:city_id] != "") || (@car[:year] != "") || (@car[:transmission] != "") || (@car[:climatisation] != "") || (@car[:option] != "") || (@car[:price] != "0")
-          keys = []
-          @car.each do |k,v|
-            if v != "" || v!= "0"
-              keys << k
+          @results = Car.all
+
+          if @car[:model_id] != ""
+            @results = @results.where(model_id:@car[:model_id])
+            if @results.length == 0
+              return
             end
           end
 
-          Car.where(
-            id:1, name:"4 stroke")
+          if @car[:energy_id] != ""
+              @results = @results.where(energy_id:@car[:energy_id])
+              if @results.length == 0
+                return
+              end
+          end
+
+          if @car[:type_id] != ""
+            @results = @results.where(type_id:@car[:type_id])
+            if @results.length == 0
+              return
+            end
+          end
+
+          if @car[:city_id] != ""
+            @results = @results.where(city_id:@car[:city_id])
+            if @results.length == 0
+              return
+            end
+          end
 
 
- MARK_ID | MODEL_ID | TYPE_ID | ENERGY_ID | CITY_ID
+          if @car[:year] != ""
+            @results = @results.where(year:@car[:year].to_i)
+            if @results.length == 0
+              return
+            end
+          end
 
-          @car[:mark_id]
-          @car[:model_id]
-          @car[:energy_id]
-          @car[:type_id]
-          @car[:city_id]
-          @car[:year]
-          @car[:transmission]
-          @car[:climatisation]
-          @car[:option]
-          @car[:price]
+          if @car[:transmission] != ""
+            @results = @results.where(transmission:@car[:transmission])
+            if @results.length == 0
+              return
+            end
+          end
 
+          if @car[:climatisation] != ""
+            @results = @results.where(climatisation:@car[:climatisation])
+            if @results.length == 0
+              return
+            end
+          end
 
+          if @car[:option] != ""
+            @results = @results.where(climatisation:@car[:climatisation])
+            if @results.length == 0
+              return
+            end
+          end
 
-
-
-          @results =
-
-
-
-          redirect_to new_user_session_path #misy zavatra atao
-
-
+          if @car[:price] != "0"
+            @new_result = []
+            @results.each do |car|
+              if car.price <= @car[:price].to_i
+                @new_result.push(car)
+              end
+            end
+            @results = @new_result
+            if @results.length == 0
+              return
+            end
+          end
+          
         else
           redirect_back fallback_location: '/', allow_other_host: false
         end
       end
     else
       @parameter = params[:search_model]
-      @results = Mark.all.where("name LIKE ?", "#{@parameter.downcase}%")
+      @mark = Mark.all.where("name LIKE ?", "#{@parameter.downcase}%")
+      @results = @mark[0].cars
     end
   end
 end
-#{}:"map"WHERE CustomerName LIKE '%or%
-#@results = Student.where("name LIKE ? AND city = ?", "#{params[:name]}%", params[:cityId])
