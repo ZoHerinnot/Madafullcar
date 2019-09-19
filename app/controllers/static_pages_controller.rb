@@ -4,13 +4,11 @@ class StaticPagesController < ApplicationController
   def home
     @car = Car.all
     @car = @car[0..5]
-#==========================#
     @mark = Mark.all
     @model = Model.all
     @type = Type.all
     @energy = Energy.all
     @city = City.all
-#==========================#
   end
 
   def search
@@ -104,5 +102,10 @@ class StaticPagesController < ApplicationController
       @mark = Mark.all.where("name LIKE ?", "#{@parameter.downcase}%")
       @results = @mark[0].cars
     end
+  
+		@vente = Car.all.where(option:"Vente") 
+		@vente = @vente[0..5]
+		@location = Car.all.where(option:"Location") 
+		@location = @location[0..5]
   end
 end

@@ -7,6 +7,11 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.all
   end
 
+  def show
+    @conversation = Conversation.find(params[:conversation_id])
+    @messages = @conversation.messages.new
+  end
+
   def create #crée un nouvelle discution || Trouver la conversation existant
     if Conversation.where(sender_id:current_user.id,recipient_id:params[:recipient_id]).empty?
       if Conversation.where(sender_id:params[:recipient_id],recipient_id:current_user.id).empty?

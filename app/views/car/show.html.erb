@@ -33,27 +33,29 @@
 
   <div class="card-body back-color">
       <h5>A propos de la voiture:</h5>
-      <p><strong>Marque : </strong><%=@car.mark.name%></p>
-      <p><strong>Model: </strong><%=@car.model.name%></p>   
-      <p><strong>Année: </strong><%=@car.year%> </p>
-      <p><strong>Voiture en: </strong><%=@car.option%></p>
-      <p><strong>Climatisation: </strong><%=@car.climatisation%></p>
-      <p><strong>Nombre de place: </strong><%=@car.number_place%></p>
-      <p><strong>Etat de la voiture: </strong><%=@car.etat%></p>
-      <p><strong>Status de la voiture en location : </strong><%=@car.status%></p>
-      <p><strong>Prix: </strong><%=@car.price%></p>
-      <p><strong>Kilometrage: </strong><%=@car.mileage%></p>
-      <p><strong>Transmission: </strong><%=@car.transmission%></p>
-      <p><strong>Type: </strong><%=@car.type.name%></p>
-      <p><strong>Energie: </strong><%=@car.energy.name%></p>
-      <p><strong>Ville : </strong><%=@car.city.name%></p>
-      <p><strong>Description : </strong><%=@car.description%></p>
-      <p><strong>Contact rapide : </strong><%=@car.telephone%></p>
-						<div>
+      <ul class="about-car">
+          <li><strong><i class="fas fa-car"></i> Marque : </strong><%=@car.mark.name%></li>
+          <li><strong><i class="fab fa-medium-m"></i> Model: </strong><%=@car.model.name%></li>   
+          <li><strong><i class="far fa-calendar-check"></i>  Année: </strong><%=@car.year%> </li>
+          <li><strong><i class="fas fa-angle-double-right"></i> Voiture en: </strong><%=@car.option%></li>
+          <li><strong><i class="fas fa-snowflake"></i> Climatisation: </strong><%=@car.climatisation%></li>
+          <li><strong><i class="fas fa-users"></i> Nombre de place: </strong><%=@car.number_place%></li>
+          <li><strong><i class="fas fa-thermometer-quarter"></i> Etat: </strong><%=@car.etat%></li>
+          <li><strong><i class="fas fa-signal"></i> Status : </strong><%=@car.status%></li>
+          <li><strong><i class="fas fa-euro-sign"></i></i> Prix: </strong><%=@car.price%> Ar</li>
+          <li><strong><i class="fas fa-road"></i> Kilometrage: </strong><%=@car.mileage%> Km</li>
+          <li><strong><i class="fas fa-sliders-h"></i> Transmission: </strong><%=@car.transmission%></li>
+          <li><strong><i class="fas fa-hand-point-right"></i> Type: </strong><%=@car.type.name%></li>
+          <li><strong><i class="fas fa-gas-pump"></i> Energie: </strong><%=@car.energy.name%></li>
+          <li><strong><i class="fas fa-building"></i> Ville : </strong><%=@car.city.name%></li>
+          <li><strong><i class="fas fa-phone-alt"></i></i> Contact : </strong><%=@car.telephone%></li>  
+          <li id="description"><strong>Description : </strong><%=@car.description%></li>
+      </ul>
+						<div id="likers">
                   <% if @pre_like %>
-                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete%></p>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, remote: true%></p>
                   <% else %>
-                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post%></p>
+                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post, remote: true%></p>
                   <% end %>
             </div>
       
@@ -67,6 +69,7 @@
           <h4 style="color: #fec503;"> Voiture similaire </h4>
       </div>
     <%@cars.each do |car|%>
+    <% if @car.id != car.id %>
       <div class="card mb-3 card-w">
         <div class="row no-gutters">
           <div class="col-md-5">
@@ -80,19 +83,21 @@
             <div class="card-body">
             <a href="/car/<%=car.id%>">
               <strong ><%=car.mark.name%></strong><br>
+							<%if @car.option == "Vente"%>
               <strong >Ar <%=car.price%></strong> </a><br>
+							<%else%>
+							<strong >Ar <%=car.price%>/jour</strong> </a><br>
+							<%end%>
               <span class="w-ctegory">En <%=car.option%></span> / <span class="w-date"> Ajouté le: <%=car.created_at%></span>
             </div>
           </div>
         </div>
       </div>
     <%end%>
+  <%end%>
 
   </div>
 </div>
-
-
-
 <section id="comment-section">
   <div class="container">
     <%= render "/comments/comment.html.erb"%>

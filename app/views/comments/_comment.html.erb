@@ -20,7 +20,7 @@
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name by-author"><%= comment.user.first_name%> <%= comment.user.last_name%></h6>
+							<h6 class="comment-name by-author">  <a href="/users/<%=comment.user.id%>"><%= comment.user.first_name%> <%= comment.user.last_name%></a> </h6>
 							<span></span>
 							<i class="fa fa-reply" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"></i>
 							<i class="fa fa-heart"></i>
