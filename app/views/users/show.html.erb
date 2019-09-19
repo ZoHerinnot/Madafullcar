@@ -17,7 +17,7 @@
                      <h5 class="mb-3">Votre espace personnel</h5>
                   <div class="row">
                         <div class="col-md-6">
-                           <h6>A propos de vous:</h6>
+                           <h6>A propos de vous :</h6>
                            <p>
                               Nom: <%=@user.first_name%><br>								
 										Prénom: <%=@user.last_name%><br>
@@ -31,8 +31,9 @@
 						<!-- historique des annonces de l'user -->
                <div class="tab-pane" id="messages">
 						<div class="alert alert-info alert-dismissable">
-							<a class="panel-close close" data-dismiss="alert">×</a> Vous trouverez ici la listes de vos annonces
+							<a class="panel-close close" data-dismiss="alert">×</a> Vous trouverez ici la listes de vos annonces. En vous remercie d'utliser notre service
 						</div>
+                  <%# listes des ventes %>
 							<hr class= "badge-dark">
 							<h6>Vos listes de ventes:</h6>  
 							<%if @listvente.length !=nil %>							
@@ -45,31 +46,32 @@
 									</li>
 								<%end%>
 							</ol>
-								<%else%>
+                     <%end%>
+                     <%if @listvente.length == 0 %>	
 								<p>Vous n'avez pas encore fait d'annonce de vente</p>
 							<%end%>
-							
+							  <%# listes des locations %>
 							<hr class= "badge-dark">
-							<h6>Vos listes de locations:</h6>
-							<%if @listlocation.length !=nil%>	
+							<h6>Vos listes de locations :</h6>
+							<%if @listlocation.length != nil%>	
 							<ol>
 								<%for i in  0..(@listlocation.length - 1)%>
 									<li>                             
 										<a href="/car/<%=@locationcar[i].id%>"><%=@locationcar[i].mark.name%> <%=@locationcar[i].model.name%></a>										
 										<br><strong> Ar </strong> <%=@locationcar[i].price%> <br>
-                              <span> Like obtenu: </span>  👍 <%= @locationcar[i].likes.count%>           
+                              <span> Like obtenu : </span>  👍 <%= @locationcar[i].likes.count%>           
 									</li>
 								<%end%>
-							</ol>
-							<%else%>
+							</ol>							
+                     <%end%>
+                     <%if @listlocation.length == 0%>	                 
 							<p>Vous n'avez pas encore fait d'annonce de location</p>
 							<%end%>
 							<hr class= "badge-dark">
                </div>
-
- 
             </div>
         </div>
+            <%# Ajout d'avatar %>
         <div class="col-lg-4 order-lg-1 text-center">
           <%if @user.avatar.attached?%>
         <%= image_tag @user.avatar,class:"card-img", alt: 'avatar' %>
