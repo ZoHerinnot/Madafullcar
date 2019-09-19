@@ -2,6 +2,11 @@ class StaticPagesController < ApplicationController
   include StaticPagesHelper
 
   def home
+    @vente = Car.all.where(option:"Vente")
+    @vente = @vente[0..5]
+    @location = Car.all.where(option:"Location")
+    @location = @location[0..5]
+
     @car = Car.all
     @car = @car[0..5]
     @mark = Mark.all
@@ -12,9 +17,6 @@ class StaticPagesController < ApplicationController
   end
 
   def search
-    puts "8******"*30
-    puts params.inspect
-    puts "8"*30
     if params[:search_model].blank?
       if params[:car] == nil
         redirect_back fallback_location: '/', allow_other_host: false
@@ -102,10 +104,5 @@ class StaticPagesController < ApplicationController
       @mark = Mark.all.where("name LIKE ?", "#{@parameter.downcase}%")
       @results = @mark[0].cars
     end
-  
-		@vente = Car.all.where(option:"Vente") 
-		@vente = @vente[0..5]
-		@location = Car.all.where(option:"Location") 
-		@location = @location[0..5]
   end
 end
