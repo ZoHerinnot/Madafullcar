@@ -92,7 +92,7 @@
   </header>
 
 
-  <!--/ Section Client premium Star /-->
+  <!--/ Section Vente premium Star /-->
 
  <section id="work" class="portfolio-mf sect-pt4 route">
     <div class="container" id="gold">
@@ -181,82 +181,63 @@
     </div>
   </header>
 
-  <!-- Team -->
-   <section id="work" class="portfolio-mf sect-pt4 route">
-    <div class="container" id="gold">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">
-              Locations
-            </h3>
-            <p class="subtitle-a">
-              Les voitures à louer.
-            </p>
-            <div class="line-mf"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-      <%@location.each do |car| %>
-        <div class="col-md-4">
-          <div class="work-box">
-              <div class="work-img img-w">
-                <%if car.pictures.attached?%>
-                <%= image_tag (car.pictures[0]), class:"img-fluid"%>
+  <!--/ Section Location premium Star /-->
+  <section id="work" class="portfolio-mf sect-pt4 route">
+     <div class="container" id="gold">
+       <div class="row">
+         <div class="col-sm-12">
+           <div class="title-box text-center">
+             <h3 class="title-a">
+               Vente
+             </h3>
+             <p class="subtitle-a">
+               Les offres de vente.
+             </p>
+             <div class="line-mf"></div>
+           </div>
+         </div>
+       </div>
+       <div class="row">
+       <%@location.each do |car| %>
+         <div class="col-md-4">
+           <div class="work-box">
+               <div class="work-img img-w">
+                 <%if car.pictures.attached?%>
+                 <%= image_tag (car.pictures[0]), class:"img-fluid"%>
 
-              <%else%>
-                <%= image_tag (car.image_url), class:"img-fluid" %>
-                <%end%>
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                  <%if car.pictures.attached?%>
-                  <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span>
-                   <%else%>
-                   <span ><i class="fas fa-camera"> 1</i></span>
-                   <%end%>
-                    <h2 class="w-title"><%=car.mark.name%></h2>
-                    <h2 class="w-title"><%=car.price%> Ar/jour</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory"> A louer</span> /ajouté le  <span class="w-date"><%=car.created_at%></span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <a href="car/<%=car.id%>" class="fas fa-info-circle"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? '' : ''%></p>
-          </div>
+               <%else%>
+                 <%= image_tag (car.image_url), class:"img-fluid" %>
+                 <%end%>
+               </div>
+               <div class="work-content">
+                 <div class="row">
+                   <div class="col-sm-8">
+                   <%if car.pictures.attached?%>
+                   <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span>
+                    <%else%>
+                    <span ><i class="fas fa-camera"> 1</i></span>
+                    <%end%>
+                     <h2 class="w-title"><%=car.mark.name%></h2>
+                     <h2 class="w-title"><%=car.price%> Ar</h2>
+                     <div class="w-more">
+                       <span class="w-ctegory">A vendre</span> /ajouté le <span class="w-date"><%=car.created_at%></span>
+                     </div>
+                   </div>
+                   <div class="col-sm-4">
+                     <div class="w-like">
+                       <a href="car/<%=car.id%>" class="fas fa-info-circle"></a>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? '' : ''%></p>
+           </div>
 
-  <!-- Clients -->
-  <section class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-6">
-          <a href="#">
-            <img class="img-fluid d-block mx-auto" src="" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <a href="#">
-            <img class="img-fluid d-block mx-auto" src="" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <a href="#">
-            <img class="img-fluid d-block mx-auto" src="" alt="">
-          </a>
-
-        </div>
-         <%end%>
+         </div>
+          <%end%>
           <div class="plus">
             <strong><a href="<%=car_index_path(annonce:'location')%>"> >> Voir plus </a></strong>
           </div>
-        </div>
-      </div>
-    </section>
+         </div>
+       </div>
+     </section>
