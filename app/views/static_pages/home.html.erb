@@ -12,6 +12,20 @@
     </div>
   </header>
 
+  <!--
+    ==========================PAGE DE Recherche==========================
+  -->
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">Chercher votre voiture ici </h2>
+        <%= render 'search_bar_completed' %>
+      </div>
+    </div>
+  </section>
+  <!--
+    ==========================PAGE DE Recherche==========================
+  -->
     <!-- Services -->
   <section class="page-section" id="services">
     <div class="container">
@@ -58,9 +72,9 @@
               <div class="intro-heading text-uppercase card-text">Bénéficier de nos offres d'Abonnements</div> <br>
                 <div class="text-abot">
                     <p>Nos offres d'abonnements sont divisés en ds.eux catégeories bien précis: Premium et Gold.<br>
-                    <strong class="text-s">Premium</strong>: Destiné à des particuliers qui souhaitent avoir plus de visibilité pour leurs annonces. 
-                    Cette offre comporte un affichage en page d'accueil est un meilleur placement dans 
-                    les résultats des recherches. Poster des annoncés de façon illimitée,et en  plus la possibilité de s'afficher dans la 
+                    <strong class="text-s">Premium</strong>: Destiné à des particuliers qui souhaitent avoir plus de visibilité pour leurs annonces.
+                    Cette offre comporte un affichage en page d'accueil est un meilleur placement dans
+                    les résultats des recherches. Poster des annoncés de façon illimitée,et en  plus la possibilité de s'afficher dans la
                     page Facebook de Madafullcar<br>
                     <strong class="text-s">Gold</strong>: Pour les professionnelles qui veulent se faire connaitre et se rapprocher de leurs vraies clientèles.
                     Dans cette offre on propose en plus du contenu du pack premium; un domaine dédier dans la page d'acceuil, des visibilités améliorées dans les résultats 
@@ -79,7 +93,7 @@
 
 
   <!--/ Section Client premium Star /-->
-  
+
  <section id="work" class="portfolio-mf sect-pt4 route">
     <div class="container" id="gold">
       <div class="row">
@@ -98,22 +112,22 @@
       <div class="row">
       <%@vente.each do |car| %>
         <div class="col-md-4">
-          <div class="work-box">         
-              <div class="work-img img-w">             
-                <%if car.pictures.attached?%>               
+          <div class="work-box">
+              <div class="work-img img-w">
+                <%if car.pictures.attached?%>
                 <%= image_tag (car.pictures[0]), class:"img-fluid"%>
-                
+
               <%else%>
                 <%= image_tag (car.image_url), class:"img-fluid" %>
-                <%end%>               
+                <%end%>
               </div>
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
-                  <%if car.pictures.attached?%>   
-                  <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span> 
-                   <%else%>  
-                   <span ><i class="fas fa-camera"> 1</i></span> 
+                  <%if car.pictures.attached?%>
+                  <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span>
+                   <%else%>
+                   <span ><i class="fas fa-camera"> 1</i></span>
                    <%end%>
                     <h2 class="w-title"><%=car.mark.name%></h2>
                     <h2 class="w-title"><%=car.price%> Ar</h2>
@@ -148,13 +162,13 @@
           <div class="card-body">
             <div id="nous">
               <div class="intro-lead-in bg-warning"><h3>À propos de nous</h3></div>
-              <p class="card-text">Madafullcar est une site internet spécialisé dans la vente et location de voiture situé à Madagascar. 
-              Le site diffuse des annonces postées directement par des vendeurs particuliers et professionnels. 
+              <p class="card-text">Madafullcar est une site internet spécialisé dans la vente et location de voiture situé à Madagascar.
+              Le site diffuse des annonces postées directement par des vendeurs particuliers et professionnels.
               Madafull vous permet de retrouver facilement les voitures en fonction de vos critères et exigences.</p>
             </div><br>
              <div>
               <div class="intro-lead-in bg-warning"><h3>Postez vos annonces </h3></div>
-              <p class="card-text">Créez facilement vos annonces sur Madafullcar en cliquant sur « poster ». La diffusion des annonces est à partir de 0 Ariary et sans engagement. 
+              <p class="card-text">Créez facilement vos annonces sur Madafullcar en cliquant sur « poster ». La diffusion des annonces est à partir de 0 Ariary et sans engagement.
               Vous bénéficiez également d’un espace admin qui vous permet de suivre vos annonces et les appréciations de la communautés </p>
               <p><a href="/car/new" class= "btn btn-primary text-body">Poster</a></p>
             </div>
@@ -166,7 +180,7 @@
       </div>
     </div>
   </header>
-        
+
   <!-- Team -->
    <section id="work" class="portfolio-mf sect-pt4 route">
     <div class="container" id="gold">
@@ -219,9 +233,27 @@
               <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? '' : ''%></p>
           </div>
 
+  <!-- Clients -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="" alt="">
+          </a>
+       
         </div>
          <%end%>
-
           <div class="plus">
             <strong><a href="<%=car_index_path(annonce:'location')%>"> >> Voir plus </a></strong>
           </div>
