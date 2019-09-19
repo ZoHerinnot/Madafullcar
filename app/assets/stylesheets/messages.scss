@@ -20,6 +20,16 @@
   clear: both;
   display: table;
 }
+/*
+novaiko
+*/
+
+/* Clear floats */
+.msg::after {
+  content: "";
+  clear: both;
+  display: none;
+}
 
 /* Style images */
 img.left, img.right {
