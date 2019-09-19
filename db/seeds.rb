@@ -123,7 +123,7 @@ system("sleep 2")
 		number_place:rand(2..32),
 		climatisation:clims[rand(2)],
 		transmission:transmissions[rand(3)],
-		telephone:"0345504476",
+		telephone:"03#{rand(2..4)}#{rand(0000000..9999999)}",
 		image_url:image[rand(5)],
 		option:"Location",
 		status: status[rand(2)],
