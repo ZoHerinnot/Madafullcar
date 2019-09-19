@@ -15,9 +15,8 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new
   end
   def create
-    @conversations = Conversation.where(conversation_id:params[:conversation_id])
     params_value = params.require(:message).permit(:content, :user_id)
-    @message = @conversations.messages.new(params_value)
+    @message = @conversation.messages.new(params_value)
         respond_to do |format|
           if @message.save
             format.html {redirect_to conversation_messages_path(@conversation)}

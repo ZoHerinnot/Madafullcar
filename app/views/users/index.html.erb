@@ -1,0 +1,12 @@
+<h3>RESULTAT DE RECHERCHE pour "<%=params[:last_name]%>"</h3>
+<%@user.each do |user| %>
+  <% if user.id != current_user.id%>
+    <strong>
+      <ol>
+      <li><%= link_to "#{(user.first_name).titleize} #{(user.last_name).titleize} ", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>  <i class="far fa-comment-dots"></i></li>
+    </ol>
+    </strong>
+  <%else%>
+    <h5>Aucun resultat</h5>
+  <%end%>
+<%end%>

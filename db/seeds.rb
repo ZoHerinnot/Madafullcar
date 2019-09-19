@@ -37,8 +37,8 @@ User.create(last_name:"yahoo",
 		email:"yahoo@yes.com",
 		password:"yahoo@yes.com")
 10.times do |i|
-	User.create(last_name:Faker::Artist.name,
-		first_name:Faker::Name.first_name,
+	User.create(last_name:(Faker::Artist.name).downcase,
+		first_name:(Faker::Name.first_name).downcase,
 		email:Faker::Internet.email,
 		password:Faker::Internet.password)
 	system("clear")

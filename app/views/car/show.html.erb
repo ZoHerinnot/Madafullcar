@@ -2,7 +2,7 @@
 
 <div class="conteneur">
   <div class="content-car" id="left">
-                      <%# Affichage en carousel des photos de la voiture %>
+   <%# Affichage en carousel des photos de la voiture %>
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
           <div class="carousel-inner carousel-display">
             <div class="carousel-item active">
@@ -30,6 +30,34 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
+      <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
+        <div class="carousel-inner carousel-display">
+          <div class="carousel-item active">
+            <%if @car.pictures.attached?%>
+                  <%= image_tag (@car.pictures[0]), class:"img-display",alt: 'image car' %>
+                <%else%>
+                  <%= image_tag (@car.image_url),class:"img-display",alt: 'image car' %> 
+            <%end%>
+          </div>
+       <% for i in 1..(@car.pictures.length-1)%>
+          <div class="carousel-item">
+            <%if @car.pictures.attached?%>
+              <%= image_tag (@car.pictures[i]), class:"img-display",alt: 'image car' %>
+            <%else%>
+              <%= image_tag (@car.image_url),class:"img-display",alt: 'image car' %> 
+            <%end%>
+          </div>
+      <%end%> 
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
 
                 <%# Description de la voiture  %>
     <div class="card-body back-color">
@@ -54,10 +82,11 @@
         </ul>
           <div id="likers">
                 <% if @pre_like %>
-                  <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👎', car_like_path(@car, @pre_like), method: :delete, remote: true%></p>
-                <% else %>
-                  <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', car_likes_path(@car), method: :post, remote: true%></p>
-                <% end %>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_like_path(@car, @pre_like), method: :delete, class:'far fa-thumbs-up', remote: true%></p>
+                  <% else %>
+                    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_likes_path(@car), method: :post, class:'far fa-thumbs-up', remote: true%></p>
+            
+                  <% end %>
           </div>    
     </div>
   </div>
@@ -66,7 +95,7 @@
           <%#  fin => Description de la voiture  %>
   <div class="content-car" id="rigth">
       <div class="similaire sticky-top bg-dark">
-          <h4 style="color: #fec503;"> Voiture similaire </h4>
+          <h4> Voiture similaire </h4>
       </div>
         <%if @cars.length == 1%>
         <p class="message-text">Pas encore de voiture similaire</p>
@@ -101,14 +130,12 @@
         <%end%>
       <%end%> 
   </div>
+
 </div>
 
-        <%# Appel de la page commentaire %>
-
-  <div class="comment-section">
+  <div class="comment-container">
     <%= render "/comments/comment.html.erb"%>
   </div>
-
 
 
 

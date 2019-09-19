@@ -1,9 +1,9 @@
 
 <!-- Contenedor Principal -->
-<section>
-	<div class="comments-container">	
-		<h1> <%= @comments.count %> Commentaires </h1>
-
+	<div class="comments-container content-comment">
+			<div class="similaire sticky-top bg-dark">
+	        <h4> <%= @comments.count %> Commentaires </h4>
+	    </div>	
 		<ul id="comments-list" class="comments-list">
 			<li>
 				<%@comments.each do |comment|%>
@@ -65,10 +65,10 @@
 					<% end %>
 					<li>
 						<div>
-			   			<%= form_tag url_for(action: 'create', controller: 'answers', id: comment.id), method: "post" do %>
-			         <%= label_tag 'répondre' %> </br>
-			          <%= text_area_tag 'content' %></br>
-			          <%= submit_tag "Submit" %>
+			   			<%= form_tag url_for(action: 'create', controller: 'answers', id: comment.id), method: "post", class: 'form-group col-md-6' do %>
+			         <%= label_tag 'Répondre' %> </br>
+			          <%= text_area_tag 'content','' , class: 'form-control', placeholder: 'Votre reponse !' %></br>
+			          <%= submit_tag "Repondre", class: 'btn btn-primary' %>
 			        <% end %>
 						</div>
 					</li>
@@ -80,11 +80,10 @@
 
 
 		<div>
-		   <%= form_tag url_for(action: 'create', controller: 'comments', id: @car.id), method: "post" do %>
-		         <%= label_tag 'Comment' %> </br>
-		          <%= text_area_tag 'content' %></br>
-		          <%= submit_tag "Submit" %>
+		   <%= form_tag url_for(action: 'create', controller: 'comments', id: @car.id), method: "post", class: 'form-group col-md-6' do %>
+		         <%= label_tag 'Commenter' %> </br>
+		          <%= text_area_tag 'content','' , class: 'form-control', placeholder: 'Votre commentaire !' %></br>
+		          <%= submit_tag "Envoyer", class: 'btn btn-primary' %>
 		        <% end %>
 		</div>
 	</div>
-</section>
