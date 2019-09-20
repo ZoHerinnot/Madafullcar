@@ -83,7 +83,7 @@
             <h6 class="mt-2">Ajouter/Modifier la photo de profil</h6>
             <p> 
             <%= form_tag user_avatars_path(@user), multipart: true do %>
-            <%= file_field_tag :avatar %> 
+            <%= file_field_tag :avatar,accept: 'image/png,image/gif,image/jpeg' %> 
             <%= submit_tag "mettre à jour"%>
             <% end %>
             </p>
