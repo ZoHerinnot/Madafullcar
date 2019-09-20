@@ -23,7 +23,7 @@
               <div class="card-body color">
 
                 <h4 class="text-center" >Pack Gold</h4>
-                <p class="card-text">Notre meilheur offre destiné aux entreprises et professionnelles.</p>
+                <p class="card-text">Notre meilheur offre destiné aux entreprises et professionnelles.</p><br>
 
                     <%= form_tag golds_path do %>
                       <article>
@@ -53,7 +53,7 @@
               <%=image_tag("car15.jpg",class:"card-img-top", alt: "Example Image")%>
                 <div class="card-body color">
                     <h4 class="text-center">Pack Premium</h4>
-                    <p class="card-text">Vous utilisez notre abonnement Premium.Pour se retirer de cette offre veuillez cliquer sur :</p><br><br>
+                    <p class="card-text">Vous utilisez notre abonnement Premium.Pour se retirer de cette offre veuillez cliquer sur :</p><br>
           			<a href="/premiums/<%=@premium.id%>" data-method="delete" class="btn btn-danger">Se désaboner</a>
                </div>
             </div>

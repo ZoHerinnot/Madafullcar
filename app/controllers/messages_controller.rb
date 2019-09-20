@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   include MessagesHelper
 
   def index
+    
     @messages = @conversation.messages
     if @messages.last
       if @messages.last.user_id != current_user.id

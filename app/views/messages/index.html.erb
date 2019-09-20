@@ -1,26 +1,26 @@
-
 <div id="message-content">
     <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
+    
+
+
+
     <div>
       <ul class="bg-dark">
         <li>
-          <% @messages.each do |message| %>
-            <% if message.content %>
-              <% user = user_message(message) %>
-              <% if user.id != current_user.id %>
-                <h4 class="msg-menu"><%= user.first_name %>  <%= user.last_name %></h4>
-                <% break %>
-              <% end %>
-            <% end %>
-          <% end %>
+          <h4 class= "msg-menu" ><%= @conversation.recipient.first_name %> <%= @conversation.recipient.last_name %> </h4>
         </li>
       </ul>
     </div>
+
+    <div class="nouvelle-conversation">
+      <p> <em>Commencer votre conversation !!!!!!</em></p>
+    </div>
+
     <div>
     <%= render partial: "messages/message", message: @message%>
     </div>
     <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
-    <%= form_for [@conversation, @message], html: {class: "form-group"},remote: true do |f| %>
+    <%= form_for [@conversation, @message], html: {class: "form-group"} do |f| %>
     <div class="field">
       <%= f.text_area :content, class: "form-control", placeholder: 'votre message !' %>
     </div>
