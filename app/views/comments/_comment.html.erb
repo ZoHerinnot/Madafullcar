@@ -4,6 +4,7 @@
 			<div class="similaire sticky-top bg-dark">
 	        <h4> (<%= @comments.count %>) Commentaires </h4>
 	    </div>	
+		<div id="comment-ajax">
 		<ul id="comments-list" class="comments-list">
 			<li>
 				<%@comments.each do |comment|%>
@@ -77,10 +78,10 @@
 				<% end %>
 			</li>
 		</ul>
-
+</div>
 
 		<div>
-		   <%= form_tag url_for(action: 'create', controller: 'comments', id: @car.id), method: "post", class: 'form-group col-md-6' do %>
+		   <%= form_tag url_for(action: 'create', controller: 'comments', id: @car.id), method: "post", class: 'form-group col-md-6', remote:true do %>
 		         <%= label_tag 'Commenter' %> </br>
 		          <%= text_area_tag 'content','' , class: 'form-control', placeholder: 'Votre commentaire !' %></br>
 		          <%= submit_tag "Envoyer", class: 'btn btn-primary' %>

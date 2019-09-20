@@ -1,1 +1,1 @@
-$('#messages').append('<%= j render :partial => 'message', :formats => :html %>');
+document.getElementById("message-ajax").insertAdjacentHTML("beforeend", "<%= j render 'messages', messages: @message %>")
