@@ -40,8 +40,8 @@
           <li class="nav-item">
             <a class="nav-link js-scroll" href="<%=user_path(current_user.id)%>">Mon compte</a>
           </li>
-          <% if User.find(current_user.id).gold != nil %>
-            <% if current_user.id == User.find(current_user.id).gold.user_id%>
+          <% if gold? %>
+            <% if abonne_gold%>
               <li class="nav-item">
                 <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Gold)</a>
               </li>
@@ -51,8 +51,8 @@
               </li>
             <% end %>
           <% else %>
-          <% if User.find(current_user.id).premium != nil%>
-            <% if current_user.id == User.find(current_user.id).premium.user_id%>
+          <% if premium? %>
+            <% if abonne_premium %>
               <li class="nav-item">
                 <a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Premium)</a>
               </li>
