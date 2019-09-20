@@ -56,12 +56,7 @@
                     <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_likes_path(@car), method: :post, class:'far fa-thumbs-up', remote: true%></p>
             
                   <% end %>
-          </div>    
-          <div>
-            <%if (@car.user.id == current_user.id)%>
-              <%= link_to "Modifier l'annonce", edit_car_path(@car), method: :get%>
-            <%end%>
-          </div>
+          </div> 
     </div>
   </div>
 </div>
