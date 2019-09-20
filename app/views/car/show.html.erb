@@ -67,7 +67,7 @@
           <h4> Voiture similaire </h4>
       </div>
         <%if @cars.length == 1%>
-        <p class="message-text">Pas encore de voiture similaire</p>
+        <p class="message-text">--Pas encore de voiture similaire--</p>
         <%end%>
       <%if @cars.length != nil%>
         <%@cars.each do |car|%>
