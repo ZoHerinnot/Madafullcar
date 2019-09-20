@@ -3,6 +3,14 @@ class ConversationsController < ApplicationController
   include ConversationsHelper
 
   def index #liste de tous les contactes
+
+    puts "*" * 60
+    puts "INDEX AN'LE CONVERSATION"
+
+    puts params.inspect
+
+    puts "*" * 60
+
     @users = User.all
     @conversations = Conversation.all
     @user = [] 
@@ -19,6 +27,7 @@ class ConversationsController < ApplicationController
   end
 
   def create #crée un nouvelle discution || Trouver la conversation existant
+
     if Conversation.where(sender_id:current_user.id,recipient_id:params[:recipient_id]).empty?
       if Conversation.where(sender_id:params[:recipient_id],recipient_id:current_user.id).empty?
         @conversation = Conversation.create(sender_id:current_user.id,recipient_id:params[:recipient_id])
