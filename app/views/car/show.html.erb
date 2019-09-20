@@ -67,10 +67,11 @@
           <h4> Voiture similaire </h4>
       </div>
         <%if @cars.length == 1%>
+
         <div  class="aucun">
            <p>Pas encore de voiture similaire</p>
         </div>
-       
+    
         <%end%>
       <%if @cars.length != nil%>
         <%@cars.each do |car|%>
