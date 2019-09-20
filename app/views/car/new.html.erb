@@ -66,10 +66,10 @@
                <%= f.label :price, "Prix" %>
                <%=f.number_field :price,placeholder: "Prix",class: "form-control"%>
             </div>
-            <div class="col">          
+
+            <div class="col">
               <%= f.label :pictures, "Ajoutez vos photos " %> <strong style="color:red;">*</strong>
-              <%= f.file_field :pictures, placeholder: "Photo",multiple: true%>
-               
+              <%= f.file_field :pictures, placeholder: "Photo",multiple: true, required: true%>
             </div>
           </div>
 
