@@ -1,9 +1,5 @@
 <div id="message-content">
     <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
-    
-
-
-
     <div>
       <ul class="bg-dark">
         <li>
@@ -16,11 +12,11 @@
       <p> <em>Commencer votre conversation !!!!!!</em></p>
     </div>
 
-    <div>
+    <div id="message-ajax">
     <%= render partial: "messages/message", message: @message%>
     </div>
     <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
-    <%= form_for [@conversation, @message], html: {class: "form-group"} do |f| %>
+    <%= form_for [@conversation, @message],remote:true, html: {class: "form-group"} do |f| %>
     <div class="field">
       <%= f.text_area :content, class: "form-control", placeholder: 'votre message !' %>
     </div>
