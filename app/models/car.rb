@@ -12,7 +12,6 @@ class Car < ApplicationRecord
   #other relation
   has_many_attached :pictures
   #Validation
-  validates :pictures, presence: true
 	validates :price, presence: true, numericality: {greater_than: 0}
 	validates :description, presence: true, length: {maximum: 500}
 	validates :etat, presence: true,length: {maximum: 40}
