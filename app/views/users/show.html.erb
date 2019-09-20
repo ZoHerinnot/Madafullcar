@@ -41,6 +41,7 @@
 								<%for i in  0..(@listvente.length - 1)%>
 									<li>
 										<a href="/car/<%=@ventecar[i].id%>"><%=@ventecar[i].mark.name%>  <%=@ventecar[i].model.name%></a>
+                    <%= link_to "modifier", edit_car_path(@ventecar[i]), method: :get, class: "badge badge-pill badge-info"%>
 										<br> <strong> Ar</strong> <%=@ventecar[i].price%> <br>
                               <span> Like obtenu: </span>  👍 <%= @ventecar[i].likes.count%>                                                                                          
 									</li>
@@ -57,7 +58,8 @@
 							<ol>
 								<%for i in  0..(@listlocation.length - 1)%>
 									<li>                             
-										<a href="/car/<%=@locationcar[i].id%>"><%=@locationcar[i].mark.name%> <%=@locationcar[i].model.name%></a>										
+										<a href="/car/<%=@locationcar[i].id%>"><%=@locationcar[i].mark.name%> <%=@locationcar[i].model.name%></a>
+                    <%= link_to "modifier", edit_car_path(@locationcar[i]), method: :get,class: "badge badge-pill badge-info"%>										
 										<br><strong> Ar </strong> <%=@locationcar[i].price%> <br>
                               <span> Like obtenu : </span>  👍 <%= @locationcar[i].likes.count%>           
 									</li>
