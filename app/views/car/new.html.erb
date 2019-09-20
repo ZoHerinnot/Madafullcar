@@ -66,10 +66,10 @@
                <%= f.label :price, "Prix" %>
                <%=f.number_field :price,placeholder: "Prix",class: "form-control"%>
             </div>
-            <div class="col">
-              <strong>(i)</strong>
-              <%= f.label :pictures, "Ajoutez vos photos " %>
+            <div class="col">          
+              <%= f.label :pictures, "Ajoutez vos photos " %> <strong style="color:red;">*</strong>
               <%= f.file_field :pictures, placeholder: "Photo",multiple: true%>
+               
             </div>
           </div>
 
@@ -77,11 +77,11 @@
              <%= f.label :description, "Description" %>
              <%=f.text_area :description,placeholder: "Description",class: "form-control"%>
           </div>
-
+            <br>
           <div class="form-row">
              <%= f.submit 'create', class:"btn btn-warning btn-block"%>
           </div>
       <%end%>
-      <p> <strong>i</strong>: charger au moins 4 fichier images pour un affichage optimal</p>
+      <p> <strong style="color:red;">*</strong> charger 5 photos, le premier photo s'affichera sur votre annonce.</p>
   </div>
 </div>
