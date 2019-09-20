@@ -28,8 +28,6 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-
-
                 <%# Description de la voiture  %>
     <div class="card-body back-color">
         <h5>A propos de la voiture:</h5>
@@ -53,7 +51,7 @@
         </ul>
           <div id="likers">
                 <% if @pre_like %>
-                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_like_path(@car, @pre_like), method: :delete, class:'far fa-thumbs-up', remote: true%></p>
+                    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_like_path(@car, @pre_like), method: :delete, class:'far fa-thumbs-down', remote: true%></p>
                   <% else %>
                     <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_likes_path(@car), method: :post, class:'far fa-thumbs-up', remote: true%></p>
             
@@ -101,15 +99,9 @@
         <%end%>
       <%end%> 
   </div>
-</div>
+
 </div>
 
   <div class="comment-container">
     <%= render "/comments/comment.html.erb"%>
   </div>
-
-
-
-
-
-
