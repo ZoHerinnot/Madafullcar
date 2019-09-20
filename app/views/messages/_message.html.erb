@@ -10,7 +10,11 @@
               <i class="time-right date"><%= message.message_time %></i>
             </div>
             <div class="col-md-1">
+              <%if message.user.avatar.attached?%>
+                <%= image_tag (message.user.avatar), class:"left"%>
+              <%else%>
                <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
+               <%end%>
             </div>
           </div> 
       </div>
@@ -19,7 +23,11 @@
       <div>
         <div class="msg your-msg row no-gutters">
             <div class="col-md-1">
-              <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
+              <%if message.user.avatar.attached?%>
+                <%= image_tag (message.user.avatar), class:"left"%>
+              <%else%>
+                <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
+              <%end%>
             </div>
             <div class="your-msg-content col-md-11">          
               <div class="text-content">
