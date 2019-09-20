@@ -19,7 +19,7 @@ class UserProvider < ApplicationRecord
                 			first_name: auth.info.first_name,
                     		last_name: auth.info.last_name,
                             email: auth.info.email,
-                            password: "123456",
+                            password: Devise.friendly_token[0,20],
                             #password: Devise.friendly_token[0,20],
                             )
                 user_provider = UserProvider.create!(
@@ -49,7 +49,7 @@ class UserProvider < ApplicationRecord
                     first_name: auth.info.last_name,
                     last_name: auth.info.first_name,
                     email: auth.info.email,
-                    password: "123456",
+                    password: Devise.friendly_token[0,20],
                             )
                 user_provider = UserProvider.create!(
                     provider:auth.provider,
