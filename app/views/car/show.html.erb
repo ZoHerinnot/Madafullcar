@@ -57,6 +57,11 @@
             
                   <% end %>
           </div>    
+          <div>
+            <%if (@car.user.id == current_user.id)%>
+              <%= link_to "Modifier l'annonce", edit_car_path(@car), method: :get%>
+            <%end%>
+          </div>
     </div>
   </div>
 </div>

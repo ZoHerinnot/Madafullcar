@@ -61,9 +61,36 @@ class CarController < ApplicationController
   end
 
   def edit
+    @car = Car.find(params[:id])
+    @mark = Mark.all
+    @model = Model.all
+    @type = Type.all
+    @energy = Energy.all
+    @city = City.all
   end
 
   def update
+    @car = Car.find(params[:id])
+    car_params = params.require(:car).permit(
+      :price,
+      :description,
+      :etat,
+      :year,
+      :mileage,
+      :number_place,
+      :climatisation,
+      :transmission,
+      :telephone,
+      :option,
+      :status,
+      :mark_id,
+      :model_id,
+      :type_id,
+      :energy_id,
+      :city_id,
+      pictures: [])
+    @car.update(car_params)
+    redirect_to(car_path(params[:id]))
   end
   def destroy
   end
