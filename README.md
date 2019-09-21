@@ -11,7 +11,7 @@ Membres de l'équipe:
 
 - RAFANANENANA Heritiana John Fast Fabien @fastfabien (Back-end & Front) 
 
-- RAKOTOARIMANANA ANDRIANAVALONA Solofonirina Toky @S-toky(Back-end & Front)
+- RAKOTOARIMANANA ANDRIANAVALONA Solofonirina Toky @S-toky(Front)
 
 - RATSINAMPOIZINA Rolland @rollandjasmie (Back-end & Front) 
 
