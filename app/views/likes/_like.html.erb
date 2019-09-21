@@ -1,6 +1,1 @@
-<% if @pre_like %>
-    <p><%= @car.likes.count%> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_like_path(@car, @pre_like), method: :delete, class:'far fa-thumbs-down', remote: true%></p>
-  <% else %>
-    <p><%= @car.likes.count %> <%= (@car.likes.count) > 1 ? 'likes' : ''%><%= link_to '', car_likes_path(@car), method: :post, class:'far fa-thumbs-up', remote: true%></p>
-
-  <% end %>
+<p> <%= @car.likes.count%> <a href="<%=car_like_path(@car,@like)%>" data-method="delete" data-remote="true" class="far fa-thumbs-down"> </a></p>

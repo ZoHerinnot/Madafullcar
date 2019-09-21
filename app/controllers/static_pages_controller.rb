@@ -25,6 +25,13 @@ class StaticPagesController < ApplicationController
         if (@car[:mark_id] != "")  || (@car[:model_id] != "") || (@car[:energy_id] != "") || (@car[:type_id] != "") || (@car[:city_id] != "") || (@car[:year] != "") || (@car[:transmission] != "") || (@car[:climatisation] != "") || (@car[:option] != "") || (@car[:price] != "0" && @car[:price] != "")
           @results = Car.all
 
+          if @car[:mark_id] != ""
+            @results = @results.where(mark_id:@car[:mark_id])
+            if @results.length == 0
+              return
+            end
+          end
+
           if @car[:model_id] != ""
             @results = @results.where(model_id:@car[:model_id])
             if @results.length == 0
@@ -52,7 +59,6 @@ class StaticPagesController < ApplicationController
               return
             end
           end
-
 
           if @car[:year] != ""
             @results = @results.where(year:@car[:year].to_i)
