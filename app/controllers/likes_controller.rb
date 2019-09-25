@@ -2,9 +2,14 @@ class LikesController < ApplicationController
 	before_action :authenticate_user!
 
 	def create
+		@car = Car.find(params[:car_id])
 		unless already_liked?
-		    @like = Like.create(user_id: current_user.id,car_id:params[:car_id])
-		    redirect_to car_path(params[:car_id])
+	    @like = @car.likes.new(user_id: current_user.id,car_id:params[:car_id])
+	    @like.save
+	    respond_to do |format|
+				format.html {redirect_to car_path(params[:car_id])}
+				format.js { }
+			end
 		end
 	end
 
@@ -12,13 +17,15 @@ class LikesController < ApplicationController
   	@car = Car.find(params[:car_id])
   	@like = @car.likes.find(params[:id])
     @like.destroy
-	  redirect_to car_path(params[:car_id])
+    respond_to do |format|
+			format.html {redirect_to car_path(params[:car_id])}
+			format.js { }
+		end
 	end
 
  	private
 	def already_liked?
-	  Like.where(user_id: current_user.id, car_id:
-	  params[:car_id]).exists?
+	  Like.where(user_id: current_user.id, car_id:params[:car_id]).exists?
 	end
 
 end

@@ -2,8 +2,10 @@ class User < ApplicationRecord
   after_create :welcome_send
   
   #relation on create
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :omniauthable, 
+     :recoverable, :rememberable, :trackable, 
+     :omniauth_providers => [:facebook, :google_oauth2]
+
   has_one_attached :avatar
   #relation for likes cars
   has_many :likes, dependent: :destroy
@@ -18,6 +20,7 @@ class User < ApplicationRecord
   #relation of abonnement
   has_one :premium
   has_one :gold
+  has_many :user_provider, :dependent => :destroy
   def welcome_send #message de bienvenu a chaque nouvelle utilisateur inscrit
     UserMailer.welcome_email(self).deliver_now
   end

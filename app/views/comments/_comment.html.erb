@@ -1,9 +1,10 @@
 
 <!-- Contenedor Principal -->
-<section>
-	<div class="comments-container">	
-		<h1> <%= @comments.count %> Commentaires </h1>
-
+	<div class="comments-container content-comment">
+			<div class="similaire sticky-top bg-dark">
+	        <h4> (<%= @comments.count %>) Commentaires </h4>
+	    </div>	
+		<div id="comment-ajax">
 		<ul id="comments-list" class="comments-list">
 			<li>
 				<%@comments.each do |comment|%>
@@ -20,7 +21,7 @@
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name by-author"><%= comment.user.first_name%> <%= comment.user.last_name%></h6>
+							<h6 class="comment-name by-author">  <a href="/users/<%=comment.user.id%>"><%= comment.user.first_name%> <%= comment.user.last_name%></a> </h6>
 							<span></span>
 							<i class="fa fa-reply" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"></i>
 							<i class="fa fa-heart"></i>
@@ -65,10 +66,10 @@
 					<% end %>
 					<li>
 						<div>
-			   			<%= form_tag url_for(action: 'create', controller: 'answers', id: comment.id), method: "post" do %>
-			         <%= label_tag 'répondre' %> </br>
-			          <%= text_area_tag 'content' %></br>
-			          <%= submit_tag "Submit" %>
+			   			<%= form_tag url_for(action: 'create', controller: 'answers', id: comment.id), method: "post", class: 'form-group col-md-6' do %>
+			         <%= label_tag 'Répondre' %> </br>
+			          <%= text_area_tag 'content','' , class: 'form-control', placeholder: 'Votre reponse !' %></br>
+			          <%= submit_tag "Repondre", class: 'btn btn-primary' %>
 			        <% end %>
 						</div>
 					</li>
@@ -77,14 +78,13 @@
 				<% end %>
 			</li>
 		</ul>
-
+</div>
 
 		<div>
-		   <%= form_tag url_for(action: 'create', controller: 'comments', id: @car.id), method: "post" do %>
-		         <%= label_tag 'Comment' %> </br>
-		          <%= text_area_tag 'content' %></br>
-		          <%= submit_tag "Submit" %>
+		   <%= form_tag url_for(action: 'create', controller: 'comments', id: @car.id), method: "post", class: 'form-group col-md-6', remote:true do %>
+		         <%= label_tag 'Commenter' %> </br>
+		          <%= text_area_tag 'content','' , class: 'form-control', placeholder: 'Votre commentaire !' %></br>
+		          <%= submit_tag "Envoyer", class: 'btn btn-primary' %>
 		        <% end %>
 		</div>
 	</div>
-</section>

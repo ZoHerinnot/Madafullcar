@@ -1,57 +1,41 @@
-<nav class="navbar navbar-light bg-info">
-  <a class="navbar-brand" href="<%=conversations_path%>", >
-    <i class="fas fa-arrow-circle-left"></i>
-  </a>
-	<% if !@messages.empty? %>
-  <div>
-    <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete %><br>
-  </div>
-<% end %>
-</nav>
+<div id="message-content">
+    <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
+    <div>
+      <ul class="bg-dark">
+        <li>
+          <h4 class= "msg-menu" ><%= @conversation.recipient.first_name %> <%= @conversation.recipient.last_name %> </h4>
+        </li>
+      </ul>
+    </div>
 
-<section>
-  <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
- <div>
-<% @messages.each do |message| %>
-    <% if message.content %>
-      <% user = user_message(message) %>
+    <div class="nouvelle-conversation">
+      <p> <em>Commencer votre conversation !!!!!!</em></p>
+    </div>
 
-      <% if user.id == current_user.id %>
-          <div class="container msg bg-info">
-            <div>
-         <p class="text-right"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="right">
-         </p>
-         </div>
-          
-          <p class="text-right"><%= message.content %></p>
-          <span class="time-right"><%= message.message_time %></span>
-        </div>
-
-      <% else %>
-        <div class="container darker msg">
-          <div>
-         <p class="text-left"> <span class="bg-warning"> <%= user.first_name %> <%= user.last_name %></span>
-           <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="Avatar" class="left">
-         </p>
-         </div>          
-         
-          <p class="text-left"><%= message.content %></p>
-          <span class="time-left"><%= message.message_time %></span>
-        </div>
-
-      <% end %>
+    <div id="message-ajax">
+    <%= render partial: "messages/message", message: @message%>
+    </div>
+    <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
+    <%= form_for [@conversation, @message],remote:true, html: {class: "form-group"} do |f| %>
+    <div class="field">
+      <%= f.text_area :content, class: "form-control", placeholder: 'votre message !' %>
+    </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <div>
+      <%= f.submit "Envoyer", class: "btn btn-primary envoie" %>
+    </div>
     <% end %>
+</div>
+
+<div class="foot-container">
+  <div class="msg-foot">
+     <a href="<%=conversations_path%>", >
+     <i class="fas fa-arrow-circle-left"> retour</i>
+  </a>
+  </div>
+  <% if !@messages.empty? %>
+    <div class="msg-foot">
+      <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete, class: 'btn btn-danger' %><br>
+    </div>
   <% end %>
 </div>
-  <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
-    <%= f.text_area :content, class: "form-control" %>
-  </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-  </div>
-<% end %>
-</section>

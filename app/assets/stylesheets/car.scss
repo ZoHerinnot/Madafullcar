@@ -319,10 +319,10 @@ body {
 /*==========================*/
 
 .conteneur{
-	padding: 10px;
-	width: 95%;
-	margin: 0 auto;
-	height: auto;
+  padding: 10px;
+  width: 95%;
+  margin: 0 auto;
+  height: 1010px;
 
 }
 
@@ -342,7 +342,7 @@ body {
 
 #rigth{
 	width: 30%;
-	height: 1300px;
+	height: 990px;
 	overflow: auto;
 	margin-top: 5px; 
 	padding: 0px 5px;
@@ -360,26 +360,47 @@ body {
 
 .carousel-display{
 	height: 500px;
+	border: 0 solid;
+	border-radius: 5px 5px 0 0;
+}
+
+.similaire h4{
+		color: #fec503;
 }
 
 .similaire{
+	border: 0 solid;
+	border-radius: 5px 5px 0 0;
 	padding: 10px;
 	text-align: center;
 	margin-bottom: 10px;
 }
 
 .back-color{
-	background-color: #e6eff0;
-}
-h4{
-	color: white;
+	border: 0 solid;
+	border-radius:0 0 5px 5px;
+	height: 490px;
+	overflow: auto;
 }
 
+ul.about-car li{
+	width: 33%;
+	display: inline-block;
+	margin:10px 0;
+}
 
+#description{
+	width: 100%;
+}
 
 #comment-section{
 	padding-top: 0px;
 	margin-top: 40px;
+}
+
+.aucun{
+	  text-align: center;
+    text-shadow: #fec503 0 0 10px;
 }
 
 /*==========================*/
@@ -391,4 +412,9 @@ h4{
 }
 .text-new-car{
 	padding: 15px 15px;
+}
+.message-text{
+	text-align: center;
+	text-shadow: #fec503 0 0 10px;
+
 }

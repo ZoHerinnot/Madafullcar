@@ -4,11 +4,8 @@
 
 /* Chat containers */
 .msg {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
+  margin-bottom: 10px; 
+  width: 60%;
 }
 
 /* Darker chat container */
@@ -25,19 +22,23 @@
 }
 
 /* Style images */
-.msg img {
-  float: left;
+img.left, img.right {
   max-width: 60px;
-  width: 100%;
+  width: 80%;
   margin-right: 20px;
   border-radius: 50%;
 }
 
 /* Style the right image */
-.msg img.right {
+img.right {
   float: right;
   margin-left: 20px;
   margin-right:0;
+}
+
+
+.left{
+  width: 35px;
 }
 
 /* Style time text */
@@ -51,3 +52,69 @@
   float: left;
   color: #999;
 }
+
+.msg-font{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.date{
+  font-size: 10px;
+  margin: 0 10px;
+}
+
+#message-content{
+  width: 60%;
+  margin: 10px auto;
+}
+
+.nouvelle-conversation{
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.text-content{
+  padding: 0 40px;
+}
+
+.your-msg{
+  float: left;
+}
+
+.my-msg-content{
+  border: 2px solid #dedede;
+  border-radius: 5px;
+  background: #fec503;
+}
+
+.your-msg-content{
+  border: 2px solid #dedede;
+  border-radius: 5px;
+  background: #FFF;
+}
+
+.my-msg{
+  float: right;
+}
+
+.msg-menu{
+  color: #fec503;
+  padding: 10px;
+  text-align: center;
+}
+
+.envoie{
+  margin: 10px auto; 
+}
+
+.msg-foot{
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.foot-container{
+  width: 30%;
+  margin: 10px auto;
+}
+

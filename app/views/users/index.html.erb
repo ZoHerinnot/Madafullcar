@@ -1,0 +1,18 @@
+<h3>RESULTAT DE RECHERCHE pour "<%=params[:last_name]%>"</h3>
+<%@user.each do |user| %>
+  <% if user.id != current_user.id%>
+    <strong>
+      <ol>
+      <li>
+      	<%if user.avatar.attached?%>
+      		<%= image_tag (user.avatar), class:"left"%>
+      	<%else%>
+      		<img src="https://www.cbdloire.fr/wa_images/profil%20vide_1.png?v=1d0lgmf" alt="Avatar" class="left">
+      	<%end%>
+      	<%= link_to "#{(user.first_name).titleize} #{(user.last_name).titleize} ", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>  <i class="far fa-comment-dots"></i><br>Email : <%="#{user.email}"%></li>
+    </ol>
+    </strong>
+  <%else%>
+    <h5>Aucun resultat</h5>
+  <%end%>
+<%end%>

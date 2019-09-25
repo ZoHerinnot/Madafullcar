@@ -14,8 +14,10 @@ class CarController < ApplicationController
   end
 
   def show
-     @car = Car.find(params[:id])
-     @mark = Mark.find_by(name: "#{@car.mark.name}")
+    @car = Car.find(params[:id])
+    @mark = Mark.find_by(name: "#{@car.mark.name}")
+    @like = Like.new
+    @like = @car.likes
      @cars = @mark.cars
     if user_signed_in?
       @pre_like = @car.likes.find { |like| like.user_id == current_user.id}
@@ -51,7 +53,7 @@ class CarController < ApplicationController
       :energy_id,
       :city_id,
       pictures: [])
-      
+
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     @car.save
@@ -59,9 +61,36 @@ class CarController < ApplicationController
   end
 
   def edit
+    @car = Car.find(params[:id])
+    @mark = Mark.all
+    @model = Model.all
+    @type = Type.all
+    @energy = Energy.all
+    @city = City.all
   end
 
   def update
+    @car = Car.find(params[:id])
+    car_params = params.require(:car).permit(
+      :price,
+      :description,
+      :etat,
+      :year,
+      :mileage,
+      :number_place,
+      :climatisation,
+      :transmission,
+      :telephone,
+      :option,
+      :status,
+      :mark_id,
+      :model_id,
+      :type_id,
+      :energy_id,
+      :city_id,
+      pictures: [])
+    @car.update(car_params)
+    redirect_to(car_path(params[:id]))
   end
   def destroy
   end

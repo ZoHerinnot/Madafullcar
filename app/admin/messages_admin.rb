@@ -1,22 +1,19 @@
-Trestle.resource(:cars) do
+Trestle.resource(:messages) do
   menu do
-    item :cars, icon: "fa fa-car"
+    item :messages, icon: "fa fa-comments" 
   end
 
   # Customize the table columns shown on the index view.
   #
-   table do
-     column :mark
-		 column :option
-		 column :status
-		 column :price
-     column :created_at, align: :center
-     actions
-   end
+  # table do
+  #   column :name
+  #   column :created_at, align: :center
+  #   actions
+  # end
 
   # Customize the form fields shown on the new/edit views.
   #
-  # form do |car|
+  # form do |message|
   #   text_field :name
   #
   #   row do
@@ -33,13 +30,6 @@ Trestle.resource(:cars) do
   #   http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
   #
   # params do |params|
-  #   params.require(:car).permit(:name, ...)
+  #   params.require(:message).permit(:name, ...)
   # end
-	search do |query|
-    if query
-      Car.where(mark_id:Mark.find_by(name:"#{query}"))
-    else
-      Car.all
-    end
-  end
 end
