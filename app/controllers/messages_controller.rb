@@ -6,11 +6,21 @@ class MessagesController < ApplicationController
   include MessagesHelper
 
   def index
-    
     @messages = @conversation.messages
-    if @messages.last
-      if @messages.last.user_id != current_user.id
-        @messages.last.read = true;
+    if @conversation.sender_id != current_user.id
+      ssmmss = @messages.where(user_id:@conversation.sender_id)
+      ssmmss.each do |sms|
+        tmp = sms 
+        tmp.read = true
+        tmp.save
+      end
+    end
+    if @conversation.recipient_id != current_user.id
+      ssmmss = @messages.where(user_id:@conversation.recipient_id)
+      ssmmss.each do |sms|
+        tmp = sms 
+        tmp.read = true
+        tmp.save
       end
     end
     @message = @conversation.messages.new
