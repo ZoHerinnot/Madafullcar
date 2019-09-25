@@ -20,13 +20,13 @@
                 <% @conversations.each do |conversation| %>
                   <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
                 <% recipient = recipient_user(conversation) %>
-                <li class="user-list">
-                     <strong> <%=(recipient.first_name).titleize%> <%=(recipient.last_name).titleize%></strong>
+                  <li class="user-list">
+                      <strong> <%=(recipient.first_name).titleize%> <%=(recipient.last_name).titleize%> (<%= count_sms(conversation) %>) </strong>
                       <%= link_to "", conversation_messages_path(conversation), class:"far fa-comment-dots"%>
                       <%= link_to "", conversation_path(conversation.id), method: :delete, class:"far fa-trash-alt" %>
-                </li>
-                    <% end %>
+                  </li>
                   <% end %>
+                <% end %>
               </ol>
             </div>
           </div>
