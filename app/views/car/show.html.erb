@@ -57,6 +57,15 @@
                 <p><%= @car.likes.count %> <%= link_to '', car_likes_path(@car), method: :post, class:'far fa-thumbs-up', remote: true%></p>
             <% end %>
           </div>
+
+            <!-- boutton pour contacter -->
+           <button type="button" class="btn btn-outline-warning">
+          <% if user_signed_in? %>
+          <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id, recipient_id: @car.user_id), method: 'post'%>
+            <% else %>
+          <%= link_to "Envoyer un message",new_user_session_path, method: 'post'%>
+              <% end %>
+          </button>
     </div>
   </div>
 </div>
@@ -109,10 +118,3 @@
   <div class="comment-container">
     <%= render "/comments/comment.html.erb"%>
   </div>
-
-
-<!-- *********************LIEN POUR CONTACTER L'E TOPONY FIARA ************************* -->
-  <h1>
-  <%= link_to "Contacter", conversations_path(sender_id: current_user.id, recipient_id: @car.user_id), method: 'post'%>  <i class="far fa-comment-dots"></i>
-  </h1>
-<!-- *********************LIEN POUR CONTACTER L'E TOPONY FIARA ************************* -->
