@@ -1,4 +1,5 @@
 <div class="conteneur">
+
   <div class="content-car" id="left">
    <%# Affichage en carousel des photos de la voiture %>
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
@@ -108,3 +109,10 @@
   <div class="comment-container">
     <%= render "/comments/comment.html.erb"%>
   </div>
+
+
+<!-- *********************LIEN POUR CONTACTER L'E TOPONY FIARA ************************* -->
+  <h1>
+  <%= link_to "Contacter", conversations_path(sender_id: current_user.id, recipient_id: @car.user_id), method: 'post'%>  <i class="far fa-comment-dots"></i>
+  </h1>
+<!-- *********************LIEN POUR CONTACTER L'E TOPONY FIARA ************************* -->
