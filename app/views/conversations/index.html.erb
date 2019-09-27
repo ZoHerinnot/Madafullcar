@@ -36,6 +36,20 @@
         <div class="tab-pane all-users" id="users">
             <div>
               <div class="ui list">
+                    <%=form_tag "/users", :method => 'get'  do%>
+                      <div>
+                        <label for="msg-search"><h4>Recherche d'utilisateur</h4></label>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-10">
+                          <%=text_field_tag :last_name, params[:last_name],placeholder: "Entrez un nom ou prenom", class: "form-control", id:"msg-search"%>
+                        </div>
+                        <div class="form-group col-md-2">  
+                          <%=submit_tag ("Rechercher"), class: "btn btn-primary text-dark"%>
+                        </div>
+                      </div>
+                    <%end%>
+                  </div>
                 <ol>
                   <% @users.each do |user| %>
                     <% if user.id != current_user.id %>
@@ -53,17 +67,6 @@
                     </div>
                     <% end %>
                   <% end %>
-                  <span>
-                      <%=form_tag "/users", :method => 'get'  do%>
-                        <div class="form-group">
-                          <%=text_field_tag :last_name, params[:last_name],placeholder: "Entrez un nom ou prenom", class: "form-control"%>
-                        </div>
-                        <div class="form-group">  
-                          <%=submit_tag ("Rechercher un destinataire"), class: "btn btn-warning btn-block"%>
-                        </div>
-                      <%end%>
-                    </div>
-                  </span>
                 </ol>
               </div>
             </div>  
