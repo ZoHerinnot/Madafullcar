@@ -41,7 +41,12 @@
             <li><strong><i class="fas fa-users"></i> Nombre de place: </strong><%=@car.number_place%></li>
             <li><strong><i class="fas fa-thermometer-quarter"></i> Etat: </strong><%=@car.etat%></li>
             <li><strong><i class="fas fa-signal"></i> Status : </strong><%=@car.status%></li>
+
+              <%if @car.option == "Vente"%>
             <li><strong><i class="fas fa-euro-sign"></i></i> Prix: </strong><%=@car.price%> Ar</li>
+              <% else %>
+            <li><strong><i class="fas fa-euro-sign"></i></i> Prix: </strong><%=@car.price%> Ar/jours</li>
+              <% end %>
             <li><strong><i class="fas fa-road"></i> Kilometrage: </strong><%=@car.mileage%> Km</li>
             <li><strong><i class="fas fa-sliders-h"></i> Transmission: </strong><%=@car.transmission%></li>
             <li><strong><i class="fas fa-hand-point-right"></i> Type: </strong><%=@car.type.name%></li>
