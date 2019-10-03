@@ -17,7 +17,8 @@ models = [
 	"ZZ1"
 	]
 types = ["4x2","4x4","Berline","Break","Bus","Coupé","Crossover","Fourgon","Minibus","Minibus 4x4","Monospace","Utilitaire"]
-image = ["voiture1.jpg","voiture2.jpg", "voiture3.jpg","voiture4.jpg","voiture5.jpg","voiture6.jpg","voiture7.jpg","voiture8.jpg","voiture9.jpg","voiture10.jpg","voiture11.jpg","voiture12.png","voiture13.jpg","voiture14.jpg","voiture15.jpg","voiture16.jpg","voiture17.jpg"]
+image = ["voiture1.jpg","voiture2.jpg", "voiture3.jpg","voiture4.jpg","voiture19.jpg","voiture6.jpg","voiture20.jpg","voiture8.jpg","voiture9.jpg","voiture10.jpg","voiture11.jpg", "voiture28.jpg", "voiture12.png","voiture13.jpg","voiture24.jpg","voiture15.jpg","voiture16.jpg","voiture17.jpg"]
+imagelocation = ["voiture5.jpg", "voiture7.jpg", "voiture14.jpg", "voiture18.jpg", "voiture21.jpg", "voiture22.jpg", "voiture23.jpg", "voiture25.jpg", "voiture26.png", "voiture27.jpg", "voiture29.jpg", "voiture30.jpg", "voiture31.jpg"]
 villes = ["Antananarivo","Antsiranana","Fianarantsoa","Mahajanga","Toamasina","Toliary"]
 energies = ["Diesel","Essence","Ethanol","Eléctrique","Hybrid","LPG Autogas"]
 clims = ["Oui","Non"]
@@ -124,7 +125,7 @@ system("sleep 2")
 		climatisation:clims[rand(2)],
 		transmission:transmissions[rand(3)],
 		telephone:"03#{rand(2..4)}#{rand(0000000..9999999)}",
-		image_url:image[rand(16)],
+		image_url:imagelocation[rand(12)],
 		option:"Location",
 		status: status[rand(2)],
 		mark_id:rand(Mark.first.id .. Mark.last.id),
