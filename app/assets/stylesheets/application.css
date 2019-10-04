@@ -113,7 +113,7 @@ body {
 
 #search-form{
 	margin: 10px auto;
-	width:  300px;
+	width:  370px;
 }
 
 /*===============================================================================================================
@@ -150,4 +150,8 @@ body {
 	border-radius: 20px;
 	height: 40px;
 	width: 40px;
+}
+
+nav {
+	background: #ACD0C0;
 }

@@ -1,13 +1,17 @@
 
-
+<!--
+    ==========================PAGE header ==========================
+  -->
   <header class="masthead bg-dark" id="top">
     <div class="container">
       <div class="intro-text head-pos">
-       <div class="intro-lead-in">Bienvenue chez Madafullcar!</div>
-      <div class="intro-heading text-uppercase">Vente et Location en un mot</div>
-      <a href="<%=car_index_path(annonce:'location')%>", class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render">Nos annonce de location</a>
-      <a href="<%=car_index_path(annonce:'vente')%>" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="#">Nos annonces de vente</a>
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render" href="/car/new">Cree une nouvelle annonces</a>
+
+       <div class="intro-lead-in text-coul">Bienvenue chez Madafullcar!</div>   
+      <div class="intro-lead-in text-uppercase text-style">Notre offre s'adapte à vos besoins</div>
+
+      <a href="<%=car_index_path(annonce:'location')%>", class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render text-dark">Nos annonces de location</a>
+      <a href="<%=car_index_path(annonce:'vente')%>" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render text-dark" href="#">Nos annonces de vente</a>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger btn-render text-dark" href="/car/new">Cree une nouvelle annonce</a>
       </div>
     </div>
   </header>
@@ -23,16 +27,16 @@
       </div>
     </div>
   </section>
+  
   <!--
-    ==========================PAGE DE Recherche==========================
+    ==========================PAGE service ==========================
   -->
-    <!-- Services -->
   <section class="page-section" id="services">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Services</h2>
-          <h3 class="section-subheading text-muted">Notre service s'adaptera à vos besoins</h3>
+          <h2 class="section-heading text-uppercase">Services :</h2>
+          <h3 class="section-subheading text-muted"></h3>
         </div>
       </div>
       <div class="row text-center">
@@ -41,14 +45,16 @@
             <i class="far fa-calendar-check" class="fa-stack-1x fa-inverse img"></i>
           </span>
           <h4 class="service-heading">Vente</h4>
-          <p class="text-muted">Les véhicules sont  proposés par les particuliers et professionnelles. Ils sont fournis avec les informations indispensables pour vous aider à votre choix.</p>
+          <p class="text-muted">Les véhicules sont  proposés par les particuliers et professionnelles. 
+          Ils sont fournis avec les informations indispensables pour vous aider à faire votre choix.</p>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="far fa-calendar-check" class="fa-stack-1x fa-inverse img"></i>
           </span>
           <h4 class="service-heading">Location</h4>
-          <p class="text-muted">Les véhicules sont disponibles par des réservations en ligne ou par contact avec les propriétaires. Chaque voiture en location peut être appréciée par les anciens locataires à travers des commentaires.</p>
+          <p class="text-muted">Les véhicules sont disponibles par des réservations en ligne ou 
+          par contact avec leurs propriétaires. </p>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
@@ -61,7 +67,9 @@
     </div>
   </section>
 
-
+<!--
+    ==========================PAGE annonces abonnement ==========================
+  -->
   <header class="masthead">
     <div class="card md-3 header">
       <div class="row no-gutters">
@@ -74,10 +82,10 @@
                     <p>Nos offres d'abonnements sont divisés en deux catégeories bien précis: Premium et Gold.<br>
                     <strong class="text-s">Premium</strong>: Destiné à des particuliers qui souhaitent avoir plus de visibilité pour leurs annonces.
                     Cette offre comporte un affichage en page d'accueil est un meilleur placement dans
-                    les résultats des recherches. Poster des annoncés de façon illimitée,et en  plus la possibilité de s'afficher dans la
+                    les résultats des recherches. Poster des annonces de façon illimitée,et en  plus la possibilité de s'afficher dans la
                     page Facebook de Madafullcar.<br>
                     <strong class="text-s">Gold</strong>: Pour les professionnelles qui veulent se faire connaitre et se rapprocher de leurs vraies clientèles.
-                    Dans cette offre on propose en plus du contenu du pack premium; un domaine dédier dans la page d'acceuil, des visibilités améliorées dans les résultats
+                    Dans cette offre on propose en plus du contenu du pack premium; un domaine dédié dans la page d'acceuil, des visibilités améliorées dans les résultats
                     des recherches. Affichage illimité dans notre page facebook.
                     </p>
                 </div>
@@ -92,7 +100,9 @@
   </header>
 
 
-  <!--/ Section Vente premium Star /-->
+  <!--
+    ==========================PAGE de vente ==========================
+  -->
 
  <section id="work" class="portfolio-mf sect-pt4 route">
     <div class="container" id="gold">
@@ -137,7 +147,7 @@
                   </div>
                   <div class="col-sm-4">
                     <div class="w-like">
-                      <a href="car/<%=car.id%>" class="fas fa-info-circle"></a>
+                      <a href="car/<%=car.id%>" class="far fa-plus-square"></a>
                     </div>
                   </div>
                 </div>
@@ -154,7 +164,9 @@
       </div>
     </section>
 
-
+<!--
+    ==========================PAGE à propos et poster ==========================
+  -->
   <header class="masthead">
     <div class="card md-3 header">
       <div class="row no-gutters">
@@ -181,7 +193,9 @@
     </div>
   </header>
 
-  <!--/ Section Location premium Star /-->
+ <!--
+    ==========================PAGE location ==========================
+  -->
   <section id="work" class="portfolio-mf sect-pt4 route">
      <div class="container" id="gold">
        <div class="row">
@@ -225,7 +239,7 @@
                    </div>
                    <div class="col-sm-4">
                      <div class="w-like">
-                       <a href="car/<%=car.id%>" class="fas fa-info-circle"></a>
+                       <a href="car/<%=car.id%>" class="far fa-plus-square"></a>
                      </div>
                    </div>
                  </div>

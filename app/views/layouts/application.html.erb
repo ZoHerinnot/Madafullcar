@@ -34,7 +34,7 @@
     <div class="navbar-collapse collapse justify-content-end custom-nav" id="navbarDefault">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link js-scroll active" href="<%= root_path %>">Acceuil</a>
+          <a class="nav-link js-scroll active" href="<%= root_path %>">Accueil</a>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
@@ -70,8 +70,12 @@
           <li class="nav-item">
             <a  class="nav-link js-scroll" href="<%= destroy_user_session_path %>" data-method="delete">Se deconnecter</a>
           </li>
-				 <li class="nav-item">
+				 <li class="nav-item">              
+                <% if count_messages(current_user) == 0 %>
               <a class="nav-link js-scroll far fa-comments " href="<%=conversations_path%>"><i class="far fa-comments"></i></a>
+              <% else %>
+              <a class="nav-link js-scroll fas fa-comments " href="<%=conversations_path%>"><i class="fas fa-comments"></i></a>
+              <% end %>
             </li>
         <% else %>
           <li class="nav-item">
@@ -111,7 +115,7 @@
     <div class="form-group" id="search-form">
       <%= form_tag(search_car_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
         <%= search_field_tag :search_model, nil, placeholder: "Nom d'une marque", class: "form-control mr-sm-2" %><br>
-        <%= button_tag "Recherche", class:"btn btn-primary my-2 my-sm-0" %>
+        <%= button_tag "Recherche", class:"btn btn-primary text-dark" %>
       <% end %>
     </div>
     <div class="container">

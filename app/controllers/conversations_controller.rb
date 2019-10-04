@@ -3,22 +3,16 @@ class ConversationsController < ApplicationController
   include ConversationsHelper
 
   def index #liste de tous les contactes
-
-    puts "*" * 60
-    puts "INDEX AN'LE CONVERSATION"
-
-    puts params.inspect
-
-    puts "*" * 60
-
     @users = User.all
     @conversations = Conversation.all
     @user = [] 
+
     @users.each do |user|
       if (user.last_name == params[:last_name]) || (user.first_name == params[:last_name])
         @user << user
       end
     end
+    
   end
 
   def show
