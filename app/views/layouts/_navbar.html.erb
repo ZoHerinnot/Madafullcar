@@ -1,0 +1,81 @@
+<!-- navigation -->
+<nav class="navbar navbar-b navbar-trans navbar-expand-md bg-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll" href="/">Madafullcar</a>
+    	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+    		aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+			    <span></span>
+			    <span></span>
+			    <span></span>
+   		</button>
+    <div class="navbar-collapse collapse justify-content-end custom-nav" id="navbarDefault">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll active" href="<%= root_path %>">Accueil</a>
+        </li>
+        		<% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link js-scroll" href="<%=user_path(current_user.id)%>">Mon compte</a>
+        </li>
+	          	<% if gold? %>
+	            	<% if abonne_gold%>
+	              	<li class="nav-item">
+	                	<a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Gold)</a>
+	              	</li>
+	            	<% else %>
+	              	<li class="nav-item">
+	                	<a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+	              	</li>
+	            	<% end %>
+	          	<% else %>
+          			<% if premium? %>
+            			<% if abonne_premium %>
+            			<li class="nav-item">
+              			<a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnée(Premium)</a>
+            			</li>
+            			<% else %>
+            			<li class="nav-item">
+              			<a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+            			</li>
+            			<% end %>
+          			<% else %>
+            			<li class="nav-item">
+              			<a class="nav-link js-scroll" href="<%=abonnement_index_path%>">Abonnement</a>
+            			</li>
+          			<% end %>
+          		<% end %>
+        <li class="nav-item">
+          <a  class="nav-link js-scroll" href="<%= destroy_user_session_path %>" data-method="delete">Deconnexion</a>
+        </li>
+		 		<li class="nav-item">              
+          <% if count_messages(current_user) == 0 %>
+          	<a class="nav-link js-scroll far fa-comments " href="<%=conversations_path%>"><i class="far fa-comments"></i></a>
+          <% else %>
+          	<a class="nav-link js-scroll fas fa-comments " href="<%=conversations_path%>"><i class="fas fa-comments"></i></a>
+          <% end %>
+        </li>
+        		<% else %>
+  			<li class="nav-item">
+    			<a  class="nav-link js-scroll" href="<%= new_user_registration_path %>">Inscription</a>
+  			</li>
+        <li class="nav-item">
+          <a  class="nav-link js-scroll" href="<%= new_user_session_path %>">Connexion</a>
+        </li>
+        		<% end %>
+      </ul>
+    </div>
+  </div>
+
+  <!--  Avatar de l'user connecté  -->
+  <% if user_signed_in? %>
+    <a class="navbar-brand" href="<%=user_path(current_user.id)%>">
+      <%if current_user.avatar.attached?%>
+        <%= image_tag current_user.avatar,id:"logo", class:"avatar-logo", alt: 'avatar' %>
+      <%else%>
+        <%= image_tag ("avatar.jpg"), id:"logo" ,class:"avatar-logo", alt:"avatar"%>
+      <%end%>
+    </a>
+  <%else%>
+  <%end%>
+  <!--  Fin =>Avatar de l'user connecté  -->
+</nav>

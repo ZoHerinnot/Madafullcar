@@ -1,24 +1,23 @@
 <div class="conteneur">
-
   <div class="content-car" id="left">
-   <%# Affichage en carousel des photos de la voiture %>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
-          <div class="carousel-inner carousel-display">
-            <div class="carousel-item active">
-              <%if @car.pictures.attached?%>
-                    <%= image_tag (@car.pictures[0]), class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
-                  <%else%>
-                    <%= image_tag (@car.image_url),class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
-              <%end%>
-            </div>
+   <!--  Affichage en carousel des photos de la voiture  -->
+    <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
+      <div class="carousel-inner carousel-display">
+        <div class="carousel-item active">
+          <%if @car.pictures.attached?%>
+            <%= image_tag (@car.pictures[0]), class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
+          <%else%>
+            <%= image_tag (@car.image_url),class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
+          <%end%>
+        </div>
         <% for i in 1..(@car.pictures.length-1)%>
-            <div class="carousel-item">
-              <%if @car.pictures.attached?%>
-                <%= image_tag (@car.pictures[i]), class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
-              <%else%>
-                <%= image_tag (@car.image_url),class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
-              <%end%>
-            </div>
+        <div class="carousel-item">
+          <%if @car.pictures.attached?%>
+            <%= image_tag (@car.pictures[i]), class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
+          <%else%>
+            <%= image_tag (@car.image_url),class:"img-display carousel-display",alt: '#{@car.model.name} #{@car.model.name}' %>
+          <%end%>
+        </div>
         <%end%>
           <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,11 +27,11 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-        </div>
-                <%# Description de la voiture  %>
-    <div class="card-body back-color">
+      </div>
+  <!-- Description de la voiture  -->  
+      <div class="card-body back-color">
         <h5>A propos de la voiture:</h5>
-        <ul class="about-car">
+          <ul class="about-car">
             <li><strong><i class="fas fa-car"></i> Marque : </strong><%=@car.mark.name%></li>
             <li><strong><i class="fab fa-medium-m"></i> Model: </strong><%=@car.model.name%></li>
             <li><strong><i class="far fa-calendar-check"></i>  Année: </strong><%=@car.year%> </li>
@@ -41,41 +40,38 @@
             <li><strong><i class="fas fa-users"></i> Nombre de place: </strong><%=@car.number_place%></li>
             <li><strong><i class="fas fa-thermometer-quarter"></i> Etat: </strong><%=@car.etat%></li>
             <li><strong><i class="fas fa-signal"></i> Status : </strong><%=@car.status%></li>
-
               <%if @car.option == "Vente"%>
-            <li><strong><i class="fas fa-euro-sign"></i></i> Prix: </strong><%=@car.price%> Ar</li>
+            <li><strong><i class="fas fa-euro-sign"></i> Prix: </strong><%=@car.price%> Ar</li>
               <% else %>
-            <li><strong><i class="fas fa-euro-sign"></i></i> Prix: </strong><%=@car.price%> Ar/jours</li>
+            <li><strong><i class="fas fa-euro-sign"></i> Prix: </strong><%=@car.price%> Ar/jours</li>
               <% end %>
             <li><strong><i class="fas fa-road"></i> Kilometrage: </strong><%=@car.mileage%> Km</li>
             <li><strong><i class="fas fa-sliders-h"></i> Transmission: </strong><%=@car.transmission%></li>
             <li><strong><i class="fas fa-hand-point-right"></i> Type: </strong><%=@car.type.name%></li>
             <li><strong><i class="fas fa-gas-pump"></i> Energie: </strong><%=@car.energy.name%></li>
             <li><strong><i class="fas fa-building"></i> Ville : </strong><%=@car.city.name%></li>
-            <li><strong><i class="fas fa-phone-alt"></i></i> Contact : </strong><%=@car.telephone%></li>
+            <li><strong><i class="fas fa-phone-alt"></i> Contact : </strong><%=@car.telephone%></li>
             <li id="description"><strong>Description : </strong><%=@car.description%></li>
-        </ul>
-          <div id="likers">
-            <% if @pre_like %>
+          </ul>
+            <div id="likers">
+              <% if @pre_like %>
                 <p><%= @car.likes.count%> <%= link_to '', car_like_path(@car, @pre_like), method: :delete, class:'far fa-thumbs-down', remote: true%></p>
-            <% else %>
+              <% else %>
                 <p><%= @car.likes.count %> <%= link_to '', car_likes_path(@car), method: :post, class:'far fa-thumbs-up', remote: true%></p>
-            <% end %>
-          </div>
-
-            <!-- boutton pour contacter -->
-           <button type="button" class="btn btn-outline-warning">
-          <% if user_signed_in? %>
-          <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id, recipient_id: @car.user_id), method: 'post'%>
-            <% else %>
-          <%= link_to "Envoyer un message",new_user_session_path, method: 'post'%>
               <% end %>
-          </button>
-    </div>
-  </div>
-</div>
-
-          <%#  fin => Description de la voiture  %>
+            </div>
+            <!-- boutton pour contacter -->
+            <button type="button" class="btn btn-outline-warning">
+              <% if user_signed_in? %>
+                <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id, recipient_id: @car.user_id), method: 'post'%>
+              <% else %>
+                <%= link_to "Envoyer un message",new_user_session_path, method: 'post'%>
+              <% end %>
+            </button>
+      </div>
+  	</div>
+	</div>
+          <!--  fin => Description de la voiture  -->
   <div class="content-car" id="rigth">
       <div class="similaire sticky-top bg-dark">
           <h4> Voiture similaire </h4>
@@ -117,7 +113,6 @@
         <%end%>
       <%end%>
   </div>
-
 </div>
 
   <div class="comment-container">

@@ -1,55 +1,55 @@
 
- <section id="work" class="portfolio-mf sect-pt4 route">
-    <div class="container" id="gold">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">
-              Voiture en vente
-            </h3>
-            <p class="subtitle-a">
-              Achetez votre voiture de rêve
-            </p>
-            <div class="line-mf"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-      <%@car.each do |car| %>
-        <div class="col-md-4">
-          <div class="work-box">
-              <div class="work-img img-w">
-                <%if car.pictures.attached?%>
-                <%= image_tag (car.pictures[0]), class:"img-fluid"%>
-              <%else%>
-                <%= image_tag (car.image_url), class:"img-fluid" %>
-                <%end%>
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                  <%if car.pictures.attached?%>
-                  <span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span> 
-                   <%else%>  
-                   <span ><i class="fas fa-camera"> 1</i></span> 
-                   <%end%>
-                    <h2 class="w-title"><%=car.mark.name%></h2>
-                    <h2 class="w-title"><%=car.option%></h2>
-                    <h2 class="w-title"><%=car.price%> Ar</h2>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <a href="car/<%=car.id%>" class="far fa-plus-square"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? 'Likes' : 'Like'%></p>
-
-          </div>
-
-        </div>
-         <%end%>
-        </div>
-      </div>
-    </section>
+<section id="work" class="portfolio-mf sect-pt4 route">
+	<div class="container" id="gold">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="title-box text-center">
+					<h3 class="title-a">
+						Voiture en vente
+					</h3>
+						<p class="subtitle-a">
+							Achetez votre voiture de rêve
+						</p>
+					<div class="line-mf">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+      <!-- listes des voitures à vendre -->
+			<%@car.each do |car| %>
+			<div class="col-md-4">
+				<div class="work-box">
+					<div class="work-img img-w">
+						<%if car.pictures.attached?%>
+							<%= image_tag (car.pictures[0]), class:"img-fluid"%>
+						<%else%>
+							<%= image_tag (car.image_url), class:"img-fluid" %>
+						<%end%>
+					</div>
+					<div class="work-content">
+						<div class="row">
+							<div class="col-sm-8">
+								<%if car.pictures.attached?%>
+									<span ><i class="fas fa-camera"> <%=car.pictures.length%></i></span> 
+								<%else%>  
+									<span ><i class="fas fa-camera"> 1</i></span> 
+								<%end%>
+									<h2 class="w-title"><%=car.mark.name%></h2>
+									<h2 class="w-title"><%=car.option%></h2>
+									<h2 class="w-title"><%=car.price%> Ar</h2>
+							</div>
+							<div class="col-sm-4">
+								<div class="w-like">
+									<a href="car/<%=car.id%>" class="far fa-plus-square"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+						<p>(<%= car.likes.count %>) <i class="far fa-thumbs-up"></i> <%= (car.likes.count) > 1 ? 'Likes' : 'Like'%></p>
+				</div>
+			</div>
+			<%end%>
+		</div>
+	</div>
+</section>
