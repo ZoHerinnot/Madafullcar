@@ -1,41 +1,42 @@
 <div id="message-content">
-    <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
-    <div>
-      <ul class="bg-dark">
-        <li>
-          <h4 class= "msg-menu" ><%= @conversation.recipient.first_name %> <%= @conversation.recipient.last_name %> </h4>
-        </li>
-      </ul>
-    </div>
-
-    <div class="nouvelle-conversation">
-      <p> <em>Commencer votre conversation !!!!!!</em></p>
-    </div>
-
-    <div id="message-ajax">
+  <!-- AFFICHER LES MESSAGE ENVOYER ET RECCUE -->
+  <div>
+    <ul class="bg-dark">
+      <li>
+        <h4 class= "msg-menu" ><%= @conversation.recipient.first_name %> <%= @conversation.recipient.last_name %> </h4>
+      </li>
+    </ul>
+  </div>
+  <div class="nouvelle-conversation">
+    <p> 
+      <em>
+        Commencer votre conversation !!!!!!
+      </em>
+    </p>
+  </div>
+  <div id="message-ajax">
     <%= render partial: "messages/message", message: @message%>
-    </div>
+  </div>
     <!-- POSTER UN MESSAGE A UN UTILISTEUR -->
     <%= form_for [@conversation, @message],remote:true, html: {class: "form-group"} do |f| %>
-    <div class="field">
-      <%= f.text_area :content, class: "form-control", placeholder: 'votre message !' %>
-    </div>
-      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-    <div>
-      <%= f.submit "Envoyer", class: "btn btn-primary envoie" %>
-    </div>
+  <div class="field">
+    <%= f.text_area :content, class: "form-control", placeholder: 'votre message !' %>
+  </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div>
+    <%= f.submit "Envoyer", class: "btn btn-primary envoie" %>
+  </div>
     <% end %>
 </div>
-
 <div class="foot-container">
   <div class="msg-foot">
-     <a href="<%=conversations_path%>", >
-     <i class="fas fa-arrow-circle-left"> retour</i>
-  </a>
+    <a href="<%=conversations_path%>", >
+      <i class="fas fa-arrow-circle-left"> retour</i>
+    </a>
   </div>
-  <% if !@messages.empty? %>
+    <% if !@messages.empty? %>
     <div class="msg-foot">
       <%= link_to "Supprimer tous les messages", conversation_message_path(@conversation.id,1), method: :delete, class: 'btn btn-danger' %><br>
     </div>
-  <% end %>
+    <% end %>
 </div>
