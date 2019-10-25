@@ -7,7 +7,7 @@ Nom du groupe:
 
 Membres de l'équipe:
 
-- RAMAHAFALY Edmond @RFaly (Back-end & Front)
+- RAMAHAFALY Edmond @RFaly (Back-end)
 
 - RAFANANENANA Heritiana John Fast Fabien @fastfabien (Back-end & Front) 
 
