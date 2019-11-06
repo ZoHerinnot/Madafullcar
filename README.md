@@ -13,7 +13,7 @@ Membres de l'équipe:
 
 - RAKOTOARIMANANA ANDRIANAVALONA Solofonirina Toky @S-toky(Back-end & Front)
 
-- RATSINAMPOIZINA Rolland @rollandjasmie (Back-end & Front) 
+- RATSINAMPOIZINA Rolland @rollandjasmie (Back-end) 
 
 - RANDRIANAMBININTSOA Zo Herinnot @ZoHerinnot (Back-end & Front)
 
